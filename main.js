@@ -188,3 +188,67 @@
             () => alert('Location access was denied. Please allow location permissions and try again.')
         );
     }
+
+ // 6. --NAV DROPDOWNS --
+    const dropdownItems = $$('.has-dropdown');
+
+    dropdownItems.forEach(item => {
+        const link = item.querySelector(':scope > a');
+        link.addEventListener('click', e => {
+            if (window.innerWidth <= 768) {
+                e.preventDefault();
+                const isOpen = item.classList.contains('open');
+                dropdownItems.forEach(d => d !== item && d.classList.remove('open'));
+                item.classList.toggle('open', !isOpen);
+                link.setAttribute('aria-expanded', String(!isOpen));
+            }
+        });
+    });
+
+    // Close dropdowns when clicking outside
+    document.addEventListener('click', e => {
+        if (!e.target.closest('.has-dropdown')) {
+            dropdownItems.forEach(d => {
+                d.classList.remove('open');
+                d.querySelector(':scope > a')?.setAttribute('aria-expanded', 'false');
+            });
+        }
+    });
+
+    // Dropdown filter links
+    $$('.dropdown a[data-filter]').forEach(link => {
+        link.addEventListener('click', e => {
+            e.preventDefault();
+            const filterName = link.dataset.filter;
+            document.getElementById('destinations').scrollIntoView({ behavior: 'smooth' });
+            applyFilter(filterName);
+            const searchInput = document.getElementById('destinationSearch');
+            if (searchInput) {
+                searchInput.value = filterName;
+                document.getElementById('searchClear')?.removeAttribute('hidden');
+            }
+            document.getElementById('main-nav').classList.remove('open');
+            $$('.dropdown a[data-filter]').forEach(l => l.classList.remove('active-filter'));
+            link.classList.add('active-filter');
+        });
+    });
+
+    // -- 6. MOBILE NAV TOGGLE --
+    const navToggle = document.getElementById('nav-toggle');
+    const mainNav   = document.getElementById('main-nav');
+
+    if (navToggle && mainNav) {
+        navToggle.addEventListener('click', () => {
+            const isOpen = mainNav.classList.toggle('open');
+            navToggle.setAttribute('aria-expanded', String(isOpen));
+        });
+
+        // Close mobile nav on non-dropdown link click
+        $$('nav#main-nav a:not(.has-dropdown > a)').forEach(a => {
+            a.addEventListener('click', () => {
+                mainNav.classList.remove('open');
+                navToggle.setAttribute('aria-expanded', 'false');
+            });
+        });
+    }
+
