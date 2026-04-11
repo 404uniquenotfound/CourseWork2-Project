@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GeoQuest - Explore Amazing Destinations</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,600&family=Outfit:wght@300;400;500;600&family=Space+Mono:ital@0;1&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="about1.css">
+    <link rel="icon" type="image/x-icon" href="img/icon.png">
+</head>
+<body>
+    
+    <!-- Cursor glow effect element -->
+    <div id="cursorGlow"></div>
+
+    <!-- Topographic background -->
+    <div class="topo-bg"></div>
+
+
+    <!-- HEADER & NAVIGATION -->
+    <header>
+        <a href="#hero" class="nav-logo"="text-decoration: none; color: white; display: flex; align-items: center; gap: 8px;">
+            <h1 style="margin: 0;">GEO<span>·</span>QUEST</h1>
+        </a>
+
+        <!-- Mobile hamburger -->
+        <button id="nav-toggle" aria-label="Toggle navigation" style="background:none; border:none; color:white; font-size:1.8rem; cursor:pointer;">☰ Menu</button>
+
+        <!-- ── MAIN NAV with DROPDOWNS ── -->
+        <nav id="main-nav">
+            <ul>
+                <!-- Home with dropdown -->
+                <li class="has-dropdown">
+                    <a href="#hero" class="nav-link">Why GeoQuest? <span class="nav-arrow">▾</span></a>
+                    <ul class="dropdown">
+                        <li><a href="#hero">🏠 Overview</a></li>
+                        <li><a href="#about">ℹ️ About Us</a></li>
+                    </ul>
+                </li>
+
+                <!-- Destinations with continent-grouped dropdown -->
+                <li class="has-dropdown">
+                    <a href="#destinations" class="nav-link">Destinations <span class="nav-arrow">▾</span></a>
+                    <ul class="dropdown dropdown-wide">
+
+                        <!-- All shortcut -->
+                        <li><a href="#destinations" class="dropdown-all">🗺️ All Destinations</a></li>
+
+                        <li class="dropdown-divider"></li>
+
+                        <!-- Asia -->
+                        <li class="dropdown-continent-label">
+                            <span class="continent-flag">🌏</span> Asia
+                        </li>
+                        <li><a href="#destinations" data-filter="Mount Everest">🏔️ Mount Everest <span class="dest-country">Nepal</span></a></li>
+                        <li><a href="#destinations" data-filter="Great Wall of China">🧱 Great Wall <span class="dest-country">China</span></a></li>
+
+                        <li class="dropdown-divider"></li>
+
+                        <!-- Europe -->
+                        <li class="dropdown-continent-label">
+                            <span class="continent-flag">🌍</span> Europe
+                        </li>
+                        <li><a href="#destinations" data-filter="Eiffel Tower">🗼 Eiffel Tower <span class="dest-country">France</span></a></li>
+
+                        <li class="dropdown-divider"></li>
+
+                        <!-- Americas -->
+                        <li class="dropdown-continent-label">
+                            <span class="continent-flag">🌎</span> Americas
+                        </li>
+                        <li><a href="#destinations" data-filter="Grand Canyon">🏜️ Grand Canyon <span class="dest-country">USA</span></a></li>
+                        <li><a href="#destinations" data-filter="Niagara Falls">💧 Niagara Falls <span class="dest-country">USA / Canada</span></a></li>
+                        <li><a href="#destinations" data-filter="Amazon Rainforest">🌿 Amazon Rainforest <span class="dest-country">Brazil</span></a></li>
+
+                        <li class="dropdown-divider"></li>
+
+                        <!-- Favourites -->
+                        <li><a href="#favorites" class="dropdown-fav">⭐ My Favourites</a></li>
+
+                    </ul>
+                </li>
+
+                <!-- Explore with dropdown -->
+                <li class="has-dropdown">
+                    <a href="#services" class="nav-link">Explore <span class="nav-arrow">▾</span></a>
+                    <ul class="dropdown">
+                        <li><a href="#services">🧭 Services</a></li>
+                        <li><a href="#gallery">🖼️ Gallery</a></li>
+                    </ul>
+                </li>
+
+                <!-- Contact — plain link -->
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+
+                <!-- Get Offers CTA -->
+                <li><a href="#signup" id="nav-signup" class="nav-link">Get Offers</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="mobile-menu">
+        <div class="container">
+            <div class="mobile-menu-links">
+            <a href="#hero">Why GeoQuest?</a>
+            <a href="#destinations">Destinations</a>
+            <a href="#services">Explore</a>
+            <a href="#contact">Contact</a>
+            <a href="#signup" id="mobile-signup">Get Offers</a>
+            </div>
+        </div>  
+    </div>
+
+    <main>
+
+            <!-- HERO SECTION -->
+            <section id="hero" class="hero">
+                <div class="container hero-content">
+                    <h1>Discover the World with GeoQuest</h1>
+                    <p>Your ultimate travel companion for exploring amazing destinations around the globe.</p>
+                    <a href="#destinations" class="btn">Explore Destinations</a>
+                </div>
+            </section>
+    
+            <!-- ABOUT US SECTION -->
+            <section id="about" class="about">
+                <div class="container about-content">
+                    <h2>About GeoQuest</h2>
+                    <p>At GeoQuest, we are passionate about travel and exploration. Our mission is to inspire and empower travelers to discover the world's most incredible destinations. Whether you're seeking breathtaking natural wonders, vibrant cities, or hidden gems, GeoQuest is your trusted guide to unforgettable adventures.</p>
+                    <p>With our user-friendly platform, you can easily find and explore a wide range of destinations, access personalized recommendations, and stay updated on the latest travel deals and offers. Join our community of explorers and start your journey with GeoQuest today!</p>
+                </div>
+            </section>
+    </main>
+
+
+     <!-- FOOTER -->
+    <footer>
+        <p>&copy; 2026 GeoQuest. All rights reserved.</p>
+    </footer>
+
+    <!-- Scroll to Top -->
+    <div id="scrollToTopBtn" style="display:none; position:fixed; bottom:30px; right:30px; width:50px; height:50px; background:linear-gradient(135deg, #3498db, #2980b9); color:white; border:none; border-radius:50%; font-size:1.5rem; cursor:pointer; z-index:99; box-shadow:0 4px 15px rgba(52,152,219,0.4); transition:all 0.3s ease; text-align:center; line-height:50px;">↑</div>
+
+    <script src="index.js"></script>
+</body>
+</html>

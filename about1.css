@@ -1,0 +1,420 @@
+/* GEOQUEST — Travel Discovery Platform*/
+
+/* -- DESIGN TOKENS -- */
+:root {
+    --bg-page:       #0B1520;
+    --bg-card:       #112035;
+    --bg-surface:    #1A2F4A;
+    --bg-elevated:   #213548;
+    --border:        rgba(30, 90, 130, 0.35);
+    --border-bright: rgba(14, 165, 194, 0.3);
+
+    --teal:          #0EA5C2;
+    --teal-light:    #38C4DC;
+    --teal-dim:      rgba(14,165,194,0.1);
+    --teal-glow:     rgba(14,165,194,0.25);
+
+    --gold:          #D4A853;
+    --gold-light:    #F0C878;
+    --gold-dim:      rgba(212,168,83,0.15);
+
+    --text-primary:  #EDF2F7;
+    --text-secondary:#94A8BF;
+    --text-dim:      #536B80;
+
+    --radius-sm:     8px;
+    --radius-md:     14px;
+    --radius-lg:     20px;
+
+    --shadow-card:   0 4px 24px rgba(0,0,0,0.45);
+    --shadow-hover:  0 16px 48px rgba(0,0,0,0.6);
+    --shadow-glow:   0 0 30px rgba(14,165,194,0.18);
+}
+
+/* RESET & BASE */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+    font-family: 'Outfit', 'Segoe UI', system-ui, sans-serif;
+    background-color: var(--bg-page);
+    color: var(--text-primary);
+    overflow-x: hidden;
+    min-height: 100vh;
+    line-height: 1.6;
+}
+
+/* -- TOPO BACKGROUND -- */
+   Subtle animated contour lines          */
+.topo-bg {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background-image:
+        repeating-radial-gradient(ellipse 140% 70% at 20% 30%,
+            transparent 0, transparent 22px,
+            rgba(14,165,194,0.04) 23px, transparent 24px),
+        repeating-radial-gradient(ellipse 100% 80% at 75% 65%,
+            transparent 0, transparent 34px,
+            rgba(212,168,83,0.03) 35px, transparent 36px),
+        repeating-radial-gradient(ellipse 180% 90% at 50% 50%,
+            transparent 0, transparent 46px,
+            rgba(14,165,194,0.025) 47px, transparent 48px);
+    animation: topoDrift 35s ease-in-out infinite alternate;
+}
+
+@keyframes topoDrift {
+    0%   { transform: scale(1)    translate(0,     0);    }
+    33%  { transform: scale(1.03) translate(-1%, -0.5%);  }
+    66%  { transform: scale(1.02) translate(1%,   0.5%);  }
+    100% { transform: scale(1)    translate(0,     0);    }
+}
+
+/* Mobile Menu */
+.mobile-menu {
+  position: fixed;
+  inset: 0;
+  top: var(--nav-h);
+  background: var(--ink);
+  z-index: 90;
+  transform: translateX(100%);
+  transition: transform .4s cubic-bezier(0.4,0,0.2,1);
+  overflow-y: auto;
+}
+
+/* When open */
+.mobile-menu.open {
+  transform: translateX(0);
+}
+
+/* Align menu content with page container */
+.mobile-menu .container {
+  max-width: 1200px;      /* match your site */
+  margin: 0 auto;
+  padding: 2rem 1.5rem;   /* same horizontal padding as your layout */
+}
+
+/* Menu links */
+.mobile-menu-links {
+  display: flex;
+  flex-direction: column;
+  gap: .25rem;
+}
+
+.mobile-menu-link {
+  display: block;
+  padding: 1rem 0;        /* remove extra left padding */
+  color: rgba(244,239,230,.75);
+  font-size: 1.1rem;
+  font-weight: 500;
+  border-bottom: 1px solid rgba(200,168,122,.08);
+  transition: color .2s, padding-left .2s;
+}
+
+.mobile-menu-link:hover {
+  color: var(--parchment);
+  padding-left: .5rem;    /* subtle, aligned hover shift */
+}
+
+
+/* -- Desktop nav -- */
+nav#main-nav { display: flex; }
+
+.nav-logo {
+  font-family: var(--font-mono);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--parchment);
+  text-decoration: none;
+  letter-spacing: .18em;
+  flex-shrink: 0;
+}
+.nav-logo span { color: var(--accent); }
+
+nav ul {
+    list-style: none;
+    margin: 0; padding: 0;
+    display: flex;
+    align-items: center;
+    gap: 0.15rem;
+}
+
+nav > ul > li { position: relative; }
+
+nav ul li a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    padding: 0.55rem 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    transition: color 0.2s ease, background 0.2s ease;
+    font-size: 0.9rem;
+    font-weight: 500;
+    border-radius: var(--radius-sm);
+    white-space: nowrap;
+    letter-spacing: 0.01em;
+}
+
+nav ul li a:hover {
+    color: var(--text-primary);
+    background: rgba(255,255,255,0.06);
+}
+
+/* Nav arrow */
+.nav-arrow {
+    font-size: 0.6rem;
+    opacity: 0.5;
+    transition: transform 0.25s ease, opacity 0.2s;
+    display: inline-block;
+}
+
+.has-dropdown:hover .nav-arrow,
+.has-dropdown.open  .nav-arrow {
+    transform: rotate(180deg);
+    opacity: 0.9;
+}
+
+/* -- DROPDOWN -- */
+.dropdown {
+    display: block;
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+    position: absolute;
+    top: calc(100% + 10px);
+    left: 0;
+    min-width: 220px;
+    background: var(--bg-surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.6), 0 0 0 1px rgba(14,165,194,0.08);
+    padding: 6px 0;
+    z-index: 2000;
+    transform: translateY(-10px) scale(0.97);
+    transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
+    flex-direction: column;
+}
+
+.has-dropdown:hover .dropdown,
+.has-dropdown.open  .dropdown {
+    visibility: visible;
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0) scale(1);
+}
+
+.dropdown li { margin: 0; width: 100%; }
+
+.dropdown li a {
+    padding: 0.58rem 1rem;
+    font-size: 0.86rem;
+    font-weight: 400;
+    border-radius: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    color: var(--text-secondary);
+    transition: background 0.15s ease, color 0.15s ease, padding-left 0.15s ease;
+}
+
+.dropdown li a:hover {
+    background: var(--teal-dim);
+    color: var(--teal-light);
+    padding-left: 1.3rem;
+    transform: none;
+}
+
+/* Dividers */
+.dropdown-divider {
+    height: 1px;
+    background: var(--border);
+    margin: 5px 12px;
+    pointer-events: none;
+}
+
+/* Continent group labels */
+.dropdown-continent-label {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    padding: 8px 14px 3px;
+    font-size: 0.68rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--teal);
+    pointer-events: none;
+    user-select: none;
+}
+
+.continent-flag { font-size: 0.95rem; }
+
+/* Country tag */
+.dest-country {
+    margin-left: auto;
+    font-size: 0.68rem;
+    color: var(--text-dim);
+    padding-left: 8px;
+    white-space: nowrap;
+}
+
+/* All Destinations */
+.dropdown-all {
+    font-weight: 600 !important;
+    color: var(--text-primary) !important;
+}
+
+/* Favourites link — gold */
+.dropdown-fav { color: var(--gold) !important; }
+.dropdown-fav:hover {
+    background: var(--gold-dim) !important;
+    color: var(--gold-light) !important;
+}
+
+/* --Active filter-- */
+.dropdown li a.active-filter {
+    background: var(--teal-dim);
+    color: var(--teal-light);
+}
+
+.dropdown-wide { min-width: 270px; }
+
+/* Get Offers pill */
+nav ul li #nav-signup {
+    background: linear-gradient(135deg, var(--teal), #0A8FAA);
+    color: #fff !important;
+    border-radius: 20px;
+    padding: 0.5rem 1.2rem;
+    font-weight: 600;
+    font-size: 0.85rem;
+    letter-spacing: 0.02em;
+    box-shadow: 0 0 20px rgba(14,165,194,0.3);
+    transition: all 0.3s ease;
+}
+
+nav ul li #nav-signup:hover {
+    background: linear-gradient(135deg, var(--teal-light), var(--teal));
+    box-shadow: 0 0 32px rgba(14,165,194,0.55);
+    transform: translateY(-1px);
+    color: #fff !important;
+}
+
+/* Hamburger */
+#nav-toggle {
+    display: none;
+    background: none;
+    border: 1px solid var(--border);
+    color: var(--text-secondary);
+    font-size: 1.4rem;
+    cursor: pointer;
+    border-radius: var(--radius-sm);
+    padding: 4px 10px;
+    transition: border-color 0.2s, color 0.2s;
+}
+
+#nav-toggle:hover { border-color: var(--teal); color: var(--teal-light); }
+#nav-toggle:focus { outline: 2px solid var(--teal); outline-offset: 2px; }
+
+
+/* --CURSOR GLOW-- */
+
+#cursorGlow {
+    position: fixed;
+    width: 360px; height: 360px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(14,165,194,0.09) 0%, transparent 70%);
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    z-index: 9998;
+    transition: left 0.07s ease, top 0.07s ease;
+    mix-blend-mode: screen;
+}
+
+/* --RESPONSIVE-- */
+
+@media (max-width: 1200px) {
+    main { margin: 2rem auto; padding: 0 1.5rem; }
+    #hero h2 { font-size: 3.6rem; }
+}
+
+@media (max-width: 992px) {
+    #destinations { grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); }
+    .section-heading { font-size: 2rem; }
+    .favorite-card { max-width: calc(50% - 12px); flex: 1 1 calc(50% - 12px); }
+}
+
+@media (max-width: 768px) {
+    header { padding: 0 1rem; }
+    #nav-toggle { display: block; }
+
+    nav#main-nav {
+        position: absolute;
+        top: 68px; left: 0;
+        width: 100%;
+        max-height: 0;
+        overflow: hidden;
+        background: rgba(11,21,32,0.98);
+        border-bottom: 1px solid var(--border);
+        transition: max-height 0.35s ease;
+        z-index: 999;
+    }
+
+    nav#main-nav.open { max-height: 700px; }
+
+    nav ul { flex-direction: column; gap: 0; padding: 8px 0; }
+    nav > ul > li { position: static; }
+
+    nav ul li a {
+        padding: 0.8rem 1.2rem;
+        border-radius: 0;
+        justify-content: space-between;
+        color: var(--text-secondary);
+    }
+
+    .dropdown {
+        position: static;
+        visibility: visible; opacity: 1;
+        pointer-events: auto;
+        transform: none; box-shadow: none;
+        background: rgba(14,165,194,0.04);
+        border: none; border-radius: 0;
+        padding: 0; max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+    }
+
+    .has-dropdown.open .dropdown { max-height: 700px; }
+
+    .dropdown li a {
+        padding: 0.6rem 2.2rem;
+        font-size: 0.84rem;
+        color: var(--text-dim);
+    }
+
+    .dropdown li a:hover {
+        padding-left: 2.5rem;
+        background: var(--teal-dim);
+        color: var(--teal-light);
+    }
+
+    .dropdown-divider { background: var(--border); margin: 4px 16px; }
+    .dropdown-continent-label { padding-left: 2.2rem; }
+
+    #hero { padding: 5rem 1.5rem 4rem; min-height: 460px; }
+    #hero h2 { font-size: 2.6rem; }
+    #hero p:not(.hero-eyebrow) { font-size: 1.05rem; }
+
+    .favorite-card { max-width: 100%; flex: 1 1 100%; }
+    .search-box { max-width: 100%; margin-bottom: 1.5rem; }
+}
+
+@media (max-width: 576px) {
+    main { padding: 0 1rem; }
+    #hero { padding: 4rem 1rem 3rem; min-height: 380px; }
+    #hero h2 { font-size: 2rem; letter-spacing: -0.5px; }
+    .section-heading { font-size: 1.7rem; padding: 1.4rem 1.2rem; }
+    .destination { height: 340px; }
+}
