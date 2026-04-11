@@ -319,6 +319,100 @@ nav ul li #nav-signup:hover {
 #nav-toggle:focus { outline: 2px solid var(--teal); outline-offset: 2px; }
 
 
+/* -- Hero Section -- */
+.about-hero {
+    position: relative;
+    min-height: 420px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    text-align: center;
+    padding: 100px 2rem 80px;
+}
+
+.about-hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(ellipse 70% 60% at 50% 40%, rgba(14,165,194,0.12) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 40% at 80% 10%, rgba(212,168,83,0.07) 0%, transparent 65%),
+        linear-gradient(180deg, #0d1c2e 0%, #0B1520 100%);
+    z-index: 0;
+}
+
+/* Animated rings */
+.hero-rings {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-rings span {
+    position: absolute;
+    border-radius: 50%;
+    border: 1px solid rgba(14,165,194,0.1);
+    animation: ringExpand 6s ease-out infinite;
+}
+.hero-rings span:nth-child(1) { width: 300px; height: 300px; animation-delay: 0s; }
+.hero-rings span:nth-child(2) { width: 480px; height: 480px; animation-delay: 1.5s; }
+.hero-rings span:nth-child(3) { width: 660px; height: 660px; animation-delay: 3s; }
+
+@keyframes ringExpand {
+    0%   { opacity: 0.6; transform: scale(0.8); }
+    100% { opacity: 0;   transform: scale(1.25); }
+}
+
+.about-hero-inner { position: relative; z-index: 1; max-width: 720px; }
+
+.about-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--teal-light);
+    background: var(--teal-dim);
+    border: 1px solid var(--border-bright);
+    padding: 6px 16px;
+    border-radius: 40px;
+    margin-bottom: 1.4rem;
+}
+
+.about-hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.8rem, 6vw, 4.8rem);
+    font-weight: 700;
+    line-height: 1.1;
+    margin: 0 0 1.2rem;
+    background: linear-gradient(135deg, var(--text-primary) 30%, var(--teal-light) 80%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.about-hero p {
+    font-size: 1.12rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    max-width: 580px;
+    margin: 0 auto 2rem;
+}
+
+.hero-cta-row {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+
 /* --CURSOR GLOW-- */
 
 #cursorGlow {
