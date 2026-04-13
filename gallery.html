@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GeoQuest — Gallery</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,600&family=Outfit:wght@300;400;500;600&family=Space+Mono:ital@0;1&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="gallery.css">
+    <link rel="icon" type="image/x-icon" href="img/icon.png">
+</head>
+<body>
+
+    <!-- Cursor glow -->
+    <div id="cursorGlow"></div>
+    <!-- Topo background -->
+    <div class="topo-bg"></div>
+
+    <!-- LIGHTBOX OVERLAY -->
+    <div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-label="Image lightbox">
+        <button class="lightbox-close" id="lightboxClose" aria-label="Close">&times;</button>
+        <button class="lightbox-nav lightbox-prev" id="lightboxPrev" aria-label="Previous">&#8592;</button>
+        <button class="lightbox-nav lightbox-next" id="lightboxNext" aria-label="Next">&#8594;</button>
+        <div class="lightbox-inner">
+            <img id="lightboxImg" src="" alt="">
+            <div class="lightbox-caption">
+                <h3 id="lightboxTitle"></h3>
+                <p id="lightboxDesc"></p>
+                <span class="lightbox-tag" id="lightboxTag"></span>
+            </div>
+        </div>
+        <div class="lightbox-counter"><span id="lightboxCurrent">1</span> / <span id="lightboxTotal">12</span></div>
+    </div>
+
+    <!-- HEADER -->
+    <header>
+        <a href="index.html" class="nav-logo">
+            <h1 style="margin:0;">GEO<span style="color:var(--teal)">·</span>QUEST</h1>
+        </a>
+        <button id="nav-toggle" aria-label="Toggle navigation" style="background:none;border:none;color:white;font-size:1.8rem;cursor:pointer;display:none;">☰</button>
+        <nav id="main-nav">
+
+
+          
+        </nav>
+    </header>
+
+    <!-- PAGE HERO -->
+    <div class="page-hero">
+        <div class="page-hero-inner">
+            <p class="hero-eyebrow">✦ Visual Journeys</p>
+            <h2>Explore the <span class="hero-brand">Gallery</span></h2>
+            <p>A curated collection of the world's most breathtaking destinations — from soaring peaks to sunlit shores.</p>
+        </div>
+    </div>
+
+    <main class="gallery-main">
+
+        <!-- FILTER BAR -->
+        <div class="filter-bar section-revealed">
+            <div class="filter-bar-inner">
+                <span class="filter-label">Filter by:</span>
+                <div class="filter-pills" role="group" aria-label="Filter categories">
+                    <button class="filter-pill active" data-filter="all">All</button>
+                    <button class="filter-pill" data-filter="nature">Nature</button>
+                    <button class="filter-pill" data-filter="landmark">Landmarks</button>
+                    <button class="filter-pill" data-filter="adventure">Adventure</button>
+                    <button class="filter-pill" data-filter="culture">Culture</button>
+                    <button class="filter-pill" data-filter="coastal">Coastal</button>
+                </div>
+                <div class="gallery-count"><span id="visibleCount">12</span> photos</div>
+            </div>
+        </div>
+
+
+
+
+
+
+
+      
+
+        </main>
+
+    <footer>
+        <p>&copy; 2026 GeoQuest. All rights reserved.</p>
+    </footer>
+
+    <script src="gallery.js"></script>
+</body>
+</html>
