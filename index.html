@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GeoQuest - Explore Amazing Destinations</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,600&family=Outfit:wght@300;400;500;600&family=Space+Mono:ital@0;1&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/all.min.css" integrity="sha512-1ycoCasTTUyz4g4B2sPFwec89dhK84P8NcxjxfvlS//FLFjf6FlPkMjhASu/kNmf6DbnQl8+sSpt7PmecFQ6+g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="icon" type="image/x-icon" href="img/icon.png">
+</head>
+<body>
+
+    <!-- Cursor glow effect element -->
+    <div id="cursorGlow"></div>
+
+    <!-- Topographic background -->
+    <div class="topo-bg"></div>
+
+    <!-- ── NEAREST DESTINATION MODAL ── -->
+    <div id="nearestModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Nearest Attraction Found!</h2>
+            <div id="modalDestination"></div>
+        </div>
+    </div>
+
+    <!--  SIGN UP MODAL  -->
+    <div id="signUpModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Subscribe for Deals &amp; Offers</h2>
+            <p>Get exclusive travel deals, special offers, and amazing discounts delivered to your inbox!</p>
+            <form id="signUpForm">
+                <input type="email" id="signUpEmail" placeholder="Enter your email" required>
+                <label style="margin-top: 10px; display: flex; align-items: center;">
+                    <input type="checkbox" id="termsCheckbox" required style="margin-right: 8px;">
+                    I agree to receive offers and updates
+                </label>
+                <button type="submit" style="width: 100%; padding: 10px; background: #808080; color: white; border: none; cursor: pointer; border-radius: 4px; font-size: 1rem; margin-top: 10px;">Subscribe</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- HEADER & NAVIGATION -->
+    <header>
+        <a href="#hero" class="nav-logo" style="text-decoration: none; color: white; display: flex; align-items: center; gap: 8px;">
+            <h1 style="margin: 0;">GEO<span>·</span>QUEST</h1>
+        </a>
+
+        <!-- Mobile hamburger -->
+        <button id="nav-toggle" aria-label="Toggle navigation" style="background:none; border:none; color:white; font-size:1.8rem; cursor:pointer;">☰ Menu</button>
+
+        <!-- ── MAIN NAV with DROPDOWNS ── -->
+        <nav id="main-nav">
+            <ul>
+                <!-- Home with dropdown -->
+                <li class="has-dropdown">
+                    <a href="#hero" class="nav-link">Why GeoQuest? <span class="nav-arrow">▾</span></a>
+                    <ul class="dropdown">
+                        <li><a href="#hero">🏠 Overview</a></li>
+                        <li><a href="#about">ℹ️ About Us</a></li>
+                    </ul>
+                </li>
+
+                <!-- Destinations with continent-grouped dropdown -->
+                <li class="has-dropdown">
+                    <a href="#destinations" class="nav-link">Destinations <span class="nav-arrow">▾</span></a>
+                    <ul class="dropdown dropdown-wide">
+
+                        <!-- All shortcut -->
+                        <li><a href="#destinations" class="dropdown-all">🗺️ All Destinations</a></li>
+
+                        <li class="dropdown-divider"></li>
+
+                        <!-- Asia -->
+                        <li class="dropdown-continent-label">
+                            <span class="continent-flag">🌏</span> Asia
+                        </li>
+                        <li><a href="#destinations" data-filter="Mount Everest">🏔️ Mount Everest <span class="dest-country">Nepal</span></a></li>
+                        <li><a href="#destinations" data-filter="Great Wall of China">🧱 Great Wall <span class="dest-country">China</span></a></li>
+
+                        <li class="dropdown-divider"></li>
+
+                        <!-- Europe -->
+                        <li class="dropdown-continent-label">
+                            <span class="continent-flag">🌍</span> Europe
+                        </li>
+                        <li><a href="#destinations" data-filter="Eiffel Tower">🗼 Eiffel Tower <span class="dest-country">France</span></a></li>
+
+                        <li class="dropdown-divider"></li>
+
+                        <!-- Americas -->
+                        <li class="dropdown-continent-label">
+                            <span class="continent-flag">🌎</span> Americas
+                        </li>
+                        <li><a href="#destinations" data-filter="Grand Canyon">🏜️ Grand Canyon <span class="dest-country">USA</span></a></li>
+                        <li><a href="#destinations" data-filter="Niagara Falls">💧 Niagara Falls <span class="dest-country">USA / Canada</span></a></li>
+                        <li><a href="#destinations" data-filter="Amazon Rainforest">🌿 Amazon Rainforest <span class="dest-country">Brazil</span></a></li>
+
+                        <li class="dropdown-divider"></li>
+
+                        <!-- Favourites -->
+                        <li><a href="#favorites" class="dropdown-fav">⭐ My Favourites</a></li>
+
+                    </ul>
+                </li>
+
+                <!-- Explore with dropdown -->
+                <li class="has-dropdown">
+                    <a href="#services" class="nav-link">Explore <span class="nav-arrow">▾</span></a>
+                    <ul class="dropdown">
+                        <li><a href="#services">🧭 Services</a></li>
+                        <li><a href="#gallery">🖼️ Gallery</a></li>
+                    </ul>
+                </li>
+
+                <!-- Contact — plain link -->
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+
+                <!-- Get Offers CTA -->
+                <li><a href="#signup" id="nav-signup" class="nav-link">Get Offers</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="mobile-menu">
+        <div class="container">
+            <div class="mobile-menu-links">
+            <a href="#hero">Why GeoQuest?</a>
+            <a href="#destinations">Destinations</a>
+            <a href="#services">Explore</a>
+            <a href="#contact">Contact</a>
+            <a href="#signup" id="mobile-signup">Get Offers</a>
+            </div>
+        </div>  
+    </div>
+
+
+    <!-- MAIN CONTENT -->
+    <main>
+
+        <!-- HERO -->
+        <section id="hero">
+            <!-- Parallax bg layer (JS moves this on scroll) -->
+            <div class="hero-bg"></div>
+            <!-- Floating particle orbs -->
+            <div class="hero-particles">
+                <span class="particle"></span><span class="particle"></span>
+                <span class="particle"></span><span class="particle"></span>
+                <span class="particle"></span><span class="particle"></span>
+                <span class="particle"></span><span class="particle"></span>
+            </div>
+            <!-- Content sits above parallax layers -->
+            <div class="hero-inner">
+                <p class="hero-eyebrow">✦ Adventure Awaits</p>
+                <h2>Welcome to <span class="hero-brand">GeoQuest</span></h2>
+                <p>Explore the world with us. Discover amazing destinations and embark on unforgettable adventures.</p>
+                <div class="hero-buttons">
+    <a href="#services" class="btn-primary">Start Exploring</a>
+    <a href="#about" class="btn-secondary">Learn More</a>
+  </div>
+</div>
+                <!-- Interactive buttons added via JavaScript -->
+            </div>
+        </section>
+    </main>
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; 2026 GeoQuest. All rights reserved.</p>
+    </footer>
+
+    <!-- Scroll to Top -->
+    <div id="scrollToTopBtn" style="display:none; position:fixed; bottom:30px; right:30px; width:50px; height:50px; background:linear-gradient(135deg, #3498db, #2980b9); color:white; border:none; border-radius:50%; font-size:1.5rem; cursor:pointer; z-index:99; box-shadow:0 4px 15px rgba(52,152,219,0.4); transition:all 0.3s ease; text-align:center; line-height:50px;">↑</div>
+
+    <script src="index.js"></script>
+</body>
+</html>
