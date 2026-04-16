@@ -1,0 +1,709 @@
+
+
+/* 1. DESIGN TOKENS */
+:root {
+    /* Background layers - darkest to most elevated */
+    --bg-page:       #0B1520;
+    --bg-card:       #112035;
+    --bg-surface:    #1A2F4A;
+    --bg-elevated:   #213548;
+
+    /* Border colours */
+    --border:        rgba(30, 90, 130, 0.35);
+    --border-bright: rgba(14, 165, 194, 0.3);
+
+    /* Teal - primary accent */
+    --teal:          #0EA5C2;
+    --teal-light:    #38C4DC;
+    --teal-dim:      rgba(14, 165, 194, 0.1);
+    --teal-glow:     rgba(14, 165, 194, 0.25);
+
+    /* Gold - secondary accent */
+    --gold:          #D4A853;
+    --gold-light:    #F0C878;
+    --gold-dim:      rgba(212, 168, 83, 0.15);
+
+    /* Text - from bright to muted */
+    --text-primary:   #EDF2F7;
+    --text-secondary: #94A8BF;
+    --text-dim:       #536B80;
+
+    /* Border radii */
+    --radius-sm: 8px;
+    --radius-md: 14px;
+    --radius-lg: 20px;
+
+    /* Shadows */
+    --shadow-card:  0 4px 24px rgba(0, 0, 0, 0.45);
+    --shadow-hover: 0 16px 48px rgba(0, 0, 0, 0.6);
+    --shadow-glow:  0 0 30px rgba(14, 165, 194, 0.18);
+}
+
+
+/* 2. RESET & BASE */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Outfit', 'Segoe UI', system-ui, sans-serif;
+    background-color: var(--bg-page);
+    color: var(--text-primary);
+    overflow-x: hidden;
+    min-height: 100vh;
+    line-height: 1.6;
+}
+
+
+/* 3. TOPOGRAPHIC BACKGROUND */
+.topo-bg {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background-image:
+        repeating-radial-gradient(ellipse 140% 70% at 20% 30%,
+            transparent 0, transparent 22px,
+            rgba(14, 165, 194, 0.04) 23px, transparent 24px),
+        repeating-radial-gradient(ellipse 100% 80% at 75% 65%,
+            transparent 0, transparent 34px,
+            rgba(212, 168, 83, 0.03) 35px, transparent 36px),
+        repeating-radial-gradient(ellipse 180% 90% at 50% 50%,
+            transparent 0, transparent 46px,
+            rgba(14, 165, 194, 0.025) 47px, transparent 48px);
+    animation: topoDrift 35s ease-in-out infinite alternate;
+}
+
+@keyframes topoDrift {
+    0%   { transform: scale(1)    translate(0, 0);       }
+    33%  { transform: scale(1.03) translate(-1%, -0.5%); }
+    66%  { transform: scale(1.02) translate(1%, 0.5%);   }
+    100% { transform: scale(1)    translate(0, 0);       }
+}
+
+
+/* 4. HEADER / NAVIGATION */
+
+nav#main-nav {
+    display: flex;
+}
+
+/*  4a. Nav links & arrows  */
+
+/* Logo text */
+.nav-logo {
+    font-family: var(--font-mono, monospace);
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    text-decoration: none;
+    letter-spacing: 0.18em;
+    flex-shrink: 0;
+}
+
+/* The dot separator in "GEO·QUEST" */
+.nav-logo span {
+    color: var(--teal);
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    gap: 0.15rem;
+}
+
+/* Top-level list items need relative positioning
+   so dropdowns can pop out below them. */
+nav > ul > li {
+    position: relative;
+}
+
+nav ul li a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    padding: 0.55rem 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    border-radius: var(--radius-sm);
+    white-space: nowrap;
+    letter-spacing: 0.01em;
+    transition: color 0.2s ease, background 0.2s ease;
+}
+
+nav ul li a:hover {
+    color: var(--text-primary);
+    background: rgba(255, 255, 255, 0.06);
+}
+
+/* The tiny chevron-down arrow next to dropdown labels */
+.nav-arrow {
+    font-size: 0.6rem;
+    opacity: 0.5;
+    display: inline-block;
+    transition: transform 0.25s ease, opacity 0.2s;
+}
+
+/* Flip the arrow when its dropdown is visible */
+.has-dropdown:hover .nav-arrow,
+.has-dropdown.open  .nav-arrow {
+    transform: rotate(180deg);
+    opacity: 0.9;
+}
+
+/*  4b. Dropdowns  */
+
+.dropdown {
+    display: block;
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+
+    position: absolute;
+    top: calc(100% + 10px);
+    left: 0;
+    min-width: 220px;
+    flex-direction: column;
+
+    background: var(--bg-surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(14, 165, 194, 0.08);
+    padding: 6px 0;
+    z-index: 2000;
+
+    transform: translateY(-10px) scale(0.97);
+    transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
+}
+
+.has-dropdown:hover .dropdown,
+.has-dropdown.open  .dropdown {
+    visibility: visible;
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0) scale(1);
+}
+
+.dropdown li {
+    margin: 0;
+    width: 100%;
+}
+
+.dropdown li a {
+    padding: 0.58rem 1rem;
+    font-size: 0.86rem;
+    font-weight: 400;
+    border-radius: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    color: var(--text-secondary);
+    transition: background 0.15s ease, color 0.15s ease, padding-left 0.15s ease;
+}
+
+/* Slight indent on hover to feel responsive */
+.dropdown li a:hover {
+    background: var(--teal-dim);
+    color: var(--teal-light);
+    padding-left: 1.3rem;
+}
+
+/* Thin line between groups of links */
+.dropdown-divider {
+    height: 1px;
+    background: var(--border);
+    margin: 5px 12px;
+    pointer-events: none;
+}
+
+/* Non-clickable continent headers inside the destinations dropdown */
+.dropdown-continent-label {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    padding: 8px 14px 3px;
+    font-size: 0.68rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--teal);
+    pointer-events: none;
+    user-select: none;
+}
+
+.continent-flag {
+    font-size: 0.95rem;
+}
+
+.dest-country {
+    margin-left: auto;
+    font-size: 0.68rem;
+    color: var(--text-dim);
+    padding-left: 8px;
+    white-space: nowrap;
+}
+
+/* "All Destinations" is bolder than the rest */
+.dropdown-all {
+    font-weight: 600 !important;
+    color: var(--text-primary) !important;
+}
+
+/* "My Favourites" gets gold styling */
+.dropdown-fav {
+    color: var(--gold) !important;
+}
+
+.dropdown-fav:hover {
+    background: var(--gold-dim) !important;
+    color: var(--gold-light) !important;
+}
+
+/* Highlights the currently active page in the dropdown */
+.dropdown li a.active-filter {
+    background: var(--teal-dim);
+    color: var(--teal-light);
+}
+
+/* The destinations dropdown is wider to fit country names */
+.dropdown-wide {
+    min-width: 270px;
+}
+
+/* "Get Offers" pill — stands out from the regular nav links */
+nav ul li #nav-signup {
+    background: linear-gradient(135deg, var(--teal), #0A8FAA);
+    color: #fff !important;
+    border-radius: 20px;
+    padding: 0.5rem 1.2rem;
+    font-weight: 600;
+    font-size: 0.85rem;
+    letter-spacing: 0.02em;
+    box-shadow: 0 0 20px rgba(14, 165, 194, 0.3);
+    transition: all 0.3s ease;
+}
+
+nav ul li #nav-signup:hover {
+    background: linear-gradient(135deg, var(--teal-light), var(--teal));
+    box-shadow: 0 0 32px rgba(14, 165, 194, 0.55);
+    transform: translateY(-1px);
+    color: #fff !important;
+}
+
+/*  4c. Hamburger toggle */
+#nav-toggle {
+    display: none;
+    background: none;
+    border: 1px solid var(--border);
+    color: var(--text-secondary);
+    font-size: 1.4rem;
+    cursor: pointer;
+    border-radius: var(--radius-sm);
+    padding: 4px 10px;
+    transition: border-color 0.2s, color 0.2s;
+}
+
+#nav-toggle:hover {
+    border-color: var(--teal);
+    color: var(--teal-light);
+}
+
+#nav-toggle:focus {
+    outline: 2px solid var(--teal);
+    outline-offset: 2px;
+}
+
+
+/* 5. PAGE HERO */
+
+/*  5a. Hero background & rings  */
+
+.about-hero {
+    position: relative;
+    min-height: 420px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    text-align: center;
+    padding: 100px 2rem 80px;
+}
+
+.about-hero-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background:
+        radial-gradient(ellipse 70% 60% at 50% 40%, rgba(14, 165, 194, 0.12) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 40% at 80% 10%, rgba(212, 168, 83, 0.07) 0%, transparent 65%),
+        linear-gradient(180deg, #0d1c2e 0%, #0B1520 100%);
+}
+
+.hero-rings {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-rings span {
+    position: absolute;
+    border-radius: 50%;
+    border: 1px solid rgba(14, 165, 194, 0.1);
+    animation: ringExpand 6s ease-out infinite;
+}
+
+.hero-rings span:nth-child(1) { width: 300px; height: 300px; animation-delay: 0s;   }
+.hero-rings span:nth-child(2) { width: 480px; height: 480px; animation-delay: 1.5s; }
+.hero-rings span:nth-child(3) { width: 660px; height: 660px; animation-delay: 3s;   }
+
+@keyframes ringExpand {
+    0%   { opacity: 0.6; transform: scale(0.8);  }
+    100% { opacity: 0;   transform: scale(1.25); }
+}
+
+/*  5b. Hero content & buttons  */
+
+/* The actual text lives above all the background layers */
+.about-hero-inner {
+    position: relative;
+    z-index: 1;
+    max-width: 720px;
+}
+
+/* Small pill label above the headline */
+.about-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--teal-light);
+    background: var(--teal-dim);
+    border: 1px solid var(--border-bright);
+    padding: 6px 16px;
+    border-radius: 40px;
+    margin-bottom: 1.4rem;
+}
+
+/* Headline text —  */
+.about-hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.8rem, 6vw, 4.8rem);
+    font-weight: 700;
+    line-height: 1.1;
+    margin: 0 0 1.2rem;
+    background: linear-gradient(135deg, var(--text-primary) 30%, var(--teal-light) 80%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.about-hero p {
+    font-size: 1.12rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    max-width: 580px;
+    margin: 0 auto 2rem;
+}
+
+/* Row of two CTA buttons */
+.hero-cta-row {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* Filled teal button */
+.btn-primary-about {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 0.75rem 1.6rem;
+    background: linear-gradient(135deg, var(--teal), #0A8FAA);
+    color: #fff;
+    border-radius: 40px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-decoration: none;
+    letter-spacing: 0.02em;
+    box-shadow: 0 0 22px rgba(14, 165, 194, 0.35);
+    transition: all 0.3s ease;
+}
+
+.btn-primary-about:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 38px rgba(14, 165, 194, 0.55);
+    background: linear-gradient(135deg, var(--teal-light), var(--teal));
+}
+
+/* outline button */
+.btn-outline-about {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 0.75rem 1.6rem;
+    background: transparent;
+    color: var(--text-secondary);
+    border: 1px solid var(--border);
+    border-radius: 40px;
+    font-weight: 500;
+    font-size: 0.9rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.btn-outline-about:hover {
+    border-color: var(--teal);
+    color: var(--teal-light);
+    background: var(--teal-dim);
+}
+
+
+/* 6. SECTION WRAPPERS*/
+/* The main container that centres and pads each section */
+.abt-section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 80px 2rem;
+}
+
+/* Small uppercase label above section headings (e.g. "Our Mission") */
+.abt-section-label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 0.5rem;
+}
+
+/* The main heading of each section */
+.abt-section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.9rem, 3.5vw, 2.8rem);
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0 0 1rem;
+    line-height: 1.2;
+}
+
+.abt-section-subtitle {
+    color: var(--text-secondary);
+    font-size: 1rem;
+    max-width: 560px;
+    line-height: 1.7;
+    margin-bottom: 3.5rem;
+}
+
+
+/* 7. STATS STRIP */
+.stats-strip {
+    background: var(--bg-card);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 60px 2rem;
+}
+
+.stats-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+    text-align: center;
+}
+
+.stat-item {
+    position: relative;
+    padding: 24px 16px;
+    border-radius: var(--radius-md);
+    transition: background 0.3s ease;
+}
+
+.stat-item:hover {
+    background: var(--bg-surface);
+}
+
+/* Thin vertical divider between stats */
+.stat-item + .stat-item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 25%;
+    height: 50%;
+    width: 1px;
+    background: var(--border);
+}
+
+/* The big animated number — gradient text */
+.stat-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3.2rem;
+    font-weight: 700;
+    line-height: 1;
+    background: linear-gradient(135deg, var(--teal-light), var(--gold));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 6px;
+}
+
+.stat-label {
+    font-size: 0.85rem;
+    color: var(--text-dim);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    font-weight: 500;
+}
+
+
+/* 8. MISSION SECTION */
+.mission-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+}
+
+.mission-image-wrap {
+    position: relative;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+}
+
+.mission-image-wrap img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    border-radius: var(--radius-lg);
+    display: block;
+    transition: transform 0.5s ease;
+}
+
+/* Gentle zoom on hover — the overflow:hidden on
+   the wrapper clips it cleanly. */
+.mission-image-wrap:hover img {
+    transform: scale(1.04);
+}
+
+/* Subtle teal tint over the image */
+.mission-image-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(14, 165, 194, 0.12) 0%, transparent 60%);
+    border-radius: var(--radius-lg);
+    pointer-events: none;
+}
+
+/* The floating badge in the bottom-left of the image */
+.mission-badge {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    background: rgba(11, 21, 32, 0.88);
+    backdrop-filter: blur(12px);
+    border: 1px solid var(--border-bright);
+    border-radius: var(--radius-md);
+    padding: 14px 18px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.mission-badge .badge-icon {
+    font-size: 1.6rem;
+}
+
+.mission-badge .badge-text strong {
+    display: block;
+    font-size: 1.05rem;
+    color: var(--gold);
+    font-weight: 700;
+}
+
+.mission-badge .badge-text span {
+    font-size: 0.78rem;
+    color: var(--text-dim);
+}
+
+/* The heading on the right-hand text side */
+.mission-text h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 3vw, 2.6rem);
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0 0 1.2rem;
+    line-height: 1.2;
+}
+
+.mission-text p {
+    color: var(--text-secondary);
+    line-height: 1.8;
+    margin-bottom: 1.2rem;
+    font-size: 0.97rem;
+}
+
+/* Stack of icon + text rows below the mission paragraphs */
+.mission-pillars {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-top: 2rem;
+}
+
+.pillar {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 14px 18px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    transition: border-color 0.3s ease, background 0.3s ease;
+}
+
+.pillar:hover {
+    border-color: var(--teal);
+    background: var(--bg-surface);
+}
+
+/* Small square icon on the left of each pillar */
+.pillar-icon {
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
+    background: var(--teal-dim);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    color: var(--teal-light);
+    flex-shrink: 0;
+}
+
+.pillar-body strong {
+    display: block;
+    font-size: 0.93rem;
+    color: var(--text-primary);
+    font-weight: 600;
+    margin-bottom: 2px;
+}
+
+.pillar-body span {
+    font-size: 0.83rem;
+    color: var(--text-dim);
+    line-height: 1.5;
+}
