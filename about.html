@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us — GeoQuest</title>
+
+    <!-- Fonts (matching index.html) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,600&family=Outfit:wght@300;400;500;600&family=Space+Mono:ital@0;1&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Shared stylesheet (nav, footer, tokens, topo-bg) -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="about.css">
+</head>
+<body>
+
+    <!-- Cursor glow (shared with index) -->
+    <div id="cursorGlow"></div>
+
+    <!-- Topographic background (shared) -->
+    <div class="topo-bg"></div>
+
+    <!-- HEADER — identical to index.html -->
+    <header id="site-header">
+        <a href="index.html" class="nav-logo" style="text-decoration:none;color:white;display:flex;align-items:center;gap:8px;">
+            <h1 style="margin:0;">GEO<span>·</span>QUEST</h1>
+        </a>
+
+        <button id="nav-toggle" aria-label="Toggle navigation" style="background:none;border:none;color:white;font-size:1.8rem;cursor:pointer;">☰ Menu</button>
+
+        <nav id="main-nav">
+            <ul>
+                <li class="has-dropdown">
+                    <a href="index.html#hero" class="nav-link">Why GeoQuest? <span class="nav-arrow">▾</span></a>
+                    <ul class="dropdown">
+                        <li><a href="index.html#hero">Overview</a></li>
+                        <li><a href="about.html" class="active-filter">About Us</a></li>
+                    </ul>
+                </li>
+                <li class="has-dropdown">
+                    <a href="index.html#destinations" class="nav-link">Destinations <span class="nav-arrow">▾</span></a>
+                    <ul class="dropdown dropdown-wide">
+                        <li><a href="index.html#destinations" class="dropdown-all">🗺️ All Destinations</a></li>
+                        <li class="dropdown-divider"></li>
+                        <li class="dropdown-continent-label"><span class="continent-flag">🌏</span> Asia</li>
+                        <li><a href="index.html#destinations">🏔️ Mount Everest <span class="dest-country">Nepal</span></a></li>
+                        <li><a href="index.html#destinations">🧱 Great Wall <span class="dest-country">China</span></a></li>
+                        <li class="dropdown-divider"></li>
+                        <li class="dropdown-continent-label"><span class="continent-flag">🌍</span> Europe</li>
+                        <li><a href="index.html#destinations">🗼 Eiffel Tower <span class="dest-country">France</span></a></li>
+                        <li class="dropdown-divider"></li>
+                        <li class="dropdown-continent-label"><span class="continent-flag">🌎</span> Americas</li>
+                        <li><a href="index.html#destinations">🏜️ Grand Canyon <span class="dest-country">USA</span></a></li>
+                        <li><a href="index.html#destinations">💧 Niagara Falls <span class="dest-country">USA / Canada</span></a></li>
+                        <li><a href="index.html#destinations">🌿 Amazon Rainforest <span class="dest-country">Brazil</span></a></li>
+                        <li class="dropdown-divider"></li>
+                        <li><a href="index.html#favorites" class="dropdown-fav">⭐ My Favourites</a></li>
+                    </ul>
+                </li>
+                <li class="has-dropdown">
+                    <a href="index.html#services" class="nav-link">Explore <span class="nav-arrow">▾</span></a>
+                    <ul class="dropdown">
+                        <li><a href="index.html#services">Services</a></li>
+                        <li><a href="index.html#gallery">Gallery</a></li>
+                    </ul>
+                </li>
+                <li><a href="index.html#contact" class="nav-link">Contact</a></li>
+                <li><a href="index.html#signup" id="nav-signup" class="nav-link">Get Offers</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Mobile menu -->
+    <div class="mobile-menu" id="mobile-menu">
+        <div class="container">
+            <div class="mobile-menu-links">
+                <a href="index.html#hero">Why GeoQuest?</a>
+                <a href="index.html#destinations">Destinations</a>
+                <a href="index.html#services">Explore</a>
+                <a href="index.html#contact">Contact</a>
+                <a href="index.html#signup">Get Offers</a>
+            </div>
+        </div>
+    </div>
+
+ <!-- MAIN CONTENT -->
+    <main>
+
+        <!--  HERO  -->
+        <section class="about-hero">
+            <div class="about-hero-bg"></div>
+            <div class="hero-rings">
+                <span></span><span></span><span></span>
+            </div>
+            <div class="about-hero-inner">
+                <span class="about-eyebrow"><i class="fas fa-compass"></i> Our Story</span>
+                <h1>Passionate About<br>Extraordinary Travel</h1>
+                <p>GeoQuest was built by explorers, for explorers. We believe every journey begins with the right inspiration — and we're here to light the way.</p>
+                <div class="hero-cta-row">
+                    <a href="#mission" class="btn-primary-about"><i class="fas fa-rocket"></i> Our Mission</a>
+                    <a href="#team" class="btn-outline-about"><i class="fas fa-users"></i> Meet the Team</a>
+                </div>
+            </div>
+        </section>
+
+        <!--  STATS STRIP -->
+        <div class="stats-strip">
+            <div class="stats-inner">
+                <div class="stat-item reveal">
+                    <div class="stat-number" data-target="120">0</div>
+                    <div class="stat-label">Countries Covered</div>
+                </div>
+                <div class="stat-item reveal">
+                    <div class="stat-number" data-target="50000">0</div>
+                    <div class="stat-label">Travellers Served</div>
+                </div>
+                <div class="stat-item reveal">
+                    <div class="stat-number" data-target="98">0</div>
+                    <div class="stat-label">% Satisfaction Rate</div>
+                </div>
+                <div class="stat-item reveal">
+                    <div class="stat-number" data-target="7">0</div>
+                    <div class="stat-label">Years of Excellence</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- MISSION  -->
+        <section id="mission" class="abt-section">
+            <div class="mission-grid">
+                <!-- Image -->
+                <div class="mission-image-wrap reveal">
+                    <img
+                        src="https://images.unsplash.com/photo-1488085061387-422e29b40080?w=900&q=80"
+                        alt="Travel explorers planning their journey">
+                    <div class="mission-image-overlay"></div>
+                    <div class="mission-badge">
+                        <span class="badge-icon">🌍</span>
+                        <div class="badge-text">
+                            <strong>Est. 2018</strong>
+                            <span>Oxford, UK</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Text -->
+                <div class="mission-text reveal">
+                    <p class="abt-section-label">Our Mission</p>
+                    <h2>Turning Curiosity Into Unforgettable Journeys</h2>
+                    <p>GeoQuest is a travel discovery platform built for curious explorers who want more from their journeys. We go beyond the tourist trail — surfacing hidden destinations, local experiences, and personalised travel insights that help you plan trips with confidence and intention.</p>
+                    <p>Whether you're mapping out your next adventure or simply dreaming of where to go, GeoQuest brings the world closer. Our platform combines smart discovery tools with curated travel content, making it easier than ever to find places that truly match who you are and how you travel.</p>
+
+                    <div class="mission-pillars">
+                        <div class="pillar">
+                            <div class="pillar-icon"><i class="fas fa-search-location"></i></div>
+                            <div class="pillar-body">
+                                <strong>Smart Discovery</strong>
+                                <span>AI-powered tools that surface destinations perfectly matched to your travel style.</span>
+                            </div>
+                        </div>
+                        <div class="pillar">
+                            <div class="pillar-icon"><i class="fas fa-shield-alt"></i></div>
+                            <div class="pillar-body">
+                                <strong>Trust & Safety</strong>
+                                <span>Every recommendation is verified. Every partner is vetted. Your journey is in safe hands.</span>
+                            </div>
+                        </div>
+                        <div class="pillar">
+                            <div class="pillar-icon"><i class="fas fa-heart"></i></div>
+                            <div class="pillar-body">
+                                <strong>Traveller-First</strong>
+                                <span>We exist for explorers. Every feature, every decision is made with your adventure in mind.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <hr class="section-divider">
+
+
+    </main>
+
+
+
+
+  
+    <!-- FOOTER — matching index.html -->
+    <footer>
+        <p>&copy; 2026 GeoQuest. All rights reserved.</p>
+    </footer>
+
+    <!-- Scroll to Top -->
+    <button id="scrollToTopBtn" aria-label="Scroll to top" style="display:none;position:fixed;bottom:30px;right:30px;width:50px;height:50px;background:linear-gradient(135deg,#3498db,#2980b9);color:white;border:none;border-radius:50%;font-size:1.2rem;cursor:pointer;z-index:99;box-shadow:0 4px 15px rgba(52,152,219,0.4);transition:all 0.3s ease;">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <!-- About page JavaScript -->
+    <script src="about.js"></script>
+
+</body>
+</html>
