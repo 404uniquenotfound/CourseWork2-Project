@@ -576,4 +576,75 @@ nav ul li #nav-signup:hover {
     animation: lineGrow 0.6s ease forwards;
     transform-origin: center;
 }
+/* ======================================================
+   SCROLL-TO-TOP
+   ====================================================== */
+#scrollToTopBtn {
+    display: none; position: fixed; bottom: 30px; right: 30px;
+    width: 50px; height: 50px;
+    background: linear-gradient(135deg, var(--teal), #0A8FAA);
+    color: #fff; border: none; border-radius: 50%;
+    font-size: 1.3rem; cursor: pointer; z-index: 9900;
+    box-shadow: 0 4px 20px rgba(14,165,194,0.4);
+    text-align: center; line-height: 50px;
+    transition: all 0.3s ease;
+}
+#scrollToTopBtn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 28px rgba(14,165,194,0.55);
+}
 
+/* ======================================================
+   MODALS
+   ====================================================== */
+.modal {
+    display: none; position: fixed; inset: 0;
+    background: rgba(0,0,0,0.7); z-index: 5000;
+    align-items: center; justify-content: center;
+}
+.modal[style*="block"] { display: flex; }
+
+.modal-content {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-bright);
+    border-radius: var(--radius-lg);
+    padding: 2rem;
+    max-width: 480px; width: 90%;
+    position: relative;
+    box-shadow: 0 24px 60px rgba(0,0,0,0.7);
+    animation: fadeInUp 0.3s ease;
+}
+.modal-content h2 {
+    font-family: var(--font-display);
+    color: var(--text-primary);
+    margin: 0 0 0.8rem;
+}
+.modal-content p { color: var(--text-secondary); }
+.close {
+    position: absolute; top: 1rem; right: 1.2rem;
+    font-size: 1.6rem; cursor: pointer; color: var(--text-dim);
+    transition: color 0.2s;
+}
+.close:hover { color: var(--text-primary); }
+.modal-content input[type="email"] {
+    width: 100%; padding: 10px 14px;
+    background: var(--bg-elevated);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    color: var(--text-primary); font-size: 0.95rem;
+    margin-top: 1rem;
+}
+.modal-content input[type="email"]:focus {
+    outline: none; border-color: var(--teal);
+}
+.modal-content button[type="submit"] {
+    width: 100%; margin-top: 10px; padding: 12px;
+    background: linear-gradient(135deg, var(--teal), #0A8FAA);
+    color: #fff; border: none; border-radius: var(--radius-sm);
+    font-size: 1rem; font-weight: 600; cursor: pointer;
+    transition: all 0.3s;
+}
+.modal-content button[type="submit"]:hover {
+    box-shadow: 0 0 24px var(--teal-glow);
+    transform: translateY(-1px);
+}
