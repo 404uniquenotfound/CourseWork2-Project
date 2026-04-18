@@ -1,6 +1,6 @@
 
 
-/* 1. DESIGN TOKENS */
+/* -- 1. DESIGN TOKENS -- */
 :root {
     /* Background layers - darkest to most elevated */
     --bg-page:       #0B1520;
@@ -40,7 +40,7 @@
 }
 
 
-/* 2. RESET & BASE */
+/* -- 2. RESET & BASE -- */
 *, *::before, *::after {
     box-sizing: border-box;
 }
@@ -82,13 +82,13 @@ body {
 }
 
 
-/* 4. HEADER / NAVIGATION */
+/* -- 4. HEADER / NAVIGATION -- */
 
 nav#main-nav {
     display: flex;
 }
 
-/*  4a. Nav links & arrows  */
+/* -- 4a. Nav links & arrows -- */
 
 /* Logo text */
 .nav-logo {
@@ -156,7 +156,7 @@ nav ul li a:hover {
     opacity: 0.9;
 }
 
-/*  4b. Dropdowns  */
+/*--  4b. Dropdowns -- */
 
 .dropdown {
     display: block;
@@ -320,9 +320,9 @@ nav ul li #nav-signup:hover {
 }
 
 
-/* 5. PAGE HERO */
+/* -- 5. PAGE HERO -- */
 
-/*  5a. Hero background & rings  */
+/* -- 5a. Hero background & rings -- */
 
 .about-hero {
     position: relative;
@@ -371,7 +371,7 @@ nav ul li #nav-signup:hover {
     100% { opacity: 0;   transform: scale(1.25); }
 }
 
-/*  5b. Hero content & buttons  */
+/* --  5b. Hero content & buttons -- */
 
 /* The actual text lives above all the background layers */
 .about-hero-inner {
@@ -472,7 +472,7 @@ nav ul li #nav-signup:hover {
 }
 
 
-/* 6. SECTION WRAPPERS*/
+/* -- 6. SECTION WRAPPERS -- */
 /* The main container that centres and pads each section */
 .abt-section {
     max-width: 1200px;
@@ -509,7 +509,7 @@ nav ul li #nav-signup:hover {
 }
 
 
-/* 7. STATS STRIP */
+/* -- 7. STATS STRIP -- */
 .stats-strip {
     background: var(--bg-card);
     border-top: 1px solid var(--border);
@@ -570,7 +570,7 @@ nav ul li #nav-signup:hover {
 }
 
 
-/* 8. MISSION SECTION */
+/* -- 8. MISSION SECTION -- */
 .mission-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -593,13 +593,11 @@ nav ul li #nav-signup:hover {
     transition: transform 0.5s ease;
 }
 
-/* Gentle zoom on hover — the overflow:hidden on
-   the wrapper clips it cleanly. */
+/* Gentle zoom on hover. */
 .mission-image-wrap:hover img {
     transform: scale(1.04);
 }
 
-/* Subtle teal tint over the image */
 .mission-image-overlay {
     position: absolute;
     inset: 0;
@@ -656,7 +654,6 @@ nav ul li #nav-signup:hover {
     font-size: 0.97rem;
 }
 
-/* Stack of icon + text rows below the mission paragraphs */
 .mission-pillars {
     display: flex;
     flex-direction: column;
@@ -707,3 +704,173 @@ nav ul li #nav-signup:hover {
     color: var(--text-dim);
     line-height: 1.5;
 }
+
+
+
+/* -- 9. VALUES GRID -- */
+.values-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 3rem;
+}
+
+.value-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 36px 28px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.35s ease;
+}
+
+/* The gradient bar that slides in from the left on hover */
+.value-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--teal), var(--gold));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.35s ease;
+}
+
+.value-card:hover {
+    transform: translateY(-8px);
+    border-color: var(--border-bright);
+    box-shadow: var(--shadow-hover);
+}
+
+.value-card:hover::after {
+    transform: scaleX(1);
+}
+
+/* Icon square at the top of each card */
+.value-icon {
+    width: 54px;
+    height: 54px;
+    border-radius: 14px;
+    background: var(--teal-dim);
+    border: 1px solid var(--border-bright);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: var(--teal-light);
+    margin-bottom: 1.2rem;
+}
+
+.value-card h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0 0 0.7rem;
+}
+
+.value-card p {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    line-height: 1.75;
+    margin: 0;
+}
+
+
+/* --10. TEAM GRID-- */
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 28px;
+    margin-top: 3rem;
+}
+
+.team-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    text-align: center;
+    transition: all 0.35s ease;
+}
+
+.team-card:hover {
+    transform: translateY(-8px);
+    border-color: var(--teal);
+    box-shadow: 0 16px 48px rgba(14, 165, 194, 0.2);
+}
+
+/* The photo of the Team */
+.team-avatar {
+    width: 100%;
+    height: 230px;
+    object-fit: cover;
+    display: block;
+    filter: grayscale(20%);
+    transition: filter 0.4s ease, transform 0.4s ease;
+}
+
+.team-card:hover .team-avatar {
+    filter: grayscale(0%);
+    transform: scale(1.04);
+}
+
+.team-info {
+    padding: 22px 18px;
+}
+
+.team-info h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0 0 4px;
+}
+
+.team-role {
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--teal-light);
+    margin-bottom: 10px;
+}
+
+.team-bio {
+    font-size: 0.84rem;
+    color: var(--text-dim);
+    line-height: 1.6;
+    margin-bottom: 14px;
+}
+
+.team-socials {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+/* Small square social icon buttons */
+.team-socials a {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    background: var(--bg-surface);
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-dim);
+    font-size: 0.85rem;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.team-socials a:hover {
+    background: var(--teal-dim);
+    border-color: var(--teal);
+    color: var(--teal-light);
+}
+
