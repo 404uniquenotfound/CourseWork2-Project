@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GeoQuest - Destinations</title>
+
+    <!-- google fonts - same ones as homepage -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,600&family=Outfit:wght@300;400;500;600&family=Space+Mono:ital@0;1&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="destination.css">
+
+    <!-- font awesome icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="icon" type="image/x-icon" href="img/icon.png">
+</head>
+<body>
+
+    <!-- cursor glow - position is updated by js on mousemove -->
+    <div id="cursorGlow"></div>
+
+    <!-- topo animated background (same as index.html) -->
+    <div class="topo-bg"></div>
+
+    <!-- ============ BOOKING MODAL ============ -->
+    <!-- this modal pops up when the user clicks Book Now on any card -->
+    <div id="bookingModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Book Your Trip</h2>
+            <!-- js puts the destination name here -->
+            <p id="bookingDestTitle" style="color: var(--teal-light); font-weight: 600; margin-bottom: 1rem;"></p>
+            <form id="bookingForm">
+                <div class="form-group">
+                    <label for="bookName">Full Name</label>
+                    <input type="text" id="bookName" placeholder="e.g. John Smith" required>
+                </div>
+                <div class="form-group">
+                    <label for="bookEmail">Email Address</label>
+                    <input type="email" id="bookEmail" placeholder="you@example.com" required>
+                </div>
+                <div class="form-group">
+                    <label for="bookDate">Departure Date</label>
+                    <input type="date" id="bookDate" required>
+                </div>
+                <div class="form-group">
+                    <label for="bookPeople">Number of Travellers</label>
+                    <select id="bookPeople">
+                        <option value="1">1 Person</option>
+                        <option value="2" selected>2 People</option>
+                        <option value="3">3 People</option>
+                        <option value="4">4 People</option>
+                        <option value="5+">5+ People</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn-book-submit">Confirm Booking</button>
+            </form>
+        </div>
+    </div>
+
+    <!--  HEADER / NAV  -->
+    <header>
+        <a href="index.html" class="nav-logo" style="text-decoration: none; color: white; display: flex; align-items: center; gap: 8px;">
+            <h1 style="margin: 0;">GEO<span>·</span>QUEST</h1>
+        </a>
+
+        <!-- hamburger - only visible on mobile screens -->
+        <button id="nav-toggle" aria-label="Toggle navigation">☰ Menu</button>
+
+        <nav id="main-nav">
+            <ul>
+                <li class="has-dropdown">
+                    <a href="about.html" class="nav-link">Why GeoQuest? <span class="nav-arrow">▾</span></a>
+                    
+                </li>
+
+                <!-- active-page class makes this link highlighted since were on this page -->
+                <li class="has-dropdown">
+                    <a href="destination.html" class="nav-link active-page">Destinations <span class="nav-arrow">▾</span></a>
+                    <ul class="dropdown dropdown-wide">
+                        <li><a href="destination.html" class="dropdown-all">🗺️ All Destinations</a></li>
+                        <li class="dropdown-divider"></li>
+                        <li class="dropdown-continent-label"><span>🇬🇧</span> United Kingdom</li>
+                        <li><a href="#" data-filter="London">🏙️ London</a></li>
+                        <li><a href="#" data-filter="UK">🇬🇧 All UK</a></li>
+                        <li class="dropdown-divider"></li>
+                        <li class="dropdown-continent-label"><span class="continent-flag">🌏</span> Asia</li>
+                        <li><a href="#" data-filter="Mountain">🏔️ Mountains</a></li>
+                        <li class="dropdown-divider"></li>
+                        <li class="dropdown-continent-label"><span class="continent-flag">🌍</span> Europe</li>
+                        <li><a href="#" data-filter="Beach">🏖️ Beaches</a></li>
+                        <li class="dropdown-divider"></li>
+                        <li class="dropdown-continent-label"><span class="continent-flag">🌎</span> Americas</li>
+                        <li><a href="#" data-filter="Nature">🌿 Nature</a></li>
+                        <li class="dropdown-divider"></li>
+                        <li><a href="index.html#favorites" class="dropdown-fav">⭐ My Favourites</a></li>
+                    </ul>
+                </li>
+
+                <li class="has-dropdown">
+                    <a href="index.html#services" class="nav-link">Explore <span class="nav-arrow">▾</span></a>
+                    <ul class="dropdown">
+                        <li><a href="index.html#services">🧭 Services</a></li>
+                        <li><a href="index.html#gallery">🖼️ Gallery</a></li>
+                    </ul>
+                </li>
+
+                <li><a href="index.html#contact" class="nav-link">Contact</a></li>
+                <li><a href="index.html" class="nav-link">← Home</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!--  HERO SECTION  -->
+    <section class="dest-hero">
+        <div class="dest-hero-img-wrap">
+            <img src="https://images.unsplash.com/photo-1467269204594-9661b134dd2b?w=1600&q=80" alt="World destinations collage" class="dest-hero-photo">
+            <div class="dest-hero-overlay"></div>
+        </div>
+        <div class="dest-hero-inner">
+            <p class="hero-eyebrow">✦ Explore The World</p>
+            <h2>Our <span class="hero-brand">Destinations</span></h2>
+            <p>Browse our handpicked collection of incredible places — from iconic London landmarks to world wonders across the globe.</p>
+        </div>
+    </section>
+
+    <!--  MAIN CONTENT  -->
+    <main>
+
+        <!-- search + filter buttons -->
+        <div class="filter-bar">
+            <div class="search-box">
+                <span class="search-icon">🔍</span>
+                <input type="text" id="destSearch" placeholder="Search destinations…" autocomplete="off">
+                <!-- clear button - hidden until user types something -->
+                <button id="searchClear" style="display:none;">✕</button>
+            </div>
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <!-- london gets its own filter button -->
+                <button class="filter-btn" data-filter="London">🏙️ London</button>
+                <button class="filter-btn" data-filter="UK">🇬🇧 UK</button>
+                <button class="filter-btn" data-filter="Nature">🌿 Nature</button>
+                <button class="filter-btn" data-filter="Landmark">🏛️ Landmark</button>
+                <button class="filter-btn" data-filter="Mountain">🏔️ Mountain</button>
+                <button class="filter-btn" data-filter="Beach">🏖️ Beach</button>
+                <button class="filter-btn" data-filter="City">🌆 City</button>
+            </div>
+        </div>
+      
+        <p id="resultsCount" class="results-count">Showing all 17 destinations</p>
+
+        <!--  CARDS GRID  -->
+        <section id="destinations-grid">
+          
+                <!-- INTERNATIONAL DESTINATIONs -->
+
+            <!-- Mount Everest -->
+            <div class="dest-card" data-continent="Asia" data-type="Mountain" data-name="Mount Everest" data-country="Nepal" data-region="international">
+                <div class="dest-card-img">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Everest_North_Face_toward_Base_Camp_Tibet_Luca_Galuzzi_2006.jpg/1280px-Everest_North_Face_toward_Base_Camp_Tibet_Luca_Galuzzi_2006.jpg" alt="Mount Everest" loading="lazy">
+                    <span class="dest-badge">Mountain</span>
+                    <button class="fav-btn" aria-label="Add to favourites">☆</button>
+                </div>
+                <div class="dest-card-body">
+                    <div class="dest-meta">
+                        <span class="dest-flag">🌏</span>
+                        <span class="dest-country-tag">Nepal, Asia</span>
+                        <span class="dest-rating">★★★★★</span>
+                    </div>
+                    <h3>Mount Everest</h3>
+                    <p class="dest-desc">At 8,849m, the world's highest peak offers legendary trekking routes, Sherpa culture, and breathtaking Himalayan scenery. A true bucket-list adventure for serious explorers only.</p>
+                    <div class="dest-info-row">
+                        <span><i class="fas fa-thermometer-half"></i> -20°C to 10°C</span>
+                        <span><i class="fas fa-clock"></i> Best: Mar–May, Sep–Nov</span>
+                    </div>
+                    <div class="dest-tags">
+                        <span class="tag">Trekking</span>
+                        <span class="tag">Extreme</span>
+                        <span class="tag">UNESCO</span>
+                    </div>
+                    <div class="dest-price-row">
+                        <span class="dest-price">From <strong>£2,400</strong> / person</span>
+                        <button class="btn-book" data-dest="Mount Everest">Book Now</button>
+                    </div>
+                </div>
+            </div>
+
+            
+
+            <!-- Amazon Rainforest -->
+            <div class="dest-card" data-continent="South America" data-type="Nature" data-name="Amazon Rainforest" data-country="Brazil" data-region="international">
+                <div class="dest-card-img">
+                    <img src="https://d4g0cdul6yygp.cloudfront.net/uploads/2018/03/Bird-watch-Pacaya-Samiria-©-J.J.-Huckin-WWF-US.jpg" alt="Amazon Rainforest" loading="lazy">
+                    <span class="dest-badge">Nature</span>
+                    <button class="fav-btn" aria-label="Add to favourites">☆</button>
+                </div>
+                <div class="dest-card-body">
+                    <div class="dest-meta">
+                        <span class="dest-flag">🌎</span>
+                        <span class="dest-country-tag">Brazil, South America</span>
+                        <span class="dest-rating">★★★★★</span>
+                    </div>
+                    <h3>Amazon Rainforest</h3>
+                    <p class="dest-desc">The planet's largest rainforest spanning 5.5 million km². Discover pink river dolphins, exotic wildlife, and indigenous cultures on guided jungle expeditions.</p>
+                    <div class="dest-info-row">
+                        <span><i class="fas fa-thermometer-half"></i> 25°C to 35°C</span>
+                        <span><i class="fas fa-clock"></i> Best: Jun–Nov</span>
+                    </div>
+                    <div class="dest-tags">
+                        <span class="tag">Wildlife</span>
+                        <span class="tag">Eco-tour</span>
+                        <span class="tag">Jungle</span>
+                    </div>
+                    <div class="dest-price-row">
+                        <span class="dest-price">From <strong>£1,800</strong> / person</span>
+                        <button class="btn-book" data-dest="Amazon Rainforest">Book Now</button>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <!-- MT.Fuji-->
+             <div class="dest-card" data-continent="Asia" data-type="Mountain" data-name="Mount Fuji" data-country="Japan" data-region="domestic">
+                <div class="dest-card-img">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/1/12/Mount_Fuji_from_Lake_Kawaguchi.jpg" 
+                        alt="Mount Fuji" loading="lazy">
+                        <span class="dest-badge">Mountain</span>
+                        <button class="fav-btn" aria-label="Add to favourites">☆</button>
+                </div>
+
+                <div class="dest-card-body">
+                    <div class="dest-meta">
+                        <span class="dest-flag">🇯🇵</span>
+                        <span class="dest-country-tag">Japan, Asia</span>
+                        <span class="dest-rating">★★★★★</span>
+                    </div>
+
+                    <h3>Mount Fuji</h3>
+                        <p class="dest-desc">
+                            Japan’s most iconic peak at 3,776m, offering serene lakeside views, cultural heritage, 
+                            and one of the world’s most popular sunrise climbs. A perfect blend of nature, tradition, 
+                            and adventure.
+                        </p>
+
+                    <div class="dest-info-row">
+                        <span><i class="fas fa-thermometer-half"></i> -5°C to 18°C</span>
+                        <span><i class="fas fa-clock"></i> Best: Jul–Sep</span>
+                    </div>
+
+                    <div class="dest-tags">
+                        <span class="tag">Hiking</span>
+                        <span class="tag">Cultural</span>
+                        <span class="tag">UNESCO</span>
+                    </div>
+
+                    <div class="dest-price-row">
+                        <span class="dest-price">From <strong>£1,200</strong> / person</span>
+                        <button class="btn-book" data-dest="Mount Fuji">Book Now</button>
+                    </div>
+                </div>
+                
+            </div>
+
+
+            <!-- Grand Canyon -->
+            <div class="dest-card" data-continent="North America" data-type="Nature" data-name="Grand Canyon" data-country="USA" data-region="international">
+                <div class="dest-card-img">
+                    <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80" alt="Grand Canyon" loading="lazy">
+                    <span class="dest-badge">Nature</span>
+                    <button class="fav-btn" aria-label="Add to favourites">☆</button>
+                </div>
+                <div class="dest-card-body">
+                    <div class="dest-meta">
+                        <span class="dest-flag">🌎</span>
+                        <span class="dest-country-tag">USA, North America</span>
+                        <span class="dest-rating">★★★★★</span>
+                    </div>
+                    <h3>Grand Canyon</h3>
+                    <p class="dest-desc">A geological marvel carved by the Colorado River over millions of years. 277 miles of colourful canyon walls, dramatic viewpoints, and legendary hiking trails await.</p>
+                    <div class="dest-info-row">
+                        <span><i class="fas fa-thermometer-half"></i> 5°C to 38°C</span>
+                        <span><i class="fas fa-clock"></i> Best: Mar–May, Sep–Nov</span>
+                    </div>
+                    <div class="dest-tags">
+                        <span class="tag">Hiking</span>
+                        <span class="tag">Photography</span>
+                        <span class="tag">National Park</span>
+                    </div>
+                    <div class="dest-price-row">
+                        <span class="dest-price">From <strong>£950</strong> / person</span>
+                        <button class="btn-book" data-dest="Grand Canyon">Book Now</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Japan Destination-->
+             <div class="dest-card" data-continent="Asia" data-type="City" data-name="Sapporo Snow Festival" data-country="Japan" data-region="domestic">
+                <div class="dest-card-img">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/3/3f/Sapporo_Snow_Festival_2019_Hokkaido_Japan.jpg" 
+                    alt="Sapporo Snow Festival" loading="lazy">
+                    <span class="dest-badge">Festival</span>
+                    <button class="fav-btn" aria-label="Add to favourites">☆</button>
+                </div>
+
+                <div class="dest-card-body">
+                    <div class="dest-meta">
+                        <span class="dest-flag">🇯🇵</span>
+                        <span class="dest-country-tag">Japan, Asia</span>
+                        <span class="dest-rating">★★★★★</span>
+                    </div>
+
+                    <h3>Sapporo Snow Festival</h3>
+                    <p class="dest-desc">
+                        One of Japan’s most spectacular winter events, featuring massive snow sculptures, 
+                        illuminated ice castles, food stalls, and lively winter activities across Hokkaido’s capital. 
+                        A magical celebration of art and snow culture.
+                    </p>
+
+                    <div class="dest-info-row">
+                        <span><i class="fas fa-thermometer-half"></i> -12°C to -3°C</span>
+                        <span><i class="fas fa-clock"></i> Best: Early February</span>
+                    </div>
+
+                    <div class="dest-tags">
+                        <span class="tag">Winter</span>
+                        <span class="tag">Festival</span>
+                        <span class="tag">Cultural</span>
+                    </div>
+
+                    <div class="dest-price-row">
+                        <span class="dest-price">From <strong>£1,450</strong> / person</span>
+                        <button class="btn-book" data-dest="Sapporo Snow Festival">Book Now</button>
+                    </div>
+                </div>
+            </div>
+            
+
+            <!-- Eiffel Tower -->
+            <div class="dest-card" data-continent="Europe" data-type="Landmark" data-name="Eiffel Tower" data-country="France" data-region="international">
+                <div class="dest-card-img">
+                    <img src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=800&q=80" alt="Eiffel Tower" loading="lazy">
+                    <span class="dest-badge">Landmark</span>
+                    <button class="fav-btn" aria-label="Add to favourites">☆</button>
+                </div>
+                <div class="dest-card-body">
+                    <div class="dest-meta">
+                        <span class="dest-flag">🌍</span>
+                        <span class="dest-country-tag">France, Europe</span>
+                        <span class="dest-rating">★★★★☆</span>
+                    </div>
+                    <h3>Eiffel Tower</h3>
+                    <p class="dest-desc">The 330-metre iron lattice icon built in 1889. Enjoy panoramic rooftop views, romantic evening light shows, and fine Parisian dining just steps away.</p>
+                    <div class="dest-info-row">
+                        <span><i class="fas fa-thermometer-half"></i> 5°C to 25°C</span>
+                        <span><i class="fas fa-clock"></i> Best: Apr–Jun, Sep–Oct</span>
+                    </div>
+                    <div class="dest-tags">
+                        <span class="tag">Romantic</span>
+                        <span class="tag">Culture</span>
+                        <span class="tag">City Break</span>
+                    </div>
+                    <div class="dest-price-row">
+                        <span class="dest-price">From <strong>£700</strong> / person</span>
+                        <button class="btn-book" data-dest="Eiffel Tower">Book Now</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Great Wall of China -->
+            <div class="dest-card" data-continent="Asia" data-type="Landmark" data-name="Great Wall of China" data-country="China" data-region="international">
+                <div class="dest-card-img">
+                    <img src="https://www.shutterstock.com/image-photo/traveler-great-wall-china-near-600nw-2676316171.jpg" alt="Great Wall of China" loading="lazy">
+                    <span class="dest-badge">Landmark</span>
+                    <button class="fav-btn" aria-label="Add to favourites">☆</button>
+                </div>
+                <div class="dest-card-body">
+                    <div class="dest-meta">
+                        <span class="dest-flag">🌏</span>
+                        <span class="dest-country-tag">China, Asia</span>
+                        <span class="dest-rating">★★★★★</span>
+                    </div>
+                    <h3>Great Wall of China</h3>
+                    <p class="dest-desc">Spanning 13,171 miles of ancient fortification across stunning mountain landscapes. Walk both restored and wild sections for a truly awe-inspiring experience of Chinese history.</p>
+                    <div class="dest-info-row">
+                        <span><i class="fas fa-thermometer-half"></i> -10°C to 30°C</span>
+                        <span><i class="fas fa-clock"></i> Best: Apr–Jun, Sep–Oct</span>
+                    </div>
+                    <div class="dest-tags">
+                        <span class="tag">History</span>
+                        <span class="tag">UNESCO</span>
+                        <span class="tag">Hiking</span>
+                    </div>
+                    <div class="dest-price-row">
+                        <span class="dest-price">From <strong>£1,100</strong> / person</span>
+                        <button class="btn-book" data-dest="Great Wall of China">Book Now</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Niagara Falls -->
+            <div class="dest-card" data-continent="North America" data-type="Nature" data-name="Niagara Falls" data-country="USA / Canada" data-region="international">
+                <div class="dest-card-img">
+                    <img src="https://thetraveler.s3.amazonaws.com/images/hero/what-not-to-do-first-time-niagara-falls_1200x675.jpg" alt="Niagara Falls" loading="lazy">
+                    <span class="dest-badge">Nature</span>
+                    <button class="fav-btn" aria-label="Add to favourites">☆</button>
+                </div>
+                <div class="dest-card-body">
+                    <div class="dest-meta">
+                        <span class="dest-flag">🌎</span>
+                        <span class="dest-country-tag">USA / Canada, North America</span>
+                        <span class="dest-rating">★★★★☆</span>
+                    </div>
+                    <h3>Niagara Falls</h3>
+                    <p class="dest-desc">Three spectacular waterfalls cascading 51–57 metres with over 750,000 gallons per second. Experience the thundering power via Maid of the Mist on both sides of the border.</p>
+                    <div class="dest-info-row">
+                        <span><i class="fas fa-thermometer-half"></i> -5°C to 28°C</span>
+                        <span><i class="fas fa-clock"></i> Best: Jun–Aug</span>
+                    </div>
+                    <div class="dest-tags">
+                        <span class="tag">Waterfall</span>
+                        <span class="tag">Family</span>
+                        <span class="tag">Boat Tour</span>
+                    </div>
+                    <div class="dest-price-row">
+                        <span class="dest-price">From <strong>£850</strong> / person</span>
+                        <button class="btn-book" data-dest="Niagara Falls">Book Now</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Santorini -->
+            <div class="dest-card" data-continent="Europe" data-type="Beach" data-name="Santorini" data-country="Greece" data-region="international">
+                <div class="dest-card-img">
+                    <img src="https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?w=800&q=80" alt="Santorini" loading="lazy">
+                    <span class="dest-badge">Beach</span>
+                    <button class="fav-btn" aria-label="Add to favourites">☆</button>
+                </div>
+                <div class="dest-card-body">
+                    <div class="dest-meta">
+                        <span class="dest-flag">🌍</span>
+                        <span class="dest-country-tag">Greece, Europe</span>
+                        <span class="dest-rating">★★★★★</span>
+                    </div>
+                    <h3>Santorini</h3>
+                    <p class="dest-desc">White-washed buildings and blue domes perched above the caldera. Sunsets from Oia are world-renowned, and the volcanic beaches are unlike anywhere else on Earth.</p>
+                    <div class="dest-info-row">
+                        <span><i class="fas fa-thermometer-half"></i> 12°C to 30°C</span>
+                        <span><i class="fas fa-clock"></i> Best: Apr–Oct</span>
+                    </div>
+                    <div class="dest-tags">
+                        <span class="tag">Romantic</span>
+                        <span class="tag">Beaches</span>
+                        <span class="tag">Sunset</span>
+                    </div>
+                    <div class="dest-price-row">
+                        <span class="dest-price">From <strong>£1,200</strong> / person</span>
+                        <button class="btn-book" data-dest="Santorini">Book Now</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Machu Picchu -->
+            <div class="dest-card" data-continent="South America" data-type="Landmark" data-name="Machu Picchu" data-country="Peru" data-region="international">
+                <div class="dest-card-img">
+                    <img src="https://images.unsplash.com/photo-1526392060635-9d6019884377?w=800&q=80" alt="Machu Picchu" loading="lazy">
+                    <span class="dest-badge">Landmark</span>
+                    <button class="fav-btn" aria-label="Add to favourites">☆</button>
+                </div>
+                <div class="dest-card-body">
+                    <div class="dest-meta">
+                        <span class="dest-flag">🌎</span>
+                        <span class="dest-country-tag">Peru, South America</span>
+                        <span class="dest-rating">★★★★★</span>
+                    </div>
+                    <h3>Machu Picchu</h3>
+                    <p class="dest-desc">The Lost City of the Incas at 2,430m in the Andes. This UNESCO World Heritage Site is one of archaeology's greatest mysteries, surrounded by dramatic mountain cloud forest.</p>
+                    <div class="dest-info-row">
+                        <span><i class="fas fa-thermometer-half"></i> 8°C to 22°C</span>
+                        <span><i class="fas fa-clock"></i> Best: May–Sep</span>
+                    </div>
+                    <div class="dest-tags">
+                        <span class="tag">History</span>
+                        <span class="tag">UNESCO</span>
+                        <span class="tag">Trekking</span>
+                    </div>
+                    <div class="dest-price-row">
+                        <span class="dest-price">From <strong>£1,650</strong> / person</span>
+                        <button class="btn-book" data-dest="Machu Picchu">Book Now</button>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- shown when no cards match the search or filter -->
+        <div id="noResults" class="no-results" style="display:none;">
+            <p>😕 No destinations found. Try searching something else or clearing the filter!</p>
+        </div>
+
+        <!-- link back to homepage -->
+        <div style="text-align:center; margin: 3rem 0 1rem;">
+            <a href="index.html" class="btn-back-home">← Back to Home</a>
+        </div>
+
+    </main>
+
+    <!-- footer - same as homepage -->
+    <footer>
+        <p>&copy; 2026 GeoQuest. All rights reserved.</p>
+    </footer>
+
+    <script src="destination.js"></script>
+</body>
+</html>
