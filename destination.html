@@ -11,9 +11,7 @@
 
     <link rel="stylesheet" href="destination.css">
 
-    <!-- font awesome icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
+    
     <link rel="icon" type="image/x-icon" href="img/icon.png">
 </head>
 <body>
@@ -60,73 +58,58 @@
         </div>
     </div>
 
-    <!--  HEADER / NAV  -->
-    <header>
-        <a href="index.html" class="nav-logo" style="text-decoration: none; color: white; display: flex; align-items: center; gap: 8px;">
-            <h1 style="margin: 0;">GEO<span>·</span>QUEST</h1>
+    <!-- ============ HEADER / NAV ============ -->
+    <header id="site-header">
+
+        <!-- Site logo / home link -->
+        <a href="index.html" class="nav-logo">
+            <h1>GEO<span>·</span>QUEST</h1>
         </a>
 
-        <!-- hamburger - only visible on mobile screens -->
+        <!-- Hamburger button — only visible on mobile -->
         <button id="nav-toggle" aria-label="Toggle navigation">☰ Menu</button>
 
+
+        <!-- Main navigation -->
         <nav id="main-nav">
-            <ul>
-                <li class="has-dropdown">
-                    <a href="about.html" class="nav-link">Why GeoQuest? <span class="nav-arrow">▾</span></a>
-                    
-                </li>
-
-                <!-- active-page class makes this link highlighted since were on this page -->
-                <li class="has-dropdown">
-                    <a href="destination.html" class="nav-link active-page">Destinations <span class="nav-arrow">▾</span></a>
-                    <ul class="dropdown dropdown-wide">
-                        <li><a href="destination.html" class="dropdown-all">🗺️ All Destinations</a></li>
-                        <li class="dropdown-divider"></li>
-                        <li class="dropdown-continent-label"><span>🇬🇧</span> United Kingdom</li>
-                        <li><a href="#" data-filter="London">🏙️ London</a></li>
-                        <li><a href="#" data-filter="UK">🇬🇧 All UK</a></li>
-                        <li class="dropdown-divider"></li>
-                        <li class="dropdown-continent-label"><span class="continent-flag">🌏</span> Asia</li>
-                        <li><a href="#" data-filter="Mountain">🏔️ Mountains</a></li>
-                        <li class="dropdown-divider"></li>
-                        <li class="dropdown-continent-label"><span class="continent-flag">🌍</span> Europe</li>
-                        <li><a href="#" data-filter="Beach">🏖️ Beaches</a></li>
-                        <li class="dropdown-divider"></li>
-                        <li class="dropdown-continent-label"><span class="continent-flag">🌎</span> Americas</li>
-                        <li><a href="#" data-filter="Nature">🌿 Nature</a></li>
-                        <li class="dropdown-divider"></li>
-                        <li><a href="index.html#favorites" class="dropdown-fav">⭐ My Favourites</a></li>
-                    </ul>
-                </li>
-
-                <li class="has-dropdown">
-                    <a href="index.html#services" class="nav-link">Explore <span class="nav-arrow">▾</span></a>
-                    <ul class="dropdown">
-                        <li><a href="index.html#services">🧭 Services</a></li>
-                        <li><a href="index.html#gallery">🖼️ Gallery</a></li>
-                    </ul>
-                </li>
-
-                <li><a href="index.html#contact" class="nav-link">Contact</a></li>
-                <li><a href="index.html" class="nav-link">← Home</a></li>
+            <ul class="nav-list">
+                <li><a href="about.html" class="nav-link">Why GeoQuest</a></li>
+                <li><a href="destination.html" class="nav-link">Destinations</a></li>
+                <li><a href="services.html" class="nav-link">Services</a></li>
+                <li><a href="gallery.html" class="nav-link">Gallery</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
             </ul>
         </nav>
+
+        <div class="mobile-menu" id="mobileMenu">
+    <div class="container">
+        <div class="mobile-menu-links">
+            <a href="about.html">Why GeoQuest?</a>
+            <a href="destination.html">Destinations</a>
+            <a href="services.html">Services</a>
+            <a href="gallery.html">Gallery</a>
+            <a href="contact.html">Contact</a>
+        </div>
+    </div>
+</div>
+
+
     </header>
 
-    <!--  HERO SECTION  -->
+    <!-- ============ HERO SECTION ============ -->
     <section class="dest-hero">
         <div class="dest-hero-img-wrap">
-            <img src="https://images.unsplash.com/photo-1467269204594-9661b134dd2b?w=1600&q=80" alt="World destinations collage" class="dest-hero-photo">
+            <img src="img/destination-cover.jpg" alt="World destinations collage" class="dest-hero-photo">
             <div class="dest-hero-overlay"></div>
         </div>
         <div class="dest-hero-inner">
             <p class="hero-eyebrow">✦ Explore The World</p>
-            <h2>Our <span class="hero-brand">Destinations</span></h2>
+            <h2>Our <span>Destinations</span></h2>
             <p>Browse our handpicked collection of incredible places — from iconic London landmarks to world wonders across the globe.</p>
         </div>
     </section>
 
-    <!--  MAIN CONTENT  -->
+    <!-- ============ MAIN CONTENT ============ -->
     <main>
 
         <!-- search + filter buttons -->
@@ -149,18 +132,251 @@
                 <button class="filter-btn" data-filter="City">🌆 City</button>
             </div>
         </div>
-      
+
+        <!-- js updates this text to show how many cards are visible -->
         <p id="resultsCount" class="results-count">Showing all 17 destinations</p>
 
-        <!--  CARDS GRID  -->
+        <!-- ============ CARDS GRID ============ -->
         <section id="destinations-grid">
-          
-                <!-- INTERNATIONAL DESTINATIONs -->
+<!-------------------------------------------------------------------------------------------------------------------------------------------------------->
+
+            <!-- ===========================
+                 LONDON DESTINATIONS
+                 =========================== -->
+
+            <!-- Tower of London -->
+            <div class="dest-card" data-continent="Europe" data-type="Landmark" data-name="Tower of London" data-country="London, UK" data-region="London">
+                <div class="dest-card-img">
+                    <img src="img/tower3.jpg" alt="Tower of London" loading="lazy">
+                    <!-- london badge is blue coloured - see css for styling -->
+                    <span class="dest-badge dest-badge-london">🏙️ London</span>
+                    <button class="fav-btn" aria-label="Add to favourites">☆</button>
+                </div>
+                <div class="dest-card-body">
+                    <div class="dest-meta">
+                        <span class="dest-flag">🇬🇧</span>
+                        <span class="dest-country-tag">London, England</span>
+                        <span class="dest-rating">★★★★★</span>
+                    </div>
+                    <h3>Tower of London</h3>
+                    <p class="dest-desc">Over 900 years of history packed into one fortress on the Thames. Home to the Crown Jewels, the famous Beefeaters, and some very dramatic royal history. One of the most visited attractions in the whole country.</p>
+                    <div class="dest-info-row">
+                        <span><i class="fas fa-thermometer-half"></i> 5°C to 22°C</span>
+                        <span><i class="fas fa-clock"></i> Best: Apr–Sep</span>
+                    </div>
+                    <div class="dest-tags">
+                        <span class="tag">History</span>
+                        <span class="tag">UNESCO</span>
+                        <span class="tag tag-london">London</span>
+                    </div>
+                    <div class="dest-price-row">
+                        <span class="dest-price">From <strong>£34</strong> / person</span>
+                        <button class="btn-book" data-dest="Tower of London">Book Now</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Buckingham Palace -->
+            <div class="dest-card" data-continent="Europe" data-type="Landmark" data-name="Buckingham Palace" data-country="London, UK" data-region="London">
+                <div class="dest-card-img">
+                    <img src="img/palace.jpg" alt="Buckingham Palace" loading="lazy">
+                    <span class="dest-badge dest-badge-london">🏙️ London</span>
+                    <button class="fav-btn" aria-label="Add to favourites">☆</button>
+                </div>
+                <div class="dest-card-body">
+                    <div class="dest-meta">
+                        <span class="dest-flag">🇬🇧</span>
+                        <span class="dest-country-tag">London, England</span>
+                        <span class="dest-rating">★★★★★</span>
+                    </div>
+                    <h3>Buckingham Palace</h3>
+                    <p class="dest-desc">The official London home of the British monarch and probably one of the most famous buildings in the world. Watch the Changing of the Guard, tour the State Rooms in summer, and walk through the beautiful Royal Gardens.</p>
+                    <div class="dest-info-row">
+                        <span><i class="fas fa-thermometer-half"></i> 5°C to 22°C</span>
+                        <span><i class="fas fa-clock"></i> Best: Jul–Sep (tours)</span>
+                    </div>
+                    <div class="dest-tags">
+                        <span class="tag">Royalty</span>
+                        <span class="tag">Culture</span>
+                        <span class="tag tag-london">London</span>
+                    </div>
+                    <div class="dest-price-row">
+                        <span class="dest-price">From <strong>£30</strong> / person</span>
+                        <button class="btn-book" data-dest="Buckingham Palace">Book Now</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- The British Museum -->
+            <div class="dest-card" data-continent="Europe" data-type="Landmark" data-name="The British Museum" data-country="London, UK" data-region="London">
+                <div class="dest-card-img">
+                    <img src="img/museum.webp" alt="The British Museum" loading="lazy">
+                    <span class="dest-badge dest-badge-london">🏙️ London</span>
+                    <button class="fav-btn" aria-label="Add to favourites">☆</button>
+                </div>
+                <div class="dest-card-body">
+                    <div class="dest-meta">
+                        <span class="dest-flag">🇬🇧</span>
+                        <span class="dest-country-tag">London, England</span>
+                        <span class="dest-rating">★★★★★</span>
+                    </div>
+                    <h3>The British Museum</h3>
+                    <p class="dest-desc">One of the greatest museums on earth with over 8 million objects spanning 2 million years of human history. The Rosetta Stone, Egyptian mummies, the Elgin Marbles — and best of all, its completely free to enter.</p>
+                    <div class="dest-info-row">
+                        <span><i class="fas fa-thermometer-half"></i> Any weather</span>
+                        <span><i class="fas fa-clock"></i> Best: Weekdays</span>
+                    </div>
+                    <div class="dest-tags">
+                        <span class="tag">Museum</span>
+                        <span class="tag">Free Entry</span>
+                        <span class="tag tag-london">London</span>
+                    </div>
+                    <div class="dest-price-row">
+                        <span class="dest-price"><strong>FREE</strong> entry</span>
+                        <button class="btn-book" data-dest="The British Museum">Book Now</button>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Hyde Park -->
+            <div class="dest-card" data-continent="Europe" data-type="Nature" data-name="Hyde Park" data-country="London, UK" data-region="London">
+                <div class="dest-card-img">
+                    <img src="img/hydepark.jpg" alt="Hyde Park London" loading="lazy">
+                    <span class="dest-badge dest-badge-london">🏙️ London</span>
+                    <button class="fav-btn" aria-label="Add to favourites">☆</button>
+                </div>
+                <div class="dest-card-body">
+                    <div class="dest-meta">
+                        <span class="dest-flag">🇬🇧</span>
+                        <span class="dest-country-tag">London, England</span>
+                        <span class="dest-rating">★★★★★</span>
+                    </div>
+                    <h3>Hyde Park</h3>
+                    <p class="dest-desc">One of Londons most loved Royal Parks covering 350 acres right in the heart of the city. Boat on the Serpentine, catch a concert at Hyde Park stage, visit the Diana memorial, or just relax on the grass with a coffee on a sunny day.</p>
+                    <div class="dest-info-row">
+                        <span><i class="fas fa-thermometer-half"></i> 5°C to 25°C</span>
+                        <span><i class="fas fa-clock"></i> Best: Apr–Aug</span>
+                    </div>
+                    <div class="dest-tags">
+                        <span class="tag">Park</span>
+                        <span class="tag">Free Entry</span>
+                        <span class="tag tag-london">London</span>
+                    </div>
+                    <div class="dest-price-row">
+                        <span class="dest-price"><strong>FREE</strong> entry</span>
+                        <button class="btn-book" data-dest="Hyde Park">Book Now</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ===========================
+                 REST OF UK DESTINATIONS
+                 =========================== -->
+
+            <!-- Edinburgh Castle -->
+            <div class="dest-card" data-continent="Europe" data-type="Landmark" data-name="Edinburgh Castle" data-country="Scotland, UK" data-region="UK">
+                <div class="dest-card-img">
+                    <img src="img/castle.jpg" alt="Edinburgh Castle" loading="lazy">
+                    <span class="dest-badge dest-badge-uk">🇬🇧 UK</span>
+                    <button class="fav-btn" aria-label="Add to favourites">☆</button>
+                </div>
+                <div class="dest-card-body">
+                    <div class="dest-meta">
+                        <span class="dest-flag">🏴󠁧󠁢󠁳󠁣󠁴󠁿</span>
+                        <span class="dest-country-tag">Scotland, UK</span>
+                        <span class="dest-rating">★★★★★</span>
+                    </div>
+                    <h3>Edinburgh Castle</h3>
+                    <p class="dest-desc">Perched on volcanic rock high above the city, Edinburgh Castle is one of Scotland's most iconic landmarks. Explore the Crown Jewels, the Stone of Destiny, and enjoy stunning views over the Royal Mile below.</p>
+                    <div class="dest-info-row">
+                        <span><i class="fas fa-thermometer-half"></i> 3°C to 18°C</span>
+                        <span><i class="fas fa-clock"></i> Best: Jun–Aug</span>
+                    </div>
+                    <div class="dest-tags">
+                        <span class="tag">History</span>
+                        <span class="tag">Culture</span>
+                        <span class="tag tag-uk">UK</span>
+                    </div>
+                    <div class="dest-price-row">
+                        <span class="dest-price">From <strong>£18</strong> / person</span>
+                        <button class="btn-book" data-dest="Edinburgh Castle">Book Now</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Lake District -->
+            <div class="dest-card" data-continent="Europe" data-type="Nature" data-name="Lake District" data-country="England, UK" data-region="UK">
+                <div class="dest-card-img">
+                    <img src="img/lake.webp" alt="Lake District" loading="lazy">
+                    <span class="dest-badge dest-badge-uk">🇬🇧 UK</span>
+                    <button class="fav-btn" aria-label="Add to favourites">☆</button>
+                </div>
+                <div class="dest-card-body">
+                    <div class="dest-meta">
+                        <span class="dest-flag">🏴󠁧󠁢󠁥󠁮󠁧󠁿</span>
+                        <span class="dest-country-tag">England, UK</span>
+                        <span class="dest-rating">★★★★★</span>
+                    </div>
+                    <h3>Lake District</h3>
+                    <p class="dest-desc">England's largest national park with stunning lakes, rugged fells, and charming villages. Hike Scafell Pike, sail on Windermere, and discover why Wordsworth never wanted to leave this place.</p>
+                    <div class="dest-info-row">
+                        <span><i class="fas fa-thermometer-half"></i> 2°C to 20°C</span>
+                        <span><i class="fas fa-clock"></i> Best: May–Sep</span>
+                    </div>
+                    <div class="dest-tags">
+                        <span class="tag">Hiking</span>
+                        <span class="tag">Nature</span>
+                        <span class="tag tag-uk">UK</span>
+                    </div>
+                    <div class="dest-price-row">
+                        <span class="dest-price">From <strong>£95</strong> / person</span>
+                        <button class="btn-book" data-dest="Lake District">Book Now</button>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Stonehenge -->
+            <div class="dest-card" data-continent="Europe" data-type="Landmark" data-name="Stonehenge" data-country="England, UK" data-region="UK">
+                <div class="dest-card-img">
+                    <img src="img/Stonehenge.jpg" alt="Stonehenge" loading="lazy">
+                    <span class="dest-badge dest-badge-uk">🇬🇧 UK</span>
+                    <button class="fav-btn" aria-label="Add to favourites">☆</button>
+                </div>
+                <div class="dest-card-body">
+                    <div class="dest-meta">
+                        <span class="dest-flag">🏴󠁧󠁢󠁥󠁮󠁧󠁿</span>
+                        <span class="dest-country-tag">England, UK</span>
+                        <span class="dest-rating">★★★★☆</span>
+                    </div>
+                    <h3>Stonehenge</h3>
+                    <p class="dest-desc">One of the most mysterious prehistoric monuments in the world, built over 5,000 years ago on Salisbury Plain. Nobody really knows how they moved those massive stones — still gives you chills standing next to them.</p>
+                    <div class="dest-info-row">
+                        <span><i class="fas fa-thermometer-half"></i> 4°C to 22°C</span>
+                        <span><i class="fas fa-clock"></i> Best: Apr–Oct</span>
+                    </div>
+                    <div class="dest-tags">
+                        <span class="tag">History</span>
+                        <span class="tag">UNESCO</span>
+                        <span class="tag tag-uk">UK</span>
+                    </div>
+                    <div class="dest-price-row">
+                        <span class="dest-price">From <strong>£22</strong> / person</span>
+                        <button class="btn-book" data-dest="Stonehenge">Book Now</button>
+                    </div>
+                </div>
+            </div>
+            
+<!------------------------------------------------------------------------------------------------------------------------------------------------------------>
+            <!-- ===========================
+                 INTERNATIONAL DESTINATIONS
+                 =========================== -->
 
             <!-- Mount Everest -->
             <div class="dest-card" data-continent="Asia" data-type="Mountain" data-name="Mount Everest" data-country="Nepal" data-region="international">
                 <div class="dest-card-img">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Everest_North_Face_toward_Base_Camp_Tibet_Luca_Galuzzi_2006.jpg/1280px-Everest_North_Face_toward_Base_Camp_Tibet_Luca_Galuzzi_2006.jpg" alt="Mount Everest" loading="lazy">
+                    <img src="img/everest.jpg" alt="Mount Everest" loading="lazy">
                     <span class="dest-badge">Mountain</span>
                     <button class="fav-btn" aria-label="Add to favourites">☆</button>
                 </div>
@@ -193,7 +409,7 @@
             <!-- Amazon Rainforest -->
             <div class="dest-card" data-continent="South America" data-type="Nature" data-name="Amazon Rainforest" data-country="Brazil" data-region="international">
                 <div class="dest-card-img">
-                    <img src="https://d4g0cdul6yygp.cloudfront.net/uploads/2018/03/Bird-watch-Pacaya-Samiria-©-J.J.-Huckin-WWF-US.jpg" alt="Amazon Rainforest" loading="lazy">
+                    <img src="img/amazon.webp" alt="Amazon Rainforest" loading="lazy">
                     <span class="dest-badge">Nature</span>
                     <button class="fav-btn" aria-label="Add to favourites">☆</button>
                 </div>
@@ -226,7 +442,7 @@
             <!-- MT.Fuji-->
              <div class="dest-card" data-continent="Asia" data-type="Mountain" data-name="Mount Fuji" data-country="Japan" data-region="domestic">
                 <div class="dest-card-img">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/1/12/Mount_Fuji_from_Lake_Kawaguchi.jpg" 
+                    <img src="img/mtfuji.jpg" 
                         alt="Mount Fuji" loading="lazy">
                         <span class="dest-badge">Mountain</span>
                         <button class="fav-btn" aria-label="Add to favourites">☆</button>
@@ -269,7 +485,7 @@
             <!-- Grand Canyon -->
             <div class="dest-card" data-continent="North America" data-type="Nature" data-name="Grand Canyon" data-country="USA" data-region="international">
                 <div class="dest-card-img">
-                    <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80" alt="Grand Canyon" loading="lazy">
+                    <img src="img/GC.jpg" alt="Grand Canyon" loading="lazy">
                     <span class="dest-badge">Nature</span>
                     <button class="fav-btn" aria-label="Add to favourites">☆</button>
                 </div>
@@ -297,10 +513,9 @@
                 </div>
             </div>
 
-            <!-- Japan Destination-->
              <div class="dest-card" data-continent="Asia" data-type="City" data-name="Sapporo Snow Festival" data-country="Japan" data-region="domestic">
                 <div class="dest-card-img">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/3/3f/Sapporo_Snow_Festival_2019_Hokkaido_Japan.jpg" 
+                    <img src="img/festival.jpg" 
                     alt="Sapporo Snow Festival" loading="lazy">
                     <span class="dest-badge">Festival</span>
                     <button class="fav-btn" aria-label="Add to favourites">☆</button>
@@ -342,7 +557,7 @@
             <!-- Eiffel Tower -->
             <div class="dest-card" data-continent="Europe" data-type="Landmark" data-name="Eiffel Tower" data-country="France" data-region="international">
                 <div class="dest-card-img">
-                    <img src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=800&q=80" alt="Eiffel Tower" loading="lazy">
+                    <img src="img/tower.jpg" alt="Eiffel Tower" loading="lazy">
                     <span class="dest-badge">Landmark</span>
                     <button class="fav-btn" aria-label="Add to favourites">☆</button>
                 </div>
@@ -373,7 +588,7 @@
             <!-- Great Wall of China -->
             <div class="dest-card" data-continent="Asia" data-type="Landmark" data-name="Great Wall of China" data-country="China" data-region="international">
                 <div class="dest-card-img">
-                    <img src="https://www.shutterstock.com/image-photo/traveler-great-wall-china-near-600nw-2676316171.jpg" alt="Great Wall of China" loading="lazy">
+                    <img src="img/wall2.webp" alt="Great Wall of China" loading="lazy">
                     <span class="dest-badge">Landmark</span>
                     <button class="fav-btn" aria-label="Add to favourites">☆</button>
                 </div>
@@ -404,7 +619,7 @@
             <!-- Niagara Falls -->
             <div class="dest-card" data-continent="North America" data-type="Nature" data-name="Niagara Falls" data-country="USA / Canada" data-region="international">
                 <div class="dest-card-img">
-                    <img src="https://thetraveler.s3.amazonaws.com/images/hero/what-not-to-do-first-time-niagara-falls_1200x675.jpg" alt="Niagara Falls" loading="lazy">
+                    <img src="img/falls2.jpg" alt="Niagara Falls" loading="lazy">
                     <span class="dest-badge">Nature</span>
                     <button class="fav-btn" aria-label="Add to favourites">☆</button>
                 </div>
@@ -435,7 +650,7 @@
             <!-- Santorini -->
             <div class="dest-card" data-continent="Europe" data-type="Beach" data-name="Santorini" data-country="Greece" data-region="international">
                 <div class="dest-card-img">
-                    <img src="https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?w=800&q=80" alt="Santorini" loading="lazy">
+                    <img src="img/Santorini.jpg" alt="Santorini" loading="lazy">
                     <span class="dest-badge">Beach</span>
                     <button class="fav-btn" aria-label="Add to favourites">☆</button>
                 </div>
@@ -466,7 +681,7 @@
             <!-- Machu Picchu -->
             <div class="dest-card" data-continent="South America" data-type="Landmark" data-name="Machu Picchu" data-country="Peru" data-region="international">
                 <div class="dest-card-img">
-                    <img src="https://images.unsplash.com/photo-1526392060635-9d6019884377?w=800&q=80" alt="Machu Picchu" loading="lazy">
+                    <img src="img/picchu.jpg" alt="Machu Picchu" loading="lazy">
                     <span class="dest-badge">Landmark</span>
                     <button class="fav-btn" aria-label="Add to favourites">☆</button>
                 </div>
