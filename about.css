@@ -1,0 +1,1165 @@
+/* ------------------------------------------
+   1. DESIGN TOKENS
+   Change brand colours, radii, and shadows
+   all in one place here.
+   ------------------------------------------ */
+:root {
+    /* Background layers — darkest to most elevated */
+    --bg-page:       #0B1520;
+    --bg-card:       #112035;
+    --bg-surface:    #1A2F4A;
+    --bg-elevated:   #213548;
+
+    /* Border colours */
+    --border:        rgba(30, 90, 130, 0.35);
+    --border-bright: rgba(14, 165, 194, 0.3);
+
+    /* Teal — primary accent */
+    --teal:          #0EA5C2;
+    --teal-light:    #38C4DC;
+    --teal-dim:      rgba(14, 165, 194, 0.1);
+    --teal-glow:     rgba(14, 165, 194, 0.25);
+
+    /* Gold — secondary accent */
+    --gold:          #D4A853;
+    --gold-light:    #F0C878;
+    --gold-dim:      rgba(212, 168, 83, 0.15);
+
+    /* Text — from bright to muted */
+    --text-primary:   #EDF2F7;
+    --text-secondary: #94A8BF;
+    --text-dim:       #536B80;
+
+    /* Border radii */
+    --radius-sm: 8px;
+    --radius-md: 14px;
+    --radius-lg: 20px;
+
+    /* Shadows */
+    --shadow-card:  0 4px 24px rgba(0, 0, 0, 0.45);
+    --shadow-hover: 0 16px 48px rgba(0, 0, 0, 0.6);
+    --shadow-glow:  0 0 30px rgba(14, 165, 194, 0.18);
+}
+
+
+/* ------------------------------------------
+   2. RESET & BASE
+   Nothing fancy — just kills box-sizing
+   surprises and sets sensible body defaults.
+   ------------------------------------------ */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Outfit', 'Segoe UI', system-ui, sans-serif;
+    background-color: var(--bg-page);
+    color: var(--text-primary);
+    overflow-x: hidden;
+    min-height: 100vh;
+    line-height: 1.6;
+}
+
+
+/* ------------------------------------------
+   3. TOPOGRAPHIC BACKGROUND
+   ------------------------------------------ */
+.topo-bg {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background-image:
+        repeating-radial-gradient(ellipse 140% 70% at 20% 30%,
+            transparent 0, transparent 22px,
+            rgba(14, 165, 194, 0.04) 23px, transparent 24px),
+        repeating-radial-gradient(ellipse 100% 80% at 75% 65%,
+            transparent 0, transparent 34px,
+            rgba(212, 168, 83, 0.03) 35px, transparent 36px),
+        repeating-radial-gradient(ellipse 180% 90% at 50% 50%,
+            transparent 0, transparent 46px,
+            rgba(14, 165, 194, 0.025) 47px, transparent 48px);
+    animation: topoDrift 35s ease-in-out infinite alternate;
+}
+
+@keyframes topoDrift {
+    0%   { transform: scale(1)    translate(0, 0);       }
+    33%  { transform: scale(1.03) translate(-1%, -0.5%); }
+    66%  { transform: scale(1.02) translate(1%, 0.5%);   }
+    100% { transform: scale(1)    translate(0, 0);       }
+}
+
+
+/* ------------------------------------------
+   4. HEADER / NAVIGATION
+   ------------------------------------------ */
+
+/* The nav sits in a flex header — this just
+   makes sure it shows up as a row on desktop. */
+nav#main-nav {
+    display: flex;
+}
+
+#site-header {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;            
+    width: 100%;
+    padding: 0 40px; /* optional */
+}
+
+
+/* -- 4a. Nav links & arrows -- */
+
+.nav-logo {
+    font-family: var(--font-mono, monospace);
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    text-decoration: none;
+    letter-spacing: 0.18em;
+    flex-shrink: 0;
+}
+
+/* The dot separator in "GEO·QUEST" */
+.nav-logo span {
+    color: var(--teal);
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    gap: 0.15rem;
+}
+
+/* Top-level list items need relative positioning
+   so dropdowns can pop out below them. */
+nav > ul > li {
+    position: relative;
+}
+
+nav ul li a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    padding: 0.55rem 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    border-radius: var(--radius-sm);
+    white-space: nowrap;
+    letter-spacing: 0.01em;
+    transition: color 0.2s ease, background 0.2s ease;
+}
+
+nav ul li a:hover {
+    color: var(--text-primary);
+    background: rgba(255, 255, 255, 0.06);
+}
+
+/* The tiny chevron-down arrow next to dropdown labels */
+.nav-arrow {
+    font-size: 0.6rem;
+    opacity: 0.5;
+    display: inline-block;
+    transition: transform 0.25s ease, opacity 0.2s;
+}
+
+/* Flip the arrow when its dropdown is visible */
+.has-dropdown:hover .nav-arrow,
+.has-dropdown.open  .nav-arrow {
+    transform: rotate(180deg);
+    opacity: 0.9;
+}
+
+/* "Get Offers" pill — stands out from the regular nav links */
+nav ul li #nav-signup {
+    background: linear-gradient(135deg, var(--teal), #0A8FAA);
+    color: #fff !important;
+    border-radius: 20px;
+    padding: 0.5rem 1.2rem;
+    font-weight: 600;
+    font-size: 0.85rem;
+    letter-spacing: 0.02em;
+    box-shadow: 0 0 20px rgba(14, 165, 194, 0.3);
+    transition: all 0.3s ease;
+}
+
+nav ul li #nav-signup:hover {
+    background: linear-gradient(135deg, var(--teal-light), var(--teal));
+    box-shadow: 0 0 32px rgba(14, 165, 194, 0.55);
+    transform: translateY(-1px);
+    color: #fff !important;
+}
+
+/* -- 4c. Hamburger toggle -- */
+#nav-toggle {
+    display: none; background: none;
+    border: 1px solid var(--border); color: var(--text-secondary);
+    font-size: 1rem; cursor: pointer; border-radius: var(--radius-sm); padding: 4px 10px;
+    transition: border-color 0.2s, color 0.2s;
+}
+#nav-toggle:hover { border-color: var(--teal); color: var(--teal-light); }
+
+nav#main-nav { display: flex; }
+
+.mobile-menu {
+    position: fixed; inset: 0; top: var(--nav-h); background: rgba(11,21,32,0.98); z-index: 90;
+    transform: translateX(100%); transition: transform 0.4s cubic-bezier(0.4,0,0.2,1); overflow-y: auto;
+}
+.mobile-menu.open { transform: translateX(0); }
+.mobile-menu .container { max-width: 1200px; margin: 0 auto; padding: 2rem 1.5rem; }
+.mobile-menu-links { display: flex; flex-direction: column; gap: 0.5rem; }
+.mobile-menu-links a {
+    display: block; padding: 1rem 0; color: rgba(244,239,230,0.75);
+    font-size: 1.1rem; font-weight: 500; border-bottom: 1px solid rgba(200,168,122,0.08);
+    transition: color 0.2s, padding-left 0.2s;
+}
+.mobile-menu-links a:hover { color: var(--text-primary); padding-left: 0.5rem; }
+
+
+
+
+/* ------------------------------------------
+   5. PAGE HERO
+   ------------------------------------------ */
+
+/* -- 5a. Hero background & rings -- */
+
+.about-hero {
+    position: relative;
+    min-height: 520px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    text-align: center;
+    padding: 100px 2rem 80px;
+}
+.about-hero-photo-wrap {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+}
+
+.about-hero-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 35%;
+    display: block;
+}
+
+.about-hero-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background:
+        linear-gradient(to bottom,
+            rgba(11, 21, 32, 0.60) 0%,
+            rgba(11, 21, 32, 0.30) 40%,
+            rgba(11, 21, 32, 0.75) 100%),
+        radial-gradient(ellipse 70% 60% at 50% 40%, rgba(14, 165, 194, 0.10) 0%, transparent 70%);
+}
+
+.hero-rings {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-rings span {
+    position: absolute;
+    border-radius: 50%;
+    border: 1px solid rgba(14, 165, 194, 0.1);
+    animation: ringExpand 6s ease-out infinite;
+}
+
+.hero-rings span:nth-child(1) { width: 300px; height: 300px; animation-delay: 0s;   }
+.hero-rings span:nth-child(2) { width: 480px; height: 480px; animation-delay: 1.5s; }
+.hero-rings span:nth-child(3) { width: 660px; height: 660px; animation-delay: 3s;   }
+
+@keyframes ringExpand {
+    0%   { opacity: 0.6; transform: scale(0.8);  }
+    100% { opacity: 0;   transform: scale(1.25); }
+}
+
+/* -- 5b. Hero content & buttons -- */
+
+/* The actual text lives above all the background layers */
+.about-hero-inner {
+    position: relative;
+    z-index: 3;
+    max-width: 720px;
+}
+
+/* Small pill label above the headline */
+.about-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--teal-light);
+    background: var(--teal-dim);
+    border: 1px solid var(--border-bright);
+    padding: 6px 16px;
+    border-radius: 40px;
+    margin-bottom: 1.4rem;
+}
+
+.about-hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.8rem, 6vw, 4.8rem);
+    font-weight: 700;
+    line-height: 1.1;
+    margin: 0 0 1.2rem;
+    background: linear-gradient(135deg, var(--text-primary) 30%, var(--teal-light) 80%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.about-hero p {
+    font-size: 1.12rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    max-width: 580px;
+    margin: 0 auto 2rem;
+}
+
+/* Row of two CTA buttons */
+.hero-cta-row {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* Filled teal button */
+.btn-primary-about {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 0.75rem 1.6rem;
+    background: linear-gradient(135deg, var(--teal), #0A8FAA);
+    color: #fff;
+    border-radius: 40px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-decoration: none;
+    letter-spacing: 0.02em;
+    box-shadow: 0 0 22px rgba(14, 165, 194, 0.35);
+    transition: all 0.3s ease;
+}
+
+.btn-primary-about:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 38px rgba(14, 165, 194, 0.55);
+    background: linear-gradient(135deg, var(--teal-light), var(--teal));
+}
+
+/* Ghost / outline button */
+.btn-outline-about {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 0.75rem 1.6rem;
+    background: transparent;
+    color: var(--text-secondary);
+    border: 1px solid var(--border);
+    border-radius: 40px;
+    font-weight: 500;
+    font-size: 0.9rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.btn-outline-about:hover {
+    border-color: var(--teal);
+    color: var(--teal-light);
+    background: var(--teal-dim);
+}
+
+
+/* ------------------------------------------
+   6. SECTION WRAPPERS
+   ------------------------------------------ */
+
+.abt-section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 80px 2rem;
+}
+
+.abt-section-label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 0.5rem;
+}
+
+.abt-section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.9rem, 3.5vw, 2.8rem);
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0 0 1rem;
+    line-height: 1.2;
+}
+
+.abt-section-subtitle {
+    color: var(--text-secondary);
+    font-size: 1rem;
+    max-width: 560px;
+    line-height: 1.7;
+    margin-bottom: 3.5rem;
+}
+
+
+/* ------------------------------------------
+   7. STATS STRIP
+   ------------------------------------------ */
+.stats-strip {
+    background: var(--bg-card);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 60px 2rem;
+}
+
+.stats-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+    text-align: center;
+}
+
+.stat-item {
+    position: relative;
+    padding: 24px 16px;
+    border-radius: var(--radius-md);
+    transition: background 0.3s ease;
+}
+
+.stat-item:hover {
+    background: var(--bg-surface);
+}
+
+.stat-item + .stat-item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 25%;
+    height: 50%;
+    width: 1px;
+    background: var(--border);
+}
+
+/* The big animated number */
+.stat-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3.2rem;
+    font-weight: 700;
+    line-height: 1;
+    background: linear-gradient(135deg, var(--teal-light), var(--gold));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 6px;
+}
+
+.stat-label {
+    font-size: 0.85rem;
+    color: var(--text-dim);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    font-weight: 500;
+}
+
+
+/* ------------------------------------------
+   8. MISSION SECTION
+   ------------------------------------------ */
+.mission-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+}
+
+.mission-image-wrap {
+    position: relative;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+}
+
+.mission-image-wrap img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    border-radius: var(--radius-lg);
+    display: block;
+    transition: transform 0.5s ease;
+}
+
+.mission-image-wrap:hover img {
+    transform: scale(1.04);
+}
+
+.mission-image-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(14, 165, 194, 0.12) 0%, transparent 60%);
+    border-radius: var(--radius-lg);
+    pointer-events: none;
+}
+
+.mission-badge {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    background: rgba(11, 21, 32, 0.88);
+    backdrop-filter: blur(12px);
+    border: 1px solid var(--border-bright);
+    border-radius: var(--radius-md);
+    padding: 14px 18px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.mission-badge .badge-icon {
+    font-size: 1.6rem;
+}
+
+.mission-badge .badge-text strong {
+    display: block;
+    font-size: 1.05rem;
+    color: var(--gold);
+    font-weight: 700;
+}
+
+.mission-badge .badge-text span {
+    font-size: 0.78rem;
+    color: var(--text-dim);
+}
+
+/* The heading on the right-hand text side */
+.mission-text h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 3vw, 2.6rem);
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0 0 1.2rem;
+    line-height: 1.2;
+}
+
+.mission-text p {
+    color: var(--text-secondary);
+    line-height: 1.8;
+    margin-bottom: 1.2rem;
+    font-size: 0.97rem;
+}
+
+.mission-pillars {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-top: 2rem;
+}
+
+.pillar {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 14px 18px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    transition: border-color 0.3s ease, background 0.3s ease;
+}
+
+.pillar:hover {
+    border-color: var(--teal);
+    background: var(--bg-surface);
+}
+
+.pillar-icon {
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
+    background: var(--teal-dim);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    color: var(--teal-light);
+    flex-shrink: 0;
+}
+
+.pillar-body strong {
+    display: block;
+    font-size: 0.93rem;
+    color: var(--text-primary);
+    font-weight: 600;
+    margin-bottom: 2px;
+}
+
+.pillar-body span {
+    font-size: 0.83rem;
+    color: var(--text-dim);
+    line-height: 1.5;
+}
+
+
+/* ------------------------------------------
+   9. VALUES GRID
+   ------------------------------------------ */
+.values-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 3rem;
+}
+
+.value-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 36px 28px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.35s ease;
+}
+
+.value-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--teal), var(--gold));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.35s ease;
+}
+
+.value-card:hover {
+    transform: translateY(-8px);
+    border-color: var(--border-bright);
+    box-shadow: var(--shadow-hover);
+}
+
+.value-card:hover::after {
+    transform: scaleX(1);
+}
+
+.value-icon {
+    width: 54px;
+    height: 54px;
+    border-radius: 14px;
+    background: var(--teal-dim);
+    border: 1px solid var(--border-bright);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: var(--teal-light);
+    margin-bottom: 1.2rem;
+}
+
+.value-card h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0 0 0.7rem;
+}
+
+.value-card p {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    line-height: 1.75;
+    margin: 0;
+}
+
+
+/* ------------------------------------------
+   10. TEAM GRID
+   ------------------------------------------ */
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 28px;
+    margin-top: 3rem;
+}
+
+.team-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    text-align: center;
+    transition: all 0.35s ease;
+}
+
+.team-card:hover {
+    transform: translateY(-8px);
+    border-color: var(--teal);
+    box-shadow: 0 16px 48px rgba(14, 165, 194, 0.2);
+}
+
+.team-avatar {
+    width: 100%;
+    height: 230px;
+    object-fit: cover;
+    display: block;
+    filter: grayscale(20%);
+    transition: filter 0.4s ease, transform 0.4s ease;
+}
+
+.team-card:hover .team-avatar {
+    filter: grayscale(0%);
+    transform: scale(1.04);
+}
+
+.team-info {
+    padding: 22px 18px;
+}
+
+.team-info h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0 0 4px;
+}
+
+.team-role {
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--teal-light);
+    margin-bottom: 10px;
+}
+
+.team-bio {
+    font-size: 0.84rem;
+    color: var(--text-dim);
+    line-height: 1.6;
+    margin-bottom: 14px;
+}
+
+.team-socials {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+/* Small square social icon buttons */
+.team-socials a {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    background: var(--bg-surface);
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-dim);
+    font-size: 0.85rem;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.team-socials a:hover {
+    background: var(--teal-dim);
+    border-color: var(--teal);
+    color: var(--teal-light);
+}
+
+
+/* ------------------------------------------
+   11. TIMELINE
+   ------------------------------------------ */
+.timeline {
+    position: relative;
+    margin-top: 3.5rem;
+    padding-left: 40px;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(180deg, var(--teal), var(--gold), transparent);
+    border-radius: 2px;
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 42px;
+    opacity: 0;
+    transform: translateX(-24px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.timeline-item.revealed {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.timeline-dot {
+    position: absolute;
+    left: -47px;
+    top: 6px;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--teal);
+    border: 3px solid var(--bg-page);
+    box-shadow: 0 0 10px var(--teal-glow);
+}
+
+.timeline-year {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 4px;
+}
+
+.timeline-item h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0 0 6px;
+}
+
+.timeline-item p {
+    font-size: 0.88rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin: 0;
+}
+
+
+/* ------------------------------------------
+   12. TESTIMONIALS
+   ------------------------------------------ */
+.testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 3rem;
+}
+
+.testi-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 32px 28px;
+    position: relative;
+    transition: all 0.35s ease;
+}
+
+.testi-card:hover {
+    transform: translateY(-6px);
+    border-color: var(--border-bright);
+    box-shadow: var(--shadow-card);
+}
+
+.testi-quote {
+    font-size: 2.8rem;
+    line-height: 1;
+    color: var(--teal);
+    opacity: 0.35;
+    font-family: Georgia, serif;
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+.testi-text {
+    font-size: 0.93rem;
+    color: var(--text-secondary);
+    line-height: 1.8;
+    font-style: italic;
+    margin-bottom: 1.4rem;
+}
+
+.testi-stars {
+    color: var(--gold);
+    font-size: 0.85rem;
+    margin-bottom: 1rem;
+    letter-spacing: 2px;
+}
+
+.testi-author {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border-top: 1px solid var(--border);
+    padding-top: 16px;
+}
+
+.testi-avatar {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--teal), var(--gold));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--bg-page);
+    flex-shrink: 0;
+    font-family: 'Cormorant Garamond', serif;
+}
+
+.testi-name {
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--text-primary);
+    display: block;
+}
+
+.testi-loc {
+    font-size: 0.78rem;
+    color: var(--text-dim);
+}
+
+
+/* ------------------------------------------
+   13. FAQ ACCORDION
+    ----------------------------------------- */
+.faq-list {
+    max-width: 820px;
+    margin: 2.5rem auto 0;
+}
+
+.faq-item {
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    margin-bottom: 12px;
+    overflow: hidden;
+    transition: border-color 0.3s ease;
+}
+
+/* Border turns teal when the item is open */
+.faq-item.open {
+    border-color: var(--teal);
+}
+
+.faq-question {
+    width: 100%;
+    background: var(--bg-card);
+    border: none;
+    padding: 18px 22px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    text-align: left;
+    color: var(--text-primary);
+    font-size: 0.97rem;
+    font-weight: 500;
+    font-family: 'Outfit', sans-serif;
+    transition: background 0.2s ease;
+}
+
+.faq-question:hover {
+    background: var(--bg-surface);
+}
+
+.faq-arrow {
+    font-size: 0.8rem;
+    color: var(--teal);
+    flex-shrink: 0;
+    margin-left: 12px;
+    transition: transform 0.3s ease;
+}
+
+.faq-item.open .faq-arrow {
+    transform: rotate(180deg);
+}
+
+
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    background: var(--bg-surface);
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    line-height: 1.8;
+    padding: 0 22px;
+    transition: max-height 0.4s ease, padding 0.3s ease;
+}
+
+.faq-item.open .faq-answer {
+    max-height: 300px;
+    padding: 16px 22px 20px;
+}
+
+
+/* ------------------------------------------ 
+   14. CTA BANNER
+   ------------------------------------------ */
+.cta-banner {
+    margin: 0;
+    padding: 80px 2rem;
+    background: linear-gradient(135deg, rgba(14, 165, 194, 0.08) 0%, rgba(212, 168, 83, 0.06) 100%);
+    border-top: 1px solid var(--border);
+    text-align: center;
+}
+
+.cta-banner h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0 0 1rem;
+}
+
+.cta-banner p {
+    color: var(--text-secondary);
+    font-size: 1.05rem;
+    max-width: 500px;
+    margin: 0 auto 2.4rem;
+    line-height: 1.7;
+}
+
+
+/* ------------------------------------------ 
+   14b. SCROLL-TO-TOP BUTTON
+   ------------------------------------------ */
+#scrollToTopBtn {
+    /* Hidden by default — JS sets display:flex when needed */
+    display: none;
+    align-items: center;
+    justify-content: center;
+
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+
+    background: linear-gradient(135deg, var(--teal), #2980b9);
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    font-size: 1.2rem;
+    cursor: pointer;
+    z-index: 99;
+    box-shadow: 0 4px 15px rgba(14, 165, 194, 0.4);
+    transition: all 0.3s ease;
+}
+
+#scrollToTopBtn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(14, 165, 194, 0.6);
+}
+
+
+/* ------------------------------------------ 
+   15. UTILITY
+   ------------------------------------------ */
+
+
+.section-divider {
+    border: none;
+    height: 1px;
+    background: var(--border);
+    margin: 0 2rem;
+    opacity: 0.5;
+}
+
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition:
+        opacity   0.65s cubic-bezier(0.22, 1, 0.36, 1),
+        transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.reveal.revealed {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+/* -- 16. FOOTER-- */
+
+footer {
+    text-align: center;
+    padding: 2rem;
+    background: var(--bg-card);
+    border-top: 1px solid var(--border);
+    color: var(--text-dim);
+    font-size: 0.88rem;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    position: relative;
+    z-index: 1;
+}
+
+
+
+
+
+/* --Need to make this-->
+
+
+
+
+
+
+
+/* -- 17. RESPONSIVE-- */
+
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+    header { padding: 0 1rem; }
+    #nav-toggle { display: block; }
+    nav#main-nav { display: none; position: absolute; top: var(--nav-h); left: 0; width: 100%; flex-direction: column; background: rgba(11,21,32,0.98); border-bottom: 1px solid var(--border); z-index: 999; }
+    nav#main-nav.open { display: flex; }
+    nav#main-nav.open ul { flex-direction: column; padding: 8px 0; }
+    .intro-inner { grid-template-columns: repeat(2,1fr); }
+    .intro-stat + .intro-stat::before { display: none; }
+    .srv-grid { grid-template-columns: 1fr; }
+    .srv-lb-panel { max-height: 95vh; }
+    .srv-lb-image { height: 240px; }
+    .srv-lb-body { padding: 1.4rem 1.5rem 2rem; }
+    .srv-lb-title { font-size: 1.6rem; }
+    .srv-lb-strip img { height: 80px; }
+    .srv-lb-nav { flex-direction: column; }
+    .srv-lb-btn { flex: none; }
+}
+@media (max-width: 480px) {
+    .srv-card-img { height: 220px; }
+    .srv-lb-image { height: 200px; }
+    .srv-lb-strip img { height: 64px; }
+    .srv-lb-counter { display: none; }
+}

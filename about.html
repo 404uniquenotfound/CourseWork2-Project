@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us — GeoQuest</title>
+
+    <!-- Google Fonts — matches index.html -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,600&family=Outfit:wght@300;400;500;600&family=Space+Mono:ital@0;1&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+
+    <!-- About page styles -->
+    <link rel="stylesheet" href="about.css">
+</head>
+<body>
+
+    <!-- Cursor glow — the teal circle that follows your mouse -->
+    <div id="cursorGlow"></div>
+
+    <!-- Animated topographic background (fixed layer behind everything) -->
+    <div class="topo-bg"></div>
+
+
+    <!-- HEADER -->
+    <header id="site-header">
+
+        <!-- Site logo / home link -->
+        <a href="index.html" class="nav-logo">
+            <h1>GEO<span>·</span>QUEST</h1>
+        </a>
+
+        <!-- Hamburger button — only visible on mobile -->
+        <button id="nav-toggle" aria-label="Toggle navigation">☰ Menu</button>
+
+        <!-- Main navigation -->
+        <nav id="main-nav">
+            <ul class="nav-list">
+                <li><a href="about.html" class="nav-link">Why GeoQuest</a></li>
+                <li><a href="destination.html" class="nav-link">Destinations</a></li>
+                <li><a href="services.html" class="nav-link">Services</a></li>
+                <li><a href="gallery.html" class="nav-link">Gallery</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+            </ul>
+        </nav>
+
+        <div class="mobile-menu" id="mobileMenu">
+    <div class="container">
+        <div class="mobile-menu-links">
+            <a href="about.html">Why GeoQuest?</a>
+            <a href="destination.html">Destinations</a>
+            <a href="services.html">Services</a>
+            <a href="gallery.html">Gallery</a>
+            <a href="contact.html">Contact</a>
+        </div>
+    </div>
+</div>
+
+        
+
+    </header>
+
+
+    <!-- MAIN CONTENT -->
+    <main>
+
+        <!-- HERO -->
+        <section class="about-hero">
+            <!-- Full-bleed cover photo -->
+            <div class="about-hero-photo-wrap">
+                <img
+                    src="img/abt-cover.jpg"
+                    alt="Travellers exploring the world"
+                    class="about-hero-photo">
+            </div>
+
+            <!-- Layered gradient overlay so text stays readable -->
+            <div class="about-hero-bg"></div>
+
+            <!-- Three rings that pulse outward (purely decorative) -->
+            <div class="hero-rings">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+            <!-- Actual hero text -->
+            <div class="about-hero-inner">
+                <span class="about-eyebrow">
+                    <i class="fas fa-compass"></i> Our Story
+                </span>
+                <h1>Passionate About<br>Extraordinary Travel</h1>
+                <p>GeoQuest was built by explorers, for explorers. We believe every journey begins with the right inspiration — and we're here to light the way.</p>
+                <div class="hero-cta-row">
+                    <a href="#mission" class="btn-primary-about">
+                        <i class="fas fa-rocket"></i> Our Mission
+                    </a>
+                    <a href="#team" class="btn-outline-about">
+                        <i class="fas fa-users"></i> Meet the Team
+                    </a>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- STATS STRIP -->
+        <!-- JS animates the numbers when they scroll into view -->
+        <div class="stats-strip">
+            <div class="stats-inner">
+
+                <div class="stat-item reveal">
+                    <div class="stat-number" data-target="10">0</div>
+                    <div class="stat-label">Countries Covered</div>
+                </div>
+
+                <div class="stat-item reveal">
+                    <div class="stat-number" data-target="28000+">0</div>
+                    <div class="stat-label">Travellers Served</div>
+                </div>
+
+                <div class="stat-item reveal">
+                    <div class="stat-number" data-target="98">0</div>
+                    <div class="stat-label">% Satisfaction Rate</div>
+                </div>
+
+                <div class="stat-item reveal">
+                    <div class="stat-number" data-target="7">0</div>
+                    <div class="stat-label">Years of Excellence</div>
+                </div>
+
+            </div>
+        </div>
+
+
+        <!-- MISSION -->
+        <section id="mission" class="abt-section">
+            <div class="mission-grid">
+
+                <!-- Left: photo with floating badge -->
+                <div class="mission-image-wrap reveal">
+                    <img
+                        src="img/mission.jpg"
+                        alt="Travel explorers planning their journey">
+                    <div class="mission-image-overlay"></div>
+                    <div class="mission-badge">
+                        <span class="badge-icon">🌍</span>
+                        <div class="badge-text">
+                            <strong>Est. 2018</strong>
+                            <span>Oxford, UK</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: heading, paragraphs, and three pillar rows -->
+                <div class="mission-text reveal">
+                    <p class="abt-section-label">Our Mission</p>
+                    <h2>Turning Curiosity Into Unforgettable Journeys</h2>
+                    <p>GeoQuest is a travel discovery platform built for curious explorers who want more from their journeys. We go beyond the tourist trail — surfacing hidden destinations, local experiences, and personalised travel insights that help you plan trips with confidence and intention.</p>
+                    <p>Whether you're mapping out your next adventure or simply dreaming of where to go, GeoQuest brings the world closer. Our platform combines smart discovery tools with curated travel content, making it easier than ever to find places that truly match who you are and how you travel.</p>
+
+                    <div class="mission-pillars">
+                        <div class="pillar">
+                            <div class="pillar-icon"> 🗺️ <i class="fas fa-search-location"></i></div>
+                            <div class="pillar-body">
+                                <strong>Smart Discovery</strong>
+                                <span>AI-powered tools that surface destinations perfectly matched to your travel style.</span>
+                            </div>
+                        </div>
+                        <div class="pillar">
+                            <div class="pillar-icon"> 🤝 <i class="fas fa-shield-alt"></i></div>
+                            <div class="pillar-body">
+                                <strong>Trust &amp; Safety</strong>
+                                <span>Every recommendation is verified. Every partner is vetted. Your journey is in safe hands.</span>
+                            </div>
+                        </div>
+                        <div class="pillar">
+                            <div class="pillar-icon"> 👥<i class="fas fa-heart"></i></div>
+                            <div class="pillar-body">
+                                <strong>Traveller-First</strong>
+                                <span>We exist for explorers. Every feature, every decision is made with your adventure in mind.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <hr class="section-divider">
+
+
+        <!-- CORE VALUES -->
+        <section id="values" class="abt-section">
+            <p class="abt-section-label">What We Stand For</p>
+            <h2 class="abt-section-title">Our Core Values</h2>
+            <p class="abt-section-subtitle">These aren't just words on a wall — they're the compass that guides every decision we make at GeoQuest.</p>
+
+            <!-- Six value cards — staggered reveal via inline transition-delay -->
+            <div class="values-grid">
+
+                <div class="value-card reveal">
+                    
+                    <div class="value-icon">🧭<i class="fas fa-globe-americas"></i></div>
+                    <h3>Global Curiosity</h3>
+                    <p>We believe every corner of the world holds wonder. We champion exploration without borders, celebrating the diversity of cultures, landscapes, and human stories.</p>
+                </div>
+
+                <div class="value-card reveal" style="transition-delay: 0.1s">
+                    <div class="value-icon">🌱<i class="fas fa-leaf"></i></div>
+                    <h3>Responsible Travel</h3>
+                    <p>We're committed to sustainable tourism — partnering only with eco-conscious operators and promoting travel that uplifts local communities rather than depleting them.</p>
+                </div>
+
+                <div class="value-card reveal" style="transition-delay: 0.2s">
+                    <div class="value-icon">🤝<i class="fas fa-users"></i></div>
+                    <h3>Community First</h3>
+                    <p>Our platform thrives on real reviews, shared stories, and collective knowledge. When travellers help each other, everyone goes further.</p>
+                </div>
+
+                <div class="value-card reveal" style="transition-delay: 0.3s">
+                    <div class="value-icon">💡<i class="fas fa-lightbulb"></i></div>
+                    <h3>Innovation</h3>
+                    <p>From AI itinerary builders to real-time local insights, we're constantly pushing the boundaries of what travel technology can achieve.</p>
+                </div>
+
+                <div class="value-card reveal" style="transition-delay: 0.4s">
+                    <div class="value-icon">⭐<i class="fas fa-star"></i></div>
+                    <h3>Excellence</h3>
+                    <p>We hold ourselves to the highest standard in every recommendation, every partnership, and every experience we help create.</p>
+                </div>
+
+                <div class="value-card reveal" style="transition-delay: 0.5s">
+                    <div class="value-icon">👁<i class="fas fa-handshake"></i></div>
+                    <h3>Transparency</h3>
+                    <p>No hidden fees, no misleading reviews. We believe honest travel guidance is the foundation of every great adventure.</p>
+                </div>
+
+            </div>
+        </section>
+
+        <hr class="section-divider">
+
+
+        <!-- TEAM -->
+        <section id="team" class="abt-section">
+            <p class="abt-section-label">The People Behind GeoQuest</p>
+            <h2 class="abt-section-title">Meet Our Team</h2>
+            <p class="abt-section-subtitle">A passionate group of travellers, technologists, and storytellers united by one mission — making the world more explorable.</p>
+
+            <div class="team-grid">
+
+                <div class="team-card reveal">
+                    <img class="team-avatar"
+                        src="img/Unique.jpg" 
+                        alt="Unique Gurung — Co-Founder and CEO">
+                    <div class="team-info">
+                        <h3>Unique Gurung</h3>
+                        <p class="team-role">Co-Founder &amp; CEO</p>
+                        <p class="team-bio">Former expedition guide turned entrepreneur. Unique has visited 15 countries and built GeoQuest on the belief that everyone deserves an extraordinary journey.</p>
+                    </div>
+                </div>
+
+                <div class="team-card reveal" style="transition-delay: 0.1s">
+                    <img class="team-avatar"
+                        src="img/Anusha.jpeg"
+                        alt="Anusha Thapa — Co-Founder and CPO">
+                    <div class="team-info">
+                        <h3>Anusha Thapa</h3>
+                        <p class="team-role">Co-Founder &amp; CPO</p>
+                        <p class="team-bio">UX designer and travel writer. Anusha shapes every feature around real traveller needs — having lived in six countries across three continents.</p>
+                    </div>
+                </div>
+
+                <div class="team-card reveal" style="transition-delay: 0.2s">
+                    <img class="team-avatar"
+                        src="img/Pratik.jpeg"
+                        alt="Pratik Karki — Co-Founder and Chief Technology Officer">
+                    <div class="team-info">
+                        <h3>Pratik Karki</h3>
+                        <p class="team-role">Co-Founder and Chief Technology Officer</p>
+                        <p class="team-bio">AI researcher and full-stack engineer. Pratik leads the tech behind GeoQuest's smart destination-matching engine and personalisation platform.</p>
+                    </div>
+                </div>
+
+
+            </div>
+        </section>
+
+        <hr class="section-divider">
+
+
+        <!-- JOURNEY TIMELINE -->
+        <section id="journey" class="abt-section">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start;">
+
+                <!-- Left: section heading -->
+                <div>
+                    <p class="abt-section-label">Our Journey</p>
+                    <h2 class="abt-section-title">How GeoQuest Came to Be</h2>
+                    <p class="abt-section-subtitle">From a small idea in Oxford to a platform trusted by travellers in 120 countries — here's our story.</p>
+                </div>
+
+                <!-- Right: the timeline itself -->
+                <!-- JS reveals each item with a staggered delay as you scroll -->
+                <div class="timeline">
+
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-year">2018</div>
+                        <h4>The Idea is Born</h4>
+                        <p>Unique, Pratik, and Anusha meet at a travel conference in London and decide that trip planning deserves something far smarter than a search engine.</p>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-year">2019</div>
+                        <h4>Beta Launch</h4>
+                        <p>GeoQuest v1 launches with 5 curated destinations and an early community of 150 beta testers. Feedback shapes everything.</p>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-year">2021</div>
+                        <h4>AI Engine Launch</h4>
+                        <p>Pratik leads the team and GeoQuest's destination-matching AI goes live. </p>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-year">2023</div>
+                        <h4>20,000 Explorers</h4>
+                        <p>GeoQuest reaches 19,000 active users across 10 countries. The platform expands to include user-generated reviews and local guides.</p>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-year">2025</div>
+                        <h4>Global Recognition</h4>
+                        <p>Named one of the "Top 10 Travel Innovation Platforms" by Travel Weekly. Operations expanded to 10+ countries with a team of 20.</p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <hr class="section-divider">
+
+
+        <!-- TESTIMONIALS -->
+        <section id="testimonials" class="abt-section">
+            <p class="abt-section-label">What Travellers Say</p>
+            <h2 class="abt-section-title">Voices from the Road</h2>
+            <p class="abt-section-subtitle">Real stories from real explorers — because the best endorsement is a journey well taken.</p>
+
+            <div class="testimonials-grid">
+
+                <div class="testi-card reveal">
+                    <span class="testi-quote">"</span>
+                    <p class="testi-text">GeoQuest completely changed how I plan trips. I discovered places I never would have found on my own — and every recommendation was spot on. It's like having a well-travelled friend in your pocket.</p>
+                    <div class="testi-stars">★★★★★</div>
+                    <div class="testi-author">
+                        <div class="testi-avatar">S</div>
+                        <div>
+                            <span class="testi-name">Sarah Mitchell</span>
+                            <span class="testi-loc">London, UK · 32 trips booked</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testi-card reveal" style="transition-delay: 0.12s">
+                    <span class="testi-quote">"</span>
+                    <p class="testi-text">The itinerary planning tool saved us hours. We had a perfectly balanced trip across Japan — from Tokyo highlights to remote ryokans in the mountains — without the usual stress of over-researching.</p>
+                    <div class="testi-stars">★★★★★</div>
+                    <div class="testi-author">
+                        <div class="testi-avatar">R</div>
+                        <div>
+                            <span class="testi-name">Ravi Patel</span>
+                            <span class="testi-loc">Manchester, UK · 18 trips booked</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testi-card reveal" style="transition-delay: 0.24s">
+                    <span class="testi-quote">"</span>
+                    <p class="testi-text">As a solo female traveller, safety information is everything. GeoQuest gave me verified, up-to-date insights that made me feel confident exploring places I once thought were off-limits. Truly empowering.</p>
+                    <div class="testi-stars">★★★★★</div>
+                    <div class="testi-author">
+                        <div class="testi-avatar">L</div>
+                        <div>
+                            <span class="testi-name">Lena Kowalski</span>
+                            <span class="testi-loc">Warsaw, Poland · 27 trips booked</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <hr class="section-divider">
+
+
+        <!-- FAQ -->
+        <!-- JS handles opening and closing each item -->
+        <section id="faq" class="abt-section">
+            <p class="abt-section-label">Got Questions?</p>
+            <h2 class="abt-section-title">Frequently Asked Questions</h2>
+
+            <div class="faq-list">
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        What is GeoQuest and how does it work?
+                        <span class="faq-arrow"><i class="fas fa-chevron-down"></i></span>
+                    </button>
+                    <div class="faq-answer">GeoQuest is a travel discovery platform that uses smart recommendation tools and curated content to help you find destinations, plan itineraries, and discover local experiences tailored to your travel style. Simply browse destinations, save favourites, and use our planning tools to build your perfect trip.</div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        Is GeoQuest free to use?
+                        <span class="faq-arrow"><i class="fas fa-chevron-down"></i></span>
+                    </button>
+                    <div class="faq-answer">Yes — GeoQuest's core discovery and planning features are completely free. We offer a premium subscription for travellers who want access to advanced AI itinerary tools, exclusive deals, and priority support from our travel team.</div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        How can I become a GeoQuest partner or local guide?
+                        <span class="faq-arrow"><i class="fas fa-chevron-down"></i></span>
+                    </button>
+                    <div class="faq-answer">We're always looking for passionate local experts and travel businesses to partner with. Reach out via our contact page and a member of our partnerships team will be in touch within 48 hours.</div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        Does GeoQuest support sustainable travel?
+                        <span class="faq-arrow"><i class="fas fa-chevron-down"></i></span>
+                    </button>
+                    <div class="faq-answer">Absolutely. Responsible tourism is one of our core values. We highlight eco-certified accommodations and experiences, promote off-the-beaten-path destinations to reduce over-tourism, and publish travel guides that encourage respect for local communities and environments.</div>
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- CTA BANNER -->
+        <section class="cta-banner">
+            <span class="about-eyebrow">
+                <i class="fas fa-paper-plane"></i> Ready to Explore?
+            </span>
+            <h2>Your Next Adventure<br>Starts Here</h2>
+            <p>Join over 50,000 travellers who use GeoQuest to discover, plan, and experience the world at its best.</p>
+            <div class="hero-cta-row">
+                <a href="destination.html" class="btn-primary-about">
+                    <i class="fas fa-globe"></i> Explore Destinations
+                </a>
+                <a href="contact.html" class="btn-outline-about">
+                    <i class="fas fa-envelope"></i> Get in Touch
+                </a>
+            </div>
+        </section>
+
+    </main>
+
+
+    <!-- footer -->
+    <footer>
+        <p>&copy; 2026 GeoQuest. All rights reserved.</p>
+    </footer>
+
+
+   <!-- Scroll to Top -->
+    <div id="scrollToTopBtn">↑</div>
+
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script src="index.js"></script>
+
+
+    <!-- About page JavaScript (loaded last so the DOM is ready) -->
+    <script src="about.js"></script>
+
+</body>
+</html>
