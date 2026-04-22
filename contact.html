@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GeoQuest - Explore Amazing Destinations</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="contact.css">
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header id="site-header">
+        <a href="index.html" class="nav-logo">
+            <h1>GEO<span>·</span>QUEST</h1>
+        </a>
+        <button id="nav-toggle" aria-label="Toggle navigation">☰ Menu</button>
+        <nav id="main-nav">
+            <ul class="nav-list">
+                <li><a href="about.html" class="nav-link">Why GeoQuest</a></li>
+                <li><a href="destination.html" class="nav-link">Destinations</a></li>
+                <li><a href="services.html" class="nav-link">Services</a></li>
+                <li><a href="gallery.html" class="nav-link">Gallery</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- MOBILE MENU -->
+    <div class="mobile-menu">
+        <a href="about.html">Why GeoQuest</a>
+        <a href="destination.html">Destinations</a>
+        <a href="services.html">Services</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="contact.html">Contact</a>
+    </div>
+
+
+    <main>
+
+    <!-- HERO -->
+    <section class="contact-hero">
+        <div class="contact-hero-bg"></div>
+        <div class="contact-hero-overlay"></div>
+        <div class="contact-hero-content">
+            <span class="hero-label">✦ We'd love to hear from you</span>
+            <h1>Get in <em>Touch</em></h1>
+            <p>Planning your next adventure? Have a question? Our team is ready to help you craft the perfect journey.</p>
+        </div>
+        <div class="hero-scroll-hint">
+            <span>Scroll down</span>
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
+
+    <!-- INFO STRIPS -->
+    <section class="info-strips">
+        <div class="strip" data-aos="fade-up">
+            <div class="strip-icon">✉️<i class="fas fa-envelope"></i></div>
+            <div class="strip-body">
+                <p class="strip-label">Email us at</p>
+                <a href="mailto:info@geoquest.com">info@geoquest.com</a>
+            </div>
+        </div>
+        <div class="strip-divider"></div>
+        <div class="strip" data-aos="fade-up" data-aos-delay="100">
+            <div class="strip-icon">📞<i class="fas fa-phone"></i></div>
+            <div class="strip-body">
+                <p class="strip-label">Call us on</p>
+                <a href="tel:+44">+44 123 456 7890</a>
+            </div>
+        </div>
+        <div class="strip-divider"></div>
+        <div class="strip" data-aos="fade-up" data-aos-delay="200">
+            <div class="strip-icon">📍<i class="fas fa-map-marker-alt"></i></div>
+            <div class="strip-body">
+                <p class="strip-label">Visit us at</p>
+                <span>Oxford, UK</span>
+            </div>
+        </div>
+        <div class="strip-divider"></div>
+        <div class="strip" data-aos="fade-up" data-aos-delay="300">
+            <div class="strip-icon">🕐<i class="fas fa-clock"></i></div>
+            <div class="strip-body">
+                <p class="strip-label">Open hours</p>
+                <span>Mon–Fri, 9:00 AM – 6:00 PM</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- MAIN CONTACT LAYOUT -->
+    <section class="contact-main">
+        <div class="contact-main-inner">
+
+            <!-- LEFT: TEXT & SOCIALS -->
+            <div class="contact-left" data-aos="fade-right">
+                <span class="section-label">Contact Us</span>
+                <h2>Let's plan your<br><em>next adventure</em></h2>
+                <p>Whether you're dreaming of Everest base camp, the streets of Paris, or a rainforest escape — our travel experts are just a message away. Reach out and let's make it happen.</p>
+
+                <div class="response-pledge">
+                    <i class="fas fa-check-circle"></i>
+                    <span>We respond to every message within <strong>24 hours</strong></span>
+                </div>
+
+            </div>
+
+            <!-- RIGHT: FORM -->
+            <div class="contact-right" data-aos="fade-left">
+                <div class="form-card">
+                    <h3>Send a Message</h3>
+
+                    <form id="contactForm" novalidate>
+
+                        <div class="field-row">
+                            <div class="field">
+                                <label for="name">Full Name <span>*</span></label>
+                                <input type="text" id="name" name="name" placeholder="John Smith" required>
+                                <span class="field-error" id="nameError"></span>
+                            </div>
+                            <div class="field">
+                                <label for="email">Email Address <span>*</span></label>
+                                <input type="email" id="email" name="email" placeholder="john@example.com" required>
+                                <span class="field-error" id="emailError"></span>
+                            </div>
+                        </div>
+
+                        <div class="field-row">
+                            <div class="field">
+                                <label for="phone">Phone Number</label>
+                                <input type="tel" id="phone" name="phone" placeholder="+1 (234) 567-8900">
+                                <span class="field-error" id="phoneError"></span>
+                            </div>
+                            <div class="field">
+                                <label for="subject">Subject <span>*</span></label>
+                                <input type="text" id="subject" name="subject" placeholder="Trip enquiry" required>
+                                <span class="field-error" id="subjectError"></span>
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <label for="message">Message <span>*</span></label>
+                            <textarea id="message" name="message" rows="6" placeholder="Tell us about your dream trip..." required></textarea>
+                            <span class="field-error" id="messageError"></span>
+                        </div>
+
+                        <div class="field field-check">
+                            <input type="checkbox" id="privacy" name="privacy" required>
+                            <label for="privacy">I agree to the <a href="#">Privacy Policy</a></label>
+                            <span class="field-error" id="privacyError"></span>
+                        </div>
+
+                        <button type="submit" class="btn-send">
+                            <span class="btn-text">Send Message</span>
+                            <span class="btn-icon"><i class="fas fa-paper-plane"></i></span>
+                        </button>
+
+                    </form>
+
+                    <div id="formFeedback" class="form-feedback"></div>
+
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq-section" data-aos="fade-up">
+        <div class="faq-inner">
+            <div class="faq-heading">
+                <span class="section-label">FAQ</span>
+                <h2>Common Questions</h2>
+                <p>Everything you need to know before reaching out.</p>
+            </div>
+            <div class="faq-list">
+
+                <div class="faq-item">
+                    <button class="faq-trigger" aria-expanded="false">
+                        <span>How long does it take to plan a trip?</span>
+                        <i class="fas fa-plus"></i>
+                    </button>
+                    <div class="faq-panel">
+                        <p>Most trips can be planned in 1–2 weeks. For complex itineraries or group bookings, we recommend starting 4–6 weeks ahead to secure the best options.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-trigger" aria-expanded="false">
+                        <span>What payment methods do you accept?</span>
+                        <i class="fas fa-plus"></i>
+                    </button>
+                    <div class="faq-panel">
+                        <p>We accept all major credit/debit cards and bank transfers. A 50% deposit confirms your booking, with the remainder due 30 days before departure.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-trigger" aria-expanded="false">
+                        <span>Do you offer travel insurance?</span>
+                        <i class="fas fa-plus"></i>
+                    </button>
+                    <div class="faq-panel">
+                        <p>Yes — comprehensive cover including cancellations, medical emergencies, and lost baggage. Insurance can be added at checkout or when enquiring.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-trigger" aria-expanded="false">
+                        <span>Can I modify or cancel my booking?</span>
+                        <i class="fas fa-plus"></i>
+                    </button>
+                    <div class="faq-panel">
+                        <p>Yes. Modifications are accepted up to 30 days before travel and may incur a small fee. Cancellations within 30 days are subject to our cancellation policy.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-trigger" aria-expanded="false">
+                        <span>Do you help with visas and permits?</span>
+                        <i class="fas fa-plus"></i>
+                    </button>
+                    <div class="faq-panel">
+                        <p>We provide full visa guidance and connect you with trusted providers. Our consultants will walk you through every requirement for your destination.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-trigger" aria-expanded="false">
+                        <span>What's included in a travel package?</span>
+                        <i class="fas fa-plus"></i>
+                    </button>
+                    <div class="faq-panel">
+                        <p>Packages include accommodation, guided tours, and key activities. Many include meals and transfers too — always check the individual package details.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+        </main>
+
+        <!-- FOOTER -->
+   <!-- footer -->
+    <footer>
+        <p>&copy; 2026 GeoQuest. All rights reserved.</p>
+    </footer>
+
+    <!-- Scroll to Top Button -->
+    <button id="scrollToTop" class="scroll-to-top" aria-label="Scroll to top">
+        <i class="fas fa-arrow-up">↑</i>
+    </button>
+
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script src="contact.js"></script>
+</body>
+</html>
