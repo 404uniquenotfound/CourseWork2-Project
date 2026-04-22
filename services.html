@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GeoQuest – Our Services</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,600&family=Outfit:wght@300;400;500;600&family=Space+Mono:ital@0;1&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/all.min.css">
+    <link rel="stylesheet" href="service.css">
+    <link rel="icon" type="image/x-icon" href="img/icon.png">
+</head>
+<body>
+
+    <div id="cursorGlow"></div>
+    <div class="topo-bg"></div>
+
+        <!-- SIGN UP MODAL -->
+    <div id="signUpModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Subscribe for Deals &amp; Offers</h2>
+            <p>Get exclusive travel deals, special offers, and amazing discounts delivered to your inbox!</p>
+            <form id="signUpForm">
+                <input type="email" id="signUpEmail" placeholder="Enter your email" required>
+                <label style="margin-top:10px;display:flex;align-items:center;color:var(--text-secondary);font-size:.9rem;">
+                    <input type="checkbox" id="termsCheckbox" required style="margin-right:8px;">
+                    I agree to receive offers and updates
+                </label>
+                <button type="submit">Subscribe</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- SERVICE LIGHTBOX  -->
+    <div class="srv-lightbox" id="srvLightbox" role="dialog" aria-modal="true" aria-label="Service detail">
+        <div class="srv-lb-panel" id="srvLbPanel">
+
+            <!-- Counter "01 / 08" -->
+            <div class="srv-lb-counter" id="lbCounter">01 / 08</div>
+
+            <!-- Close -->
+            <button class="srv-lb-close" id="lbClose" aria-label="Close">✕</button>
+
+            <!-- Hero image -->
+            <div class="srv-lb-image" id="lbImageWrap">
+                <img id="lbImg" src="" alt="">
+                <!-- Badge bottom-left -->
+                <div class="srv-lb-badge">
+                    <div class="srv-lb-badge-icon" id="lbBadgeIcon"><i class="fas fa-globe-americas"></i></div>
+                    <span class="srv-lb-badge-tag" id="lbBadgeTag">Service</span>
+                </div>
+            </div>
+
+            <!-- Text body -->
+            <div class="srv-lb-body">
+                <div class="srv-lb-header">
+                    <h2 class="srv-lb-title" id="lbTitle">Service Name</h2>
+                    <p class="srv-lb-cat"  id="lbCat">Category</p>
+                </div>
+
+                <p class="srv-lb-desc" id="lbDesc"></p>
+
+                <!-- Features panel -->
+                <div class="srv-lb-features">
+                    <p class="srv-lb-features-title">What's included</p>
+                    <ul id="lbFeatures"></ul>
+                </div>
+
+                <div class="srv-lb-strip" id="lbStrip"></div>
+
+                <!-- Navigation -->
+                <div class="srv-lb-nav">
+                    <button class="srv-lb-btn" id="lbPrev"><i class="fas fa-arrow-left"></i> Previous</button>
+                    <button class="srv-lb-btn" id="lbNext">Next <i class="fas fa-arrow-right"></i></button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- HEADER -->
+     <header id="site-header">
+
+        <!-- Site logo / home link -->
+        <a href="index.html" class="nav-logo">
+            <h1>GEO<span>·</span>QUEST</h1>
+        </a>
+
+        <!-- Hamburger button — only visible on mobile -->
+        <button id="nav-toggle" aria-label="Toggle navigation">☰ Menu</button>
+
+        <!-- Main navigation -->
+        <nav id="main-nav">
+            <ul class="nav-list">
+                <li><a href="about.html" class="nav-link">Why GeoQuest</a></li>
+                <li><a href="destination.html" class="nav-link">Destinations</a></li>
+                <li><a href="services.html" class="nav-link">Services</a></li>
+                <li><a href="gallery.html" class="nav-link">Gallery</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+            </ul>
+        </nav>
+
+    </header>
+
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="container">
+            <div class="mobile-menu-links">
+                <a href="about.html">Why GeoQuest?</a>
+                <a href="destination.html">Destinations</a>
+                <a href="services.html">Services</a>
+                <a href="contact.html">Contact</a>
+            </div>
+        </div>
+    </div>
+
+    <main>
+
+        <!-- HERO -->
+        <section class="srv-hero">
+            <div class="srv-hero-bg"></div>
+            <div class="hero-rings"><span></span><span></span><span></span></div>
+            <div class="srv-hero-inner">
+                <span class="srv-eyebrow"><i class="fas fa-compass"></i> What We Offer</span>
+                <h1>Services Built<br>for Every Explorer</h1>
+                <p>From AI-powered itinerary tools to round-the-clock support, GeoQuest delivers everything you need to travel smarter, safer, and more memorably.</p>
+                <a href="#services-grid" class="btn-scroll"><i class="fas fa-chevron-down"></i> Discover All Services</a>
+            </div>
+        </section>
+
+                <!-- STATS STRIP -->
+        <!-- JS animates the numbers when they scroll into view -->
+        <div class="stats-strip">
+            <div class="stats-inner">
+
+                <div class="stat-item reveal">
+                    <div class="stat-number" data-target="10">0</div>
+                    <div class="stat-label">Countries Covered</div>
+                </div>
+
+                <div class="stat-item reveal">
+                    <div class="stat-number" data-target="28000+">0</div>
+                    <div class="stat-label">Travellers Served</div>
+                </div>
+
+                <div class="stat-item reveal">
+                    <div class="stat-number" data-target="98">0</div>
+                    <div class="stat-label">% Satisfaction Rate</div>
+                </div>
+
+                <div class="stat-item reveal">
+                    <div class="stat-number" data-target="7">0</div>
+                    <div class="stat-label">Years of Excellence</div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- SERVICE CARDS GRID -->
+        <section id="services-grid" class="services-section">
+            <div class="services-head">
+                <p class="sec-label">Our Services</p>
+                <h2>Elevate Every Journey</h2>
+                <p class="sec-sub">Eight core services, one seamless experience — from the moment you dream to the moment you return.</p>
+            </div>
+
+            <div class="srv-grid">
+
+                <!-- 1 -->
+                <article class="srv-card"
+                    data-title="Global Destinations"
+                    data-cat="Destinations"
+                    data-icon="fa-globe-americas"
+                    data-num="01"
+                    data-img="img/s1.jpg"
+                    data-desc="Our curation team travels the globe year-round to surface destinations that are extraordinary — not just popular. From UNESCO heritage sites to hidden coves only locals know, GeoQuest puts the world's finest experiences at your fingertips."
+                    data-features="5,000+ curated destinations worldwide|Seasonal & hidden-gem spotlights|Personalised recommendations based on your travel history|Offline-accessible destination guides"
+                    data-strip="https://images.unsplash.com/photo-1501854140801-50d01698950b?w=400&q=70|https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=400&q=70|https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=400&q=70">
+                    <div class="srv-card-img">
+                        <img src="img/s1.jpg" alt="Global Destinations" loading="lazy">
+                        <span class="srv-tag">Destinations</span>
+                        <div class="srv-icon-badge"><i class="fas fa-globe-americas"></i></div>
+                    </div>
+                    <div class="srv-card-body">
+                        <h3>Global Destinations</h3>
+                        <p class="srv-card-cat">Destinations · Discovery</p>
+                        <p class="srv-short">Explore handpicked destinations across the world, designed to match your travel style and dreams.</p>
+                        <div class="srv-card-footer">
+                            <button class="srv-explore-btn"><span>Explore More</span> <i class="fas fa-arrow-right"></i></button>
+                            <span class="srv-card-num">01 / 08</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- 2 -->
+                <article class="srv-card"
+                    data-title="Smart Itinerary Planning"
+                    data-cat="AI Planning"
+                    data-icon="fa-map-marked-alt"
+                    data-num="02"
+                    data-img="img/s2.jpg"
+                    data-desc="Our proprietary AI analyses thousands of data points — your preferences, travel dates, budget, and crowd patterns — to build itineraries that feel handcrafted. Adjust any day with a tap and watch the whole plan rebalance instantly."
+                    data-features="Real-time crowd & weather awareness|Multi-city trip optimisation|Day-by-day scheduling with buffer time built in|Shareable itinerary links for group trips"
+                    data-strip="https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=400&q=70|https://images.unsplash.com/photo-1503220317375-aaad61436b1b?w=400&q=70|https://images.unsplash.com/photo-1530789253388-582c481c54b0?w=400&q=70">
+                    <div class="srv-card-img">
+                        <img src="img/s2.jpg" alt="Smart Itinerary Planning" loading="lazy">
+                        <span class="srv-tag">AI Planning</span>
+                        <div class="srv-icon-badge"><i class="fas fa-map-marked-alt"></i></div>
+                    </div>
+                    <div class="srv-card-body">
+                        <h3>Smart Itinerary Planning</h3>
+                        <p class="srv-card-cat">AI Planning · Personalised</p>
+                        <p class="srv-short">AI-powered travel plans optimised for time, cost, and unforgettable experiences — no stress, just adventure.</p>
+                        <div class="srv-card-footer">
+                            <button class="srv-explore-btn"><span>Explore More</span> <i class="fas fa-arrow-right"></i></button>
+                            <span class="srv-card-num">02 / 08</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- 3 -->
+                <article class="srv-card"
+                    data-title="Adventure Experiences"
+                    data-cat="Adventure"
+                    data-icon="fa-hiking"
+                    data-num="03"
+                    data-img="img/s3.jpg"
+                    data-desc="Whether you're a first-time hiker or a seasoned mountaineer, GeoQuest connects you with certified local guides and adventure operators who share your appetite for the extraordinary. Every experience is safety-vetted and insurance-ready."
+                    data-features="200+ adventure activity categories|Certified local guide matching|Difficulty-rated experiences for all fitness levels|Insurance-included booking options"
+                    data-strip="https://images.unsplash.com/photo-1522163182402-834f871fd851?w=400&q=70|https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&q=70|https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=400&q=70">
+                    <div class="srv-card-img">
+                        <img src="img/s3.jpg" alt="Adventure Experiences" loading="lazy">
+                        <span class="srv-tag">Adventure</span>
+                        <div class="srv-icon-badge"><i class="fas fa-hiking"></i></div>
+                    </div>
+                    <div class="srv-card-body">
+                        <h3>Adventure Experiences</h3>
+                        <p class="srv-card-cat">Adventure · Outdoors</p>
+                        <p class="srv-short">From mountain treks to extreme sports, unlock thrilling experiences tailored for every explorer.</p>
+                        <div class="srv-card-footer">
+                            <button class="srv-explore-btn"><span>Explore More</span> <i class="fas fa-arrow-right"></i></button>
+                            <span class="srv-card-num">03 / 08</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- 4 -->
+                <article class="srv-card"
+                    data-title="Premium Stays"
+                    data-cat="Accommodation"
+                    data-icon="fa-hotel"
+                    data-num="04"
+                    data-img="img/s4.jpg"
+                    data-desc="Our accommodation team personally inspects every property before it earns a GeoQuest badge. From boutique riads in Marrakech to cliffside villas in Santorini, every stay is chosen for exceptional quality, character, and value."
+                    data-features="12,000+ personally vetted properties|Exclusive GeoQuest member rates|Boutique & eco-lodge specialist selection|Free cancellation options on most bookings"
+                    data-strip="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=400&q=70|https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=400&q=70|https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=400&q=70">
+                    <div class="srv-card-img">
+                        <img src="img/s4.jpg" alt="Premium Stays" loading="lazy">
+                        <span class="srv-tag">Accommodation</span>
+                        <div class="srv-icon-badge"><i class="fas fa-hotel"></i></div>
+                    </div>
+                    <div class="srv-card-body">
+                        <h3>Premium Stays</h3>
+                        <p class="srv-card-cat">Accommodation · Luxury</p>
+                        <p class="srv-short">Stay in carefully selected hotels and resorts that blend comfort, luxury, and value.</p>
+                        <div class="srv-card-footer">
+                            <button class="srv-explore-btn"><span>Explore More</span> <i class="fas fa-arrow-right"></i></button>
+                            <span class="srv-card-num">04 / 08</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- 5 -->
+                <article class="srv-card"
+                    data-title="Culinary Journeys"
+                    data-cat="Food &amp; Culture"
+                    data-icon="fa-utensils"
+                    data-num="05"
+                    data-img="img/s5.jpg"
+                    data-desc="Food is the most honest window into a culture. GeoQuest's culinary concierge service connects you with hidden-gem restaurants, street food tours led by local chefs, cooking masterclasses in family homes, and farm-to-table experiences off the tourist map."
+                    data-features="Curated restaurant recommendations by city|Local food tour bookings with native guides|Cooking class matchmaking|Dietary preference filters (vegan, halal, kosher, etc.)"
+                    data-strip="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=400&q=70|https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=400&q=70|https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=400&q=70">
+                    <div class="srv-card-img">
+                        <img src="img/s5.jpg" alt="Culinary Journeys" loading="lazy">
+                        <span class="srv-tag">Food &amp; Culture</span>
+                        <div class="srv-icon-badge"><i class="fas fa-utensils"></i></div>
+                    </div>
+                    <div class="srv-card-body">
+                        <h3>Culinary Journeys</h3>
+                        <p class="srv-card-cat">Food &amp; Culture · Local</p>
+                        <p class="srv-short">Discover authentic local cuisines and curated dining experiences wherever you travel.</p>
+                        <div class="srv-card-footer">
+                            <button class="srv-explore-btn"><span>Explore More</span> <i class="fas fa-arrow-right"></i></button>
+                            <span class="srv-card-num">05 / 08</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- 6 -->
+                <article class="srv-card"
+                    data-title="Best Price Guarantee"
+                    data-cat="Value"
+                    data-icon="fa-wallet"
+                    data-num="06"
+                    data-img="img/s6.jpg"
+                    data-desc="We monitor prices across hundreds of booking platforms in real time so you never overpay. Found the same deal cheaper elsewhere? We'll match it — and credit your GeoQuest wallet with the difference."
+                    data-features="Real-time price comparison across 300+ platforms|Price-drop alerts for saved destinations|Price-match guarantee with wallet credit|Exclusive member-only flash deals"
+                    data-strip="https://images.unsplash.com/photo-1476304884326-cd2c88572c5f?w=400&q=70|https://images.unsplash.com/photo-1521295121783-8a321d551ad2?w=400&q=70|https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=400&q=70">
+                    <div class="srv-card-img">
+                        <img src="img/s6.jpg" alt="Best Price Guarantee" loading="lazy">
+                        <span class="srv-tag">Value</span>
+                        <div class="srv-icon-badge"><i class="fas fa-wallet"></i></div>
+                    </div>
+                    <div class="srv-card-body">
+                        <h3>Best Price Guarantee</h3>
+                        <p class="srv-card-cat">Value · Smart Savings</p>
+                        <p class="srv-short">Travel smarter with competitive pricing, exclusive deals, and maximum value for every trip.</p>
+                        <div class="srv-card-footer">
+                            <button class="srv-explore-btn"><span>Explore More</span> <i class="fas fa-arrow-right"></i></button>
+                            <span class="srv-card-num">06 / 08</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- 7 -->
+                <article class="srv-card"
+                    data-title="24/7 Travel Support"
+                    data-cat="Support"
+                    data-icon="fa-headset"
+                    data-num="07"
+                    data-img="img/s7.jpg"
+                    data-desc="Missed a connection in Tokyo at 3am? Lost a passport in Lisbon? Our human-first support team is available around the clock in 14 languages — by chat, call, or WhatsApp — to get you back on track within minutes, not hours."
+                    data-features="Human agents (not just chatbots) 24/7/365|Support in 14 languages|Emergency rebooking & visa assistance|Average response time under 90 seconds"
+                    data-strip="https://images.unsplash.com/photo-1533073526757-2c8ca1df9f1c?w=400&q=70|https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=400&q=70|https://images.unsplash.com/photo-1497366216548-37526070297c?w=400&q=70">
+                    <div class="srv-card-img">
+                        <img src="img/s7.jpg" alt="24/7 Travel Support" loading="lazy">
+                        <span class="srv-tag">Support</span>
+                        <div class="srv-icon-badge"><i class="fas fa-headset"></i></div>
+                    </div>
+                    <div class="srv-card-body">
+                        <h3>24/7 Travel Support</h3>
+                        <p class="srv-card-cat">Support · Always-On</p>
+                        <p class="srv-short">Our team is always available to assist you anytime, anywhere during your journey.</p>
+                        <div class="srv-card-footer">
+                            <button class="srv-explore-btn"><span>Explore More</span> <i class="fas fa-arrow-right"></i></button>
+                            <span class="srv-card-num">07 / 08</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- 8 -->
+                <article class="srv-card"
+                    data-title="Safe &amp; Secure Travel"
+                    data-cat="Safety"
+                    data-icon="fa-shield-alt"
+                    data-num="08"
+                    data-img="img/s8.jpg"
+                    data-desc="Every partner in the GeoQuest network goes through a rigorous vetting process before a single booking is accepted. We publish live safety advisories, offer comprehensive travel insurance partnerships, and encrypt every transaction with bank-grade security."
+                    data-features="3-stage partner vetting & annual re-certification|Live destination safety advisories|Bank-grade SSL & payment encryption|Travel insurance integration at checkout"
+                    data-strip="https://images.unsplash.com/photo-1488085061387-422e29b40080?w=400&q=70|https://images.unsplash.com/photo-1452421822248-d4c2b47f0c81?w=400&q=70|https://images.unsplash.com/photo-1518544801976-3e159e50e5bb?w=400&q=70">
+                    <div class="srv-card-img">
+                        <img src="img/s8.jpg" alt="Safe and Secure Travel" loading="lazy">
+                        <span class="srv-tag">Safety</span>
+                        <div class="srv-icon-badge"><i class="fas fa-shield-alt"></i></div>
+                    </div>
+                    <div class="srv-card-body">
+                        <h3>Safe &amp; Secure Travel</h3>
+                        <p class="srv-card-cat">Safety · Verified Partners</p>
+                        <p class="srv-short">Your safety is our priority with verified partners, secure bookings, and trusted services.</p>
+                        <div class="srv-card-footer">
+                            <button class="srv-explore-btn"><span>Explore More</span> <i class="fas fa-arrow-right"></i></button>
+                            <span class="srv-card-num">08 / 08</span>
+                        </div>
+                    </div>
+                </article>
+
+            </div><!-- /.srv-grid -->
+        </section>
+
+        <!-- CTA BAND -->
+        <section class="cta-band">
+            <div class="cta-band-inner">
+                <h2>Ready to Start Your Journey?</h2>
+                <p>Join 50,000+ explorers who trust GeoQuest to craft extraordinary travel experiences.</p>
+                <div class="cta-row">
+                    <a href="destination.html" class="cta-primary"><i class="fas fa-globe"></i> Explore Destinations</a>
+                    <a href="contact.html"      class="cta-outline"><i class="fas fa-envelope"></i> Get in Touch</a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer><p>&copy; 2026 GeoQuest. All rights reserved.</p></footer>
+    <div id="scrollToTopBtn"> ↑</div>
+
+    <script src="service.js"></script>
+</body>
+</html>

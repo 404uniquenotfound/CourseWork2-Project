@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GeoQuest - Explore Amazing Destinations</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header id="site-header">
+        <a href="index.html" class="nav-logo">
+            <h1>GEO<span>·</span>QUEST</h1>
+        </a>
+        <button id="nav-toggle" aria-label="Toggle navigation">☰ Menu</button>
+        <nav id="main-nav">
+            <ul class="nav-list">
+                <li><a href="about.html" class="nav-link">Why GeoQuest</a></li>
+                <li><a href="destination.html" class="nav-link">Destinations</a></li>
+                <li><a href="services.html" class="nav-link">Services</a></li>
+                <li><a href="gallery.html" class="nav-link">Gallery</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+                <li><a href="#signup" id="nav-signup" class="nav-link nav-signup-btn">Get Offers</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- MOBILE MENU -->
+    <div class="mobile-menu">
+        <a href="about.html">Why GeoQuest</a>
+        <a href="destination.html">Destinations</a>
+        <a href="services.html">Services</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="contact.html">Contact</a>
+        <a href="#signup" class="mobile-signup-btn">Get Offers</a>
+    </div>
+
+    <!-- SIGN UP MODAL -->
+    <div id="signUpModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Subscribe for Deals & Offers</h2>
+            <p>Get exclusive travel deals delivered to your inbox!</p>
+            <form id="signUpForm">
+                <input type="email" placeholder="Enter your email" required>
+                <button type="submit">Subscribe</button>
+            </form>
+        </div>
+    </div>
+
+    <main>
+        <!-- HERO SECTION -->
+        <section id="hero" class="hero">
+            <div class="hero-inner">
+                <p class="hero-eyebrow">✦ Adventure Awaits</p>
+                <h2>Welcome to <span class="hero-brand">GeoQuest</span></h2>
+                <p>Explore the world with us. Discover amazing destinations and embark on unforgettable adventures.</p>
+                <div class="hero-buttons">
+                    <a href="destination.html" class="btn-primary">Start Exploring</a>
+                    <a href="about.html" class="btn-secondary">Learn More</a>
+                </div>
+            </div>
+            
+        </section>
+
+        <!-- DESTINATIONS SECTION -->
+        <section id="destinations" class="section">
+            <h2 class="section-heading">Popular Destinations</h2>
+            
+            <div class="destinations-grid">
+                <div class="destination-card">
+                    <img src="img/everest.jpg" alt="Mount Everest">
+                    <h3>Mount Everest</h3>
+                    <p>🏔️ Nepal • The Himalayas</p>
+                </div>
+                <div class="destination-card">
+                    <img src="img/GC.jpg" alt="Grand Canyon">
+                    <h3>Grand Canyon</h3>
+                    <p>🏜️ USA • Arizona</p>
+                </div>
+                <div class="destination-card">
+                    <img src="img/tower.jpg" alt="Eiffel Tower">
+                    <h3>Eiffel Tower</h3>
+                    <p>🗼 France • Paris</p>
+                </div>
+                <div class="destination-card">
+                    <img src="img/amazon.webp" alt="Amazon">
+                    <h3>Amazon Rainforest</h3>
+                    <p>🌿 Brazil • Nature</p>
+                </div>
+                <div class="destination-card">
+                    <img src="img/wall.jpg" alt="Great Wall">
+                    <h3>Great Wall of China</h3>
+                    <p>🧱 China • Beijing</p>
+                </div>
+                <div class="destination-card">
+                    <img src="img/falls.jpg" alt="Niagara Falls">
+                    <h3>Niagara Falls</h3>
+                    <p>💧 USA/Canada</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SERVICES SECTION -->
+        <section id="services" class="section">
+            <h2 class="section-heading">Our Services</h2>
+            <br>
+            <div class="services-grid">
+                <div class="service-card" data-aos="fade-up">
+                    <i class="fas fa-globe-americas"></i>
+                    <h3>Global Destinations</h3>
+                    <p>Explore handpicked destinations across the world.</p>
+                </div>
+                <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+                    <i class="fas fa-map-marked-alt"></i>
+                    <h3>Smart Itinerary Planning</h3>
+                    <p>AI-powered travel plans optimized for you.</p>
+                </div>
+                <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+                    <i class="fas fa-hiking"></i>
+                    <h3>Adventure Experiences</h3>
+                    <p>Unlock thrilling experiences tailored for explorers.</p>
+                </div>
+                <div class="service-card" data-aos="fade-up" data-aos-delay="300">
+                    <i class="fas fa-hotel"></i>
+                    <h3>Premium Stays</h3>
+                    <p>Stay in carefully selected hotels and resorts.</p>
+                </div>
+                <div class="service-card" data-aos="fade-up" data-aos-delay="400">
+                    <i class="fas fa-utensils"></i>
+                    <h3>Culinary Journeys</h3>
+                    <p>Discover authentic local cuisines everywhere.</p>
+                </div>
+                <div class="service-card" data-aos="fade-up" data-aos-delay="500">
+                    <i class="fas fa-headset"></i>
+                    <h3>24/7 Travel Support</h3>
+                    <p>Our team is always here to help you.</p>
+                </div>
+            </div>
+            <div class="section-cta">
+                <a href="services.html" class="btn-primary">More Details</a>
+            </div>
+        </section>
+
+        <!-- GALLERY SECTION -->
+        <section id="gallery" class="section">
+            <h2 class="section-heading">Gallery</h2>
+            <p class="section-subtitle">Stunning travel photos and inspiring stories from around the world.</p>
+            <br>
+            <div class="gallery-grid">
+                <div class="gallery-card">
+                    <img src="img/everest.jpg" alt="Mount Everest">
+                    <h3>Mount Everest</h3>
+                    <p>Experience the world's highest peak and breathtaking alpine views.</p>
+                </div>
+                <div class="gallery-card">
+                    <img src="img/GC.jpg" alt="Grand Canyon">
+                    <h3>Grand Canyon</h3>
+                    <p>A geological marvel with stunning canyons and hiking trails.</p>
+                </div>
+                <div class="gallery-card">
+                    <img src="img/tower2.jpg" alt="Eiffel Tower">
+                    <h3>Eiffel Tower</h3>
+                    <p>The iconic symbol of romance and elegance in Paris.</p>
+                </div>
+                <div class="gallery-card">
+                    <img src="img/amazon.webp" alt="Amazon">
+                    <h3>Amazon Rainforest</h3>
+                    <p>Discover incredible biodiversity and exotic wildlife.</p>
+                </div>
+                <div class="gallery-card">
+                    <img src="img/wall2.webp" alt="Great Wall">
+                    <h3>Great Wall of China</h3>
+                    <p>An ancient architectural masterpiece with stunning views.</p>
+                </div>
+                <div class="gallery-card">
+                    <img src="img/falls2.jpg" alt="Niagara Falls">
+                    <h3>Niagara Falls</h3>
+                    <p>Three spectacular waterfalls with thundering power.</p>
+                </div>
+            </div>
+            <div class="section-cta">
+                <a href="gallery.html" class="btn-primary">More Images</a>
+            </div>
+        </section>
+
+        <!-- CONTACT SECTION -->
+        <section id="contact" class="section">
+            <h2 class="section-heading">Get in Touch</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Ready to Start Your Journey?</h3>
+                    <p>Have questions? Our team is here to help!</p>
+                    <div class="contact-items">
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <div>
+                                <h4>Email</h4>
+                                <a href="mailto:info@geoquest.com">info@geoquest.com</a>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <div>
+                                <h4>Phone</h4>
+                                <a href="tel:+44 123 456 7890">+44 123 456 7890</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+   <!-- footer -->
+    <footer>
+        <p>&copy; 2026 GeoQuest. All rights reserved.</p>
+    </footer>
+
+    <!-- Scroll to Top Button -->
+    <button id="scrollToTop" class="scroll-to-top" aria-label="Scroll to top">
+        <i class="fas fa-arrow-up">↑</i>
+    </button>
+
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
