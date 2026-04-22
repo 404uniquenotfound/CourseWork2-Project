@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GeoQuest — Gallery</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,600&family=Outfit:wght@300;400;500;600&family=Space+Mono:ital@0;1&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="gallery.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="img/icon.png">
+</head>
+<body>
+
+    <!-- Cursor glow -->
+    <div id="cursorGlow"></div>
+
+    <!-- Topo background -->
+    <div class="topo-bg"></div>
+
+    <!-- HEADER -->
+        <header id="site-header">
+
+        <!-- Site logo / home link -->
+        <a href="index.html" class="nav-logo">
+            <h1>GEO<span>·</span>QUEST</h1>
+        </a>
+
+        <!-- Hamburger button — only visible on mobile -->
+        <button id="nav-toggle" aria-label="Toggle navigation">☰ Menu</button>
+
+        <!-- Main navigation -->
+        <nav id="main-nav">
+            <ul class="nav-list">
+                <li><a href="about.html" class="nav-link">Why GeoQuest</a></li>
+                <li><a href="destination.html" class="nav-link">Destinations</a></li>
+                <li><a href="services.html" class="nav-link">Services</a></li>
+                <li><a href="gallery.html" class="nav-link">Gallery</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+            </ul>
+        </nav>
+
+    </header>
+
+    <!-- Mobile menu -->
+    <div class="mobile-menu" id="mobile-menu">
+        <div class="container">
+            <div class="mobile-menu-links">
+                <a href="about.html" class="mobile-menu-link">Why GeoQuest?</a>
+                <a href="destination.html" class="mobile-menu-link">Destinations</a>
+                <a href="services.html" class="mobile-menu-link">Services</a>
+                <a href="gallery.html" class="mobile-menu-link" style="color:var(--teal)">Gallery</a>
+                <a href="contact.html" class="mobile-menu-link">Contact</a>
+                <a href="#signup" class="mobile-menu-link" style="color:var(--teal)">Get Offers</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== MAIN ===== -->
+    <main>
+
+        <!-- HERO -->
+        <section class="gallery-hero">
+            <div class="gallery-hero-eyebrow">Visual Journal</div>
+            <h1>The World<br>Through <em>Our Lens</em></h1>
+            <p>A curated collection of breathtaking imagery from the world's most extraordinary destinations.</p>
+        </section>
+
+        <!-- STATS -->
+        <div class="gallery-stats" data-aos="fade-up">
+            <div class="stat-item">
+                <div class="stat-number" id="stat-photos">17</div>
+                <div class="stat-label">Photographs</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">10</div>
+                <div class="stat-label">Destinations</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">3</div>
+                <div class="stat-label">Continents</div>
+            </div>
+        </div>
+
+        <!-- FILTER BAR -->
+        <div class="filter-bar" data-aos="fade-up">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="mountain">🏔️ Mountains</button>
+            <button class="filter-btn" data-filter="nature">🌿 Nature</button>
+            <button class="filter-btn" data-filter="landmark">🏛️ Landmarks</button>
+            <button class="filter-btn" data-filter="water">💧 Water</button>
+            <button class="filter-btn" data-filter="asia">🌏 Asia</button>
+            <button class="filter-btn" data-filter="europe">🌍 Europe</button>
+            <button class="filter-btn" data-filter="americas">🌎 Americas</button>
+        </div>
+
+        <!-- RESULT COUNT -->
+        <div class="result-count" id="result-count"><span id="visible-count">18</span> photographs</div>
+
+        <!-- GRID -->
+        <div class="gallery-grid-wrapper">
+
+            <div class="section-label" data-aos="fade-right">
+                <span class="section-label-text">Collection</span>
+                <span class="section-label-line"></span>
+            </div>
+
+            <div class="gallery-grid" id="gallery-grid">
+
+                <!-- ── EVEREST ── -->
+                <div class="gallery-card" data-category="mountain asia" data-name="Mount Everest" data-country="Nepal" data-desc="The roof of the world — standing at 8,849 metres, Mount Everest commands every sense with its raw, uncompromising grandeur." data-best="Oct – Nov" data-type="Mountain">
+                    <img src="img/everest.jpg" alt="Mount Everest" style="height: 340px;">
+                    <div class="card-overlay">
+                        <div class="card-overlay-title">Mount Everest</div>
+                        <div class="card-overlay-meta">
+                            <span class="card-overlay-country">Nepal</span>
+                            <span class="card-overlay-dot"></span>
+                            <span class="card-overlay-type">Mountain</span>
+                        </div>
+                    </div>
+                    <div class="card-badge">8,849 m</div>
+                    <button class="card-fav-btn" aria-label="Favourite"><i class="fas fa-star"></i></button>
+                </div>
+
+                <!-- ── GREAT WALL ── -->
+                <div class="gallery-card" data-category="landmark asia" data-name="Great Wall of China" data-country="China" data-desc="Stretching over 21,000 km across China's northern frontier, the Great Wall is humanity's most ambitious architectural achievement." data-best="Apr – Jun" data-type="Historic">
+                    <img src="img/wall2.webp" alt="Great Wall of China" style="height: 260px;">
+                    <div class="card-overlay">
+                        <div class="card-overlay-title">Great Wall of China</div>
+                        <div class="card-overlay-meta">
+                            <span class="card-overlay-country">China</span>
+                            <span class="card-overlay-dot"></span>
+                            <span class="card-overlay-type">Historic</span>
+                        </div>
+                    </div>
+                    <div class="card-badge">21,000 km</div>
+                    <button class="card-fav-btn" aria-label="Favourite"><i class="fas fa-star"></i></button>
+                </div>
+
+                <!-- ── AMAZON ── -->
+                <div class="gallery-card" data-category="nature americas" data-name="Amazon Rainforest" data-country="Brazil" data-desc="The planet's lungs — the Amazon spans 5.5 million km² and shelters more species than any other ecosystem on Earth." data-best="Jun – Sep" data-type="Nature">
+                    <img src="img/amazon.webp" alt="Amazon Rainforest" style="height: 300px;">
+                    <div class="card-overlay">
+                        <div class="card-overlay-title">Amazon Rainforest</div>
+                        <div class="card-overlay-meta">
+                            <span class="card-overlay-country">Brazil</span>
+                            <span class="card-overlay-dot"></span>
+                            <span class="card-overlay-type">Nature</span>
+                        </div>
+                    </div>
+                    <div class="card-badge">5.5M km²</div>
+                    <button class="card-fav-btn" aria-label="Favourite"><i class="fas fa-star"></i></button>
+                </div>
+
+                <!-- ── EIFFEL ── -->
+                <div class="gallery-card" data-category="landmark europe" data-name="Eiffel Tower" data-country="France" data-desc="The iron lady of Paris — a 330-metre masterpiece of engineering that has defined the Parisian skyline since 1889." data-best="Apr – Jun" data-type="Landmark">
+                    <img src="img/tower2.jpg" alt="Eiffel Tower" style="height: 420px;">
+                    <div class="card-overlay">
+                        <div class="card-overlay-title">Eiffel Tower</div>
+                        <div class="card-overlay-meta">
+                            <span class="card-overlay-country">France</span>
+                            <span class="card-overlay-dot"></span>
+                            <span class="card-overlay-type">Landmark</span>
+                        </div>
+                    </div>
+                    <div class="card-badge">330 m</div>
+                    <button class="card-fav-btn" aria-label="Favourite"><i class="fas fa-star"></i></button>
+                </div>
+
+                <!-- ── GRAND CANYON ── -->
+                <div class="gallery-card" data-category="nature americas" data-name="Grand Canyon" data-country="USA" data-desc="Carved by the Colorado River over 5–6 million years, the Grand Canyon is a 446 km gallery of geological time." data-best="Mar – May" data-type="Nature">
+                    <img src="img/GC.jpg" alt="Grand Canyon" style="height: 280px;">
+                    <div class="card-overlay">
+                        <div class="card-overlay-title">Grand Canyon</div>
+                        <div class="card-overlay-meta">
+                            <span class="card-overlay-country">USA</span>
+                            <span class="card-overlay-dot"></span>
+                            <span class="card-overlay-type">Nature</span>
+                        </div>
+                    </div>
+                    <div class="card-badge">446 km</div>
+                    <button class="card-fav-btn" aria-label="Favourite"><i class="fas fa-star"></i></button>
+                </div>
+
+                <!-- ── NIAGARA ── -->
+                <div class="gallery-card" data-category="water americas" data-name="Niagara Falls" data-country="USA / Canada" data-desc="One of the world's most powerful waterfalls, Niagara thunders 57 metres and discharges over 2,400 m³ of water per second." data-best="Jun – Aug" data-type="Waterfall">
+                    <img src="img/falls.jpg" alt="Niagara Falls" style="height: 320px;">
+                    <div class="card-overlay">
+                        <div class="card-overlay-title">Niagara Falls</div>
+                        <div class="card-overlay-meta">
+                            <span class="card-overlay-country">USA / Canada</span>
+                            <span class="card-overlay-dot"></span>
+                            <span class="card-overlay-type">Waterfall</span>
+                        </div>
+                    </div>
+                    <div class="card-badge">57 m drop</div>
+                    <button class="card-fav-btn" aria-label="Favourite"><i class="fas fa-star"></i></button>
+                </div>
+
+                <!-- ── EXTRA CARDS (variety / height) ── -->
+
+                <div class="gallery-card" data-category="mountain asia" data-name="Mount Everest" data-country="Nepal" data-desc="Dawn breaks over the Khumbu glacier — a sea of ice below the world's highest peak, untouched and eternal." data-best="Oct – Nov" data-type="Mountain">
+                    <img src="img/himalayan-dawn.jpg" alt="Himalaya at dawn" style="height: 260px;">
+                    <div class="card-overlay">
+                        <div class="card-overlay-title">Himalayan Dawn</div>
+                        <div class="card-overlay-meta">
+                            <span class="card-overlay-country">Nepal</span>
+                            <span class="card-overlay-dot"></span>
+                            <span class="card-overlay-type">Mountain</span>
+                        </div>
+                    </div>
+                    <div class="card-badge">Asia</div>
+                    <button class="card-fav-btn" aria-label="Favourite"><i class="fas fa-star"></i></button>
+                </div>
+
+                <div class="gallery-card" data-category="nature americas" data-name="Amazon Rainforest" data-country="Brazil" data-desc="Sunlight fractures through the Amazon canopy, revealing a world alive with colour, sound, and endless discovery." data-best="Jun – Sep" data-type="Nature">
+                    <img src="img/canopy.webp" alt="Amazon canopy" style="height: 380px;">
+                    <div class="card-overlay">
+                        <div class="card-overlay-title">Amazon Canopy</div>
+                        <div class="card-overlay-meta">
+                            <span class="card-overlay-country">Brazil</span>
+                            <span class="card-overlay-dot"></span>
+                            <span class="card-overlay-type">Nature</span>
+                        </div>
+                    </div>
+                    <div class="card-badge">Americas</div>
+                    <button class="card-fav-btn" aria-label="Favourite"><i class="fas fa-star"></i></button>
+                </div>
+
+                <div class="gallery-card" data-category="landmark europe" data-name="Eiffel Tower" data-country="France" data-desc="Paris illuminated — the city of light at dusk, golden reflections shimmering on the Seine below." data-best="Apr – Jun" data-type="Landmark">
+                    <img src="img/paris.jpg" alt="Paris at dusk" style="height: 300px;">
+                    <div class="card-overlay">
+                        <div class="card-overlay-title">Paris at Dusk</div>
+                        <div class="card-overlay-meta">
+                            <span class="card-overlay-country">France</span>
+                            <span class="card-overlay-dot"></span>
+                            <span class="card-overlay-type">Landmark</span>
+                        </div>
+                    </div>
+                    <div class="card-badge">Europe</div>
+                    <button class="card-fav-btn" aria-label="Favourite"><i class="fas fa-star"></i></button>
+                </div>
+
+                <div class="gallery-card" data-category="nature americas" data-name="Grand Canyon" data-country="USA" data-desc="Golden hour paints the canyon walls in hues of amber and rust — a landscape that defies comprehension." data-best="Mar – May" data-type="Nature">
+                    <img src="img/canyon-sunset.jpg" alt="Grand Canyon sunset" style="height: 260px;">
+                    <div class="card-overlay">
+                        <div class="card-overlay-title">Canyon Sunset</div>
+                        <div class="card-overlay-meta">
+                            <span class="card-overlay-country">USA</span>
+                            <span class="card-overlay-dot"></span>
+                            <span class="card-overlay-type">Nature</span>
+                        </div>
+                    </div>
+                    <div class="card-badge">Americas</div>
+                    <button class="card-fav-btn" aria-label="Favourite"><i class="fas fa-star"></i></button>
+                </div>
+
+                <div class="gallery-card" data-category="water americas" data-name="Niagara Falls" data-country="USA / Canada" data-desc="Mist rising from the falls creates perpetual rainbows — a prism of colour born from raw, unrelenting power." data-best="Jun – Aug" data-type="Waterfall">
+                    <img src="img/mist.webp" alt="Niagara mist" style="height: 340px;">
+                    <div class="card-overlay">
+                        <div class="card-overlay-title">Niagara Mist</div>
+                        <div class="card-overlay-meta">
+                            <span class="card-overlay-country">USA / Canada</span>
+                            <span class="card-overlay-dot"></span>
+                            <span class="card-overlay-type">Waterfall</span>
+                        </div>
+                    </div>
+                    <div class="card-badge">Americas</div>
+                    <button class="card-fav-btn" aria-label="Favourite"><i class="fas fa-star"></i></button>
+                </div>
+
+                <div class="gallery-card" data-category="landmark asia" data-name="Great Wall of China" data-country="China" data-desc="Autumn arrives on the Great Wall, draping the ancient battlements in a tapestry of red and gold leaves." data-best="Oct – Nov" data-type="Historic">
+                    <img src="img/wall3.jpg" alt="Great Wall autumn" style="height: 280px;">
+                    <div class="card-overlay">
+                        <div class="card-overlay-title">Wall in Autumn</div>
+                        <div class="card-overlay-meta">
+                            <span class="card-overlay-country">China</span>
+                            <span class="card-overlay-dot"></span>
+                            <span class="card-overlay-type">Historic</span>
+                        </div>
+                    </div>
+                    <div class="card-badge">Asia</div>
+                    <button class="card-fav-btn" aria-label="Favourite"><i class="fas fa-star"></i></button>
+                </div>
+
+                <div class="gallery-card" data-category="mountain asia" data-name="Mount Everest" data-country="Nepal" data-desc="The prayer flags of Namche Bazaar flutter against the Everest skyline — faith and altitude intertwined." data-best="Oct – Nov" data-type="Mountain">
+                    <img src="img/prayer-flags.avif" alt="Prayer flags Everest" style="height: 360px;">
+                    <div class="card-overlay">
+                        <div class="card-overlay-title">Prayer Flags</div>
+                        <div class="card-overlay-meta">
+                            <span class="card-overlay-country">Nepal</span>
+                            <span class="card-overlay-dot"></span>
+                            <span class="card-overlay-type">Mountain</span>
+                        </div>
+                    </div>
+                    <div class="card-badge">Asia</div>
+                    <button class="card-fav-btn" aria-label="Favourite"><i class="fas fa-star"></i></button>
+                </div>
+
+                <div class="gallery-card" data-category="water nature" data-name="Amazon Rainforest" data-country="Brazil" data-desc="The Amazon river at dusk — an artery of life reflecting the blazing sky, winding endlessly through the forest." data-best="Jun – Sep" data-type="Nature">
+                    <img src="img/river.jpg" alt="Amazon river" style="height: 290px;">
+                    <div class="card-overlay">
+                        <div class="card-overlay-title">Amazon River</div>
+                        <div class="card-overlay-meta">
+                            <span class="card-overlay-country">Brazil</span>
+                            <span class="card-overlay-dot"></span>
+                            <span class="card-overlay-type">Nature</span>
+                        </div>
+                    </div>
+                    <div class="card-badge">Americas</div>
+                    <button class="card-fav-btn" aria-label="Favourite"><i class="fas fa-star"></i></button>
+                </div>
+
+                <div class="gallery-card" data-category="landmark europe" data-name="Eiffel Tower" data-country="France" data-desc="The Trocadéro perspective — the classic view that has captivated millions since 1889, framed by Parisian gardens." data-best="Apr – Jun" data-type="Landmark">
+                    <img src="img/tower4.jpg" alt="Eiffel from Trocadero" style="height: 310px;">
+                    <div class="card-overlay">
+                        <div class="card-overlay-title">Trocadéro View</div>
+                        <div class="card-overlay-meta">
+                            <span class="card-overlay-country">France</span>
+                            <span class="card-overlay-dot"></span>
+                            <span class="card-overlay-type">Landmark</span>
+                        </div>
+                    </div>
+                    <div class="card-badge">Europe</div>
+                    <button class="card-fav-btn" aria-label="Favourite"><i class="fas fa-star"></i></button>
+                </div>
+
+                <div class="gallery-card" data-category="nature americas" data-name="Grand Canyon" data-country="USA" data-desc="Storm clouds gather above the South Rim — a dramatic collision of weather and geology unique to the canyon." data-best="Mar – May" data-type="Nature">
+                    <img src="img/storm.jpg" alt="Grand Canyon storm" style="height: 350px;">
+                    <div class="card-overlay">
+                        <div class="card-overlay-title">Canyon Storm</div>
+                        <div class="card-overlay-meta">
+                            <span class="card-overlay-country">USA</span>
+                            <span class="card-overlay-dot"></span>
+                            <span class="card-overlay-type">Nature</span>
+                        </div>
+                    </div>
+                    <div class="card-badge">Americas</div>
+                    <button class="card-fav-btn" aria-label="Favourite"><i class="fas fa-star"></i></button>
+                </div>
+
+                <div class="gallery-card" data-category="landmark asia" data-name="Great Wall of China" data-country="China" data-desc="Watchtowers punctuate the horizon — the Great Wall's military ingenuity visible in every stone and shadow." data-best="Apr – Jun" data-type="Historic">
+                    <img src="img/watch-tower.jpg" alt="Great Wall watchtower" style="height: 270px;">
+                    <div class="card-overlay">
+                        <div class="card-overlay-title">Watchtower</div>
+                        <div class="card-overlay-meta">
+                            <span class="card-overlay-country">China</span>
+                            <span class="card-overlay-dot"></span>
+                            <span class="card-overlay-type">Historic</span>
+                        </div>
+                    </div>
+                    <div class="card-badge">Asia</div>
+                    <button class="card-fav-btn" aria-label="Favourite"><i class="fas fa-star"></i></button>
+                </div>
+
+            </div><!-- /gallery-grid -->
+
+            <!-- Empty state -->
+            <div class="gallery-empty" id="gallery-empty">
+                <div class="gallery-empty-icon">🔭</div>
+                <h3>No photographs found</h3>
+                <p>Try a different filter or browse all destinations.</p>
+            </div>
+
+        </div><!-- /wrapper -->
+    </main>
+
+    <!-- ===== LIGHTBOX ===== -->
+    <div class="lightbox-overlay" id="lightbox">
+        <button class="lightbox-arrow prev" id="lb-prev" aria-label="Previous">‹</button>
+        <div class="lightbox-container">
+            <button class="lightbox-close" id="lb-close" aria-label="Close">✕</button>
+            <div class="lightbox-image-wrap">
+                <img id="lb-img" src="" alt="">
+                <div class="lightbox-image-overlay"></div>
+            </div>
+            <div class="lightbox-info">
+                <div>
+                    <div class="lightbox-tag" id="lb-type">Type</div>
+                    <div class="lightbox-title" id="lb-title">Title</div>
+                    <div class="lightbox-country" id="lb-country">Country</div>
+                    <div class="lightbox-desc" id="lb-desc">Description</div>
+                    <div class="lightbox-meta-grid">
+                        <div class="lightbox-meta-item">
+                            <div class="lightbox-meta-label">Best time</div>
+                            <div class="lightbox-meta-value" id="lb-best">—</div>
+                        </div>
+                        <div class="lightbox-meta-item">
+                            <div class="lightbox-meta-label">Category</div>
+                            <div class="lightbox-meta-value" id="lb-cat">—</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="lightbox-actions">
+                    <button class="lightbox-btn-primary" id="lb-explore">Explore Destination →</button>
+                    <button class="lightbox-btn-icon" id="lb-fav" title="Add to favourites"><i class="fas fa-star"></i></button>
+                </div>
+            </div>
+        </div>
+        <button class="lightbox-arrow next" id="lb-next" aria-label="Next">›</button>
+    </div>
+
+    <!-- Scroll to top -->
+    <div id="scrollToTopBtn">↑</div>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; 2026 <a href="index.html">GeoQuest</a>. All rights reserved. &nbsp;·&nbsp; <a href="gallery.html">Gallery</a></p>
+    </footer>
+    <div id="scrollToTopBtn">↑</div>
+
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script src="gallery.js"></script>
+</body>
+</html>
